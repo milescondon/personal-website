@@ -148,3 +148,110 @@ img { max-width: 100%; display: block; }
     top: 0;
   }
 }
+
+/* ── Hero ── */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #0b1120, #111d32);
+}
+
+.hero__inner {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.hero__text {
+  flex: 1;
+}
+
+.hero__name {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+
+.hero__tagline {
+  color: var(--gold);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero__description {
+  margin-top: 16px;
+  font-size: 1.1rem;
+  max-width: 500px;
+  line-height: 1.7;
+}
+
+.hero__buttons {
+  margin-top: 32px;
+  display: flex;
+  gap: 16px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 4px;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+
+.btn--primary {
+  background: var(--gold);
+  color: #0b1120;
+}
+
+.btn--primary:hover {
+  filter: brightness(1.1);
+}
+
+.btn--outline {
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  background: transparent;
+}
+
+.btn--outline:hover {
+  background: rgba(201, 168, 76, 0.1);
+}
+
+.hero__graphic {
+  flex: 1;
+  min-height: 300px;
+  background:
+    radial-gradient(circle at 70% 30%, rgba(201,168,76,0.05) 0%, transparent 50%),
+    radial-gradient(circle at 30% 70%, rgba(30,45,74,0.4) 0%, transparent 50%);
+}
+
+@media (max-width: 768px) {
+  .hero__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero__graphic {
+    display: none;
+  }
+
+  .hero__buttons {
+    justify-content: center;
+  }
+
+  .hero__description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
