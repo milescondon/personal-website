@@ -416,3 +416,44 @@ img { max-width: 100%; display: block; }
     grid-template-columns: 1fr;
   }
 }
+
+/* ── Research ── */
+
+.research {
+  padding: 80px 0;
+}
+
+.research-list {
+  list-style: none;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.research-item {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border-card);
+}
+
+.research-item:last-child {
+  border-bottom: none;
+}
+
+.research-item__title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--text-heading);
+  text-transform: none;
+}
+
+.research-item__meta {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 6px;
+}
+
+.research-item__link {
+  font-size: 0.85rem;
+  color: var(--gold);
+  margin-top: 8px;
+  display: inline-block;
+}
