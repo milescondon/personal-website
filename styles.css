@@ -1,0 +1,35 @@
+:root {
+  --bg-page: #0b1120;
+  --bg-card: #111d32;
+  --border-card: #1e2d4a;
+  --gold: #c9a84c;
+  --text-heading: #ffffff;
+  --text-body: #a0b0c8;
+  --text-secondary: #8a9bb8;
+  --font-heading: 'Oswald', sans-serif;
+  --font-body: 'Lato', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-page);
+  color: var(--text-body);
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--text-heading);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+a { color: var(--gold); text-decoration: none; }
+
+img { max-width: 100%; display: block; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
