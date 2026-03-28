@@ -18,7 +18,8 @@ A personal portfolio site for Miles Condon, a former professor transitioning to 
 - No frameworks, no build tools, no dependencies
 - GitHub Pages for hosting
 - Google Fonts: Oswald (headings), Lato (body)
-- Formspree or mailto: for contact
+- Contact: `mailto:` link (no form backend needed — keeps it simple)
+- Font loading: `font-display: swap` + preload to avoid flash of unstyled text
 
 ## Design Language
 
@@ -28,8 +29,8 @@ A personal portfolio site for Miles Condon, a former professor transitioning to 
 - Card borders: `#1e2d4a`
 - Gold accent: `#c9a84c` (borders, CTAs, highlights)
 - Heading text: `#ffffff`
-- Body text: `#8a9bb8` (muted blue-gray)
-- Secondary text: `#6b7c98`
+- Body text: `#a0b0c8` (muted blue-gray — passes WCAG AA on dark bg)
+- Secondary text: `#8a9bb8` (lighter than original — passes WCAG AA)
 
 ### Typography
 - Headings: Oswald (uppercase, bold, letter-spaced)
@@ -51,9 +52,6 @@ projects/
   twin-app.html
   recommendation-system.html
   data-analytics-agent.html
-  paper-1.html
-  paper-2.html
-  paper-3.html
 assets/
   images/
     headshot.jpg
@@ -66,12 +64,12 @@ assets/
 - Name/logo on the left
 - Links: About, Projects, Contact — smooth-scroll to sections
 - Styled as simple text links, no heavy nav treatment
-- Collapses to hamburger menu on mobile
+- Collapses to hamburger menu on mobile (overlay menu, slide-in from right)
 
 ### 2. Hero Section
 - Full viewport height
 - Left side: Name in large Oswald, one-line tagline (e.g., "AI/ML Engineer · Researcher · Builder"), short conversational sentence about what he does, two buttons — "View Work" (filled gold) and "Contact" (outlined gold)
-- Right side: Reserved space for a graphic element (abstract geometric pattern, data visualization motif, or decorative gradient shape — to be iterated on). Placeholder for now.
+- Right side: Reserved space for a graphic element (to be iterated on). V1 placeholder: subtle CSS gradient shape or geometric pattern so the space doesn't look empty.
 - Navy gradient background
 
 ### 3. About Section
@@ -95,7 +93,7 @@ assets/
 - Lighter treatment than AI/ML cards — a clean list, not a forced grid
 - Each entry: paper title (Oswald, smaller), publication/conference name, year, and a link to the paper
 - More like a curated bibliography — simple, scannable
-- Links to detail pages for papers that warrant deeper explanation
+- Each entry links to the external publication URL (arXiv, conference site, etc.)
 
 **Papers:** (titles TBD by user — 3 academic papers)
 
@@ -108,13 +106,14 @@ assets/
 - Simple, zero-maintenance
 
 ### 7. Footer
-- Minimal — copyright line, maybe a "Built by Miles Condon" note
+- © 2026 Miles Condon
+- No duplicated nav or social links — keep it minimal
 
 ## Project Detail Pages
 
 Each project gets its own page with consistent layout:
 
-1. **Back link** — "← Back to Portfolio" at top
+1. **Back link** — "← Back to Portfolio" linking to index.html (not history.back())
 2. **Loom video embed** — full-width at top of content area (when available)
 3. **Project title** (Oswald, large)
 4. **Structured content:**
@@ -139,6 +138,22 @@ Each project gets its own page with consistent layout:
 - **Desktop (>1024px):** Full 3-column card grid, side-by-side hero/about layouts
 - **Tablet (768-1024px):** 2-column card grid, side-by-side layouts maintained
 - **Mobile (<768px):** Single column everything, hamburger nav, stacked hero/about, full-width cards
+
+## SEO & Meta
+
+- Page title: "Miles Condon — AI/ML Engineer & Researcher"
+- Meta description per page
+- Open Graph tags (title, description, image) for LinkedIn/Slack link previews
+- Favicon (simple gold "M" on navy, or initials)
+- CNAME file for GitHub Pages custom domain
+- 404.html — branded page linking back to homepage
+
+## Deployment
+
+- GitHub Pages from `main` branch
+- CNAME file: `milescondon.com`
+- Squarespace DNS: A records pointing to GitHub IPs, CNAME for www
+- HTTPS enforced via GitHub Pages settings
 
 ## Open Items
 
