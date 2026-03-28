@@ -457,3 +457,39 @@ img { max-width: 100%; display: block; }
   margin-top: 8px;
   display: inline-block;
 }
+
+/* ── Contact ── */
+
+.contact {
+  padding: 100px 0;
+  text-align: center;
+}
+
+.contact__blurb {
+  max-width: 400px;
+  margin: 0 auto 28px;
+  font-size: 1rem;
+}
+
+.contact__btn {
+  display: inline-block;
+}
+
+.contact__social {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ── Footer ── */
+
+.footer {
+  padding: 32px 0;
+  text-align: center;
+  border-top: 1px solid var(--border-card);
+}
+
+.footer p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
