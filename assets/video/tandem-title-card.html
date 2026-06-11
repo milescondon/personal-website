@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tandem — Video Title Card</title>
+
+  <!--
+    ┌─ HOW TO USE ────────────────────────────────────────────────────────────┐
+    │ This is the open/close brand lockup for the demo video (1920×1080, 16:9).│
+    │                                                                          │
+    │  OPEN card (default):   open this file, press F11 for fullscreen.        │
+    │  CLOSE card (w/ link):  add  ?card=close  to the URL  →  ...html?card=close│
+    │                                                                          │
+    │  To get a still PNG:  fullscreen → screenshot,  OR  in browser DevTools  │
+    │  right-click the <div class="stage"> → "Capture node screenshot".        │
+    │  Or simply screen-record this card for the 2-3s open/close in Loom.      │
+    └──────────────────────────────────────────────────────────────────────────┘
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&display=swap" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      background: #0A0B0D;            /* brand ink — NOT pure black */
+      color: #f4f5f7;
+      font-family: 'DM Sans', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    /* Centered lockup — fullscreen the browser (16:9 monitor) then screenshot/record. */
+    .stage {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3.4vmin;
+      text-align: center;
+    }
+    .clasp { width: 17vmin; height: auto; display: block; }
+    .wordmark {
+      font-weight: 600;
+      font-size: 11vmin;
+      letter-spacing: -0.5vmin;
+      line-height: 1;
+      color: #f4f5f7;
+    }
+    .wordmark span { color: #F0AD00; }   /* gold period — the warmth carrier */
+    .tagline {
+      font-weight: 500;
+      font-size: 3vmin;
+      letter-spacing: 0.3vmin;
+      color: #9aa0ad;
+    }
+    .contact {
+      margin-top: 1.2vmin;
+      font-weight: 500;
+      font-size: 2.4vmin;
+      letter-spacing: 0.3vmin;
+      color: #F0AD00;
+      display: none;                     /* shown only on the close card */
+    }
+    body[data-card="close"] .contact { display: block; }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <!-- The Clasp — canonical mark (brand/clasp-spec.md), gold-ui dot -->
+    <svg viewBox="0 0 38 48" class="clasp" role="img" aria-label="Tandem — the Clasp mark">
+      <path d="M 7.5 7 A 12 15 0 0 1 7.5 34" fill="none" stroke="#6B52C8" stroke-width="4" stroke-linecap="round" />
+      <path d="M 30.5 14 A 12 15 0 0 0 30.5 41" fill="none" stroke="#4A82CC" stroke-width="4" stroke-linecap="round" />
+      <circle cx="19" cy="24" r="2.5" fill="#F0AD00" />
+    </svg>
+    <p class="wordmark">tandem<span>.</span></p>
+    <p class="tagline">built for two.</p>
+    <!-- CLOSE-card line: replace with your preferred site or email, then load with ?card=close -->
+    <p class="contact">tandemtwins.com</p>
+  </div>
+
+  <script>
+    if (new URLSearchParams(location.search).get('card') === 'close') {
+      document.body.setAttribute('data-card', 'close');
+    }
+  </script>
+</body>
+</html>

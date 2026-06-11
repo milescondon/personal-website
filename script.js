@@ -36,11 +36,14 @@ if (fadeEls.length) {
 }
 
 // ── Nav background on scroll ──
+// Guarded: sub-pages (resume, tandem) use the .resume-bar header and have no #nav.
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    nav.classList.add('nav--scrolled');
-  } else {
-    nav.classList.remove('nav--scrolled');
-  }
-});
+if (nav) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      nav.classList.add('nav--scrolled');
+    } else {
+      nav.classList.remove('nav--scrolled');
+    }
+  });
+}

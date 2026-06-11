@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tandem — AI for Parents of Twins | Miles Condon</title>
+  <meta name="description" content="Tandem: a production AI product for parents of twins. Case study, market sizing (TAM/SAM/SOM), and brand identity — built by Miles Condon, Ph.D." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Tandem — Clinically-grounded AI for parents of twins" />
+  <meta property="og:description" content="Product case study + validated TAM/SAM/SOM market research + brand identity." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon: gold "M" on navy background (matches portfolio) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='8' fill='%230b1120'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='42' fill='%23c9a84c'>M</text></svg>" />
+
+  <!-- Google Fonts: Oswald + Lato (portfolio) + DM Sans (Tandem brand showcase) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Lato:wght@400;700&family=DM+Sans:wght@500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="resume-bar">
+    <div class="container resume-bar__inner">
+      <a href="index.html" class="nav__logo">&larr; Miles Condon</a>
+      <a href="mailto:miles.condon@gmail.com" class="btn btn--primary btn--sm">Get In Touch</a>
+    </div>
+  </header>
+
+  <!-- ── Hero (dark island) ── -->
+  <section class="tm-hero">
+    <div class="container tm-hero__inner">
+      <p class="tm-eyebrow">AI Product · Case Study</p>
+      <h1 class="tm-hero__title">Tandem</h1>
+      <p class="tm-hero__tagline">Clinically-grounded AI for the parents of twins.</p>
+      <p class="tm-hero__lede">
+        Most baby apps assume one child. Tandem is built from the ground up for two —
+        coordinating both babies into a single sleep schedule and answering parents'
+        questions from a base of published pediatric research, not guesswork.
+      </p>
+
+      <div class="tm-hero__metrics">
+        <div class="tm-stat">
+          <span class="tm-stat__value">2.5%</span>
+          <span class="tm-stat__label">hallucination rate, down from 14% — every answer grounded in clinical sources</span>
+        </div>
+        <div class="tm-stat">
+          <span class="tm-stat__value">2&times;</span>
+          <span class="tm-stat__label">babies, one coordinated schedule — a problem no major app solves</span>
+        </div>
+        <div class="tm-stat">
+          <span class="tm-stat__value">~217K</span>
+          <span class="tm-stat__label">US households raising twins aged 0–3 — an acutely underserved niche</span>
+        </div>
+      </div>
+
+      <p class="tm-hero__founder">
+        Built by a market researcher and AI engineer to solve a problem in his own home —
+        as the father of twins himself.
+      </p>
+
+      <div class="tm-hero__buttons">
+        <a href="#demo" class="btn btn--primary btn--play">Watch the Demo</a>
+        <a href="#product" class="btn btn--outline">How It Works</a>
+        <a href="#market" class="btn btn--outline">See the Market</a>
+        <a href="#brand" class="btn btn--outline">Brand Identity</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Demo video (light) ── -->
+  <section class="tm-section tm-section--alt" id="demo">
+    <div class="container fade-in">
+      <h2 class="section-heading">See It in Action</h2>
+      <div class="section-heading__bar"></div>
+      <p class="tm-section__intro">
+        A short walkthrough of Tandem building a coordinated schedule for two babies and answering a
+        parent's question with cited research — the live product, not a mockup.
+      </p>
+
+      <div class="demo-frame">
+        <!--
+          ▶ TO EMBED THE LOOM VIDEO:
+          1. In Loom, click Share → Embed and copy the video ID from the URL
+             (loom.com/share/THIS_PART  →  loom.com/embed/THIS_PART).
+          2. Delete the <div class="demo-placeholder"> ... </div> block below.
+          3. Uncomment this iframe and paste your ID:
+
+          <iframe src="https://www.loom.com/embed/YOUR_VIDEO_ID"
+                  title="Tandem product walkthrough"
+                  frameborder="0" allowfullscreen
+                  class="demo-frame__media"></iframe>
+        -->
+        <div class="demo-placeholder">
+          <span class="demo-placeholder__play" aria-hidden="true"></span>
+          <p class="demo-placeholder__text">Product walkthrough — video coming soon</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── What it does (light) ── -->
+  <section class="tm-section" id="product">
+    <div class="container fade-in">
+      <h2 class="section-heading">What Tandem Does</h2>
+      <div class="section-heading__bar"></div>
+      <p class="tm-section__intro">
+        Parenting twins is not parenting one baby twice. Two wake windows drift out of sync,
+        two developmental clocks tick at different rates, and a tired parent has to reconcile
+        them in real time. Tandem turns that coordination problem into software.
+      </p>
+
+      <div class="feature-grid">
+        <div class="feature">
+          <h3 class="feature__title">Coordinated sleep scheduling</h3>
+          <p>A joint scheduler optimizes <em>both</em> children's wake windows into one household
+          schedule — naps, bridge naps, and bedtime — so parents aren't whipsawed between two
+          conflicting timetables.</p>
+        </div>
+        <div class="feature">
+          <h3 class="feature__title">Answers grounded in research</h3>
+          <p>A chat assistant answers questions from a curated corpus of pediatric sleep guidelines
+          and clinical literature — using retrieval-augmented generation so responses stay tied to
+          real sources instead of generic AI output.</p>
+        </div>
+        <div class="feature">
+          <h3 class="feature__title">Adaptive, per-child predictions</h3>
+          <p>The model learns each child's evolving rhythm and adjusts to developmental phase — and,
+          for preterm twins, to corrected age. One twin's data never contaminates the other's.</p>
+        </div>
+        <div class="feature">
+          <h3 class="feature__title">Effortless tracking</h3>
+          <p>Sleep, feeds, and diapers log in a tap and roll up into trends — the data that powers the
+          predictions, captured without adding work to an already exhausting day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How it's built / trust (light) ── -->
+  <section class="tm-section tm-section--alt" id="trust">
+    <div class="container fade-in">
+      <h2 class="section-heading">Engineered to Be Trusted</h2>
+      <div class="section-heading__bar"></div>
+      <p class="tm-section__intro">
+        Parents act on this advice at 3&nbsp;a.m. A hallucination here isn't a typo — it's a safety
+        risk. So Tandem is built the way a researcher builds an experiment: to be measured, grounded,
+        and verifiable.
+      </p>
+
+      <div class="trust-grid">
+        <div class="trust">
+          <span class="trust__kicker">Grounding</span>
+          <p>Every answer is retrieved from and constrained to a clinical evidence base. Measured
+          hallucination rate fell from <strong>14% to 2.5%</strong>.</p>
+        </div>
+        <div class="trust">
+          <span class="trust__kicker">Evaluation</span>
+          <p>A three-tier eval harness — deterministic metrics, claim-level analysis, and human
+          review — scores quality on every change, so improvements are proven, not assumed.</p>
+        </div>
+        <div class="trust">
+          <span class="trust__kicker">Twin isolation</span>
+          <p>A hard architectural rule guarantees one child's data can never leak into the other's
+          predictions or answers — the integrity guarantee a twins product lives or dies on.</p>
+        </div>
+        <div class="trust">
+          <span class="trust__kicker">Safety first</span>
+          <p>Medical-keyword questions bypass the usual time-weighting and route conservatively,
+          so urgent topics never get diluted by routine logging noise.</p>
+        </div>
+      </div>
+
+      <p class="tm-tech-line">
+        Production stack · Python · FastAPI · React PWA · Retrieval-augmented generation · vector
+        search + reranking · built with modern AI tooling.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Market opportunity (light) ── -->
+  <section class="tm-section" id="market">
+    <div class="container fade-in">
+      <h2 class="section-heading">Market Opportunity</h2>
+      <div class="section-heading__bar"></div>
+      <p class="tm-section__intro">
+        Tandem starts where the pain is most acute — parents of twins — a focused, well-bounded
+        niche with no incumbent built for it. The sizing below is deliberately <strong>conservative and
+        US-only</strong>: every population figure is drawn from CDC and peer-reviewed sources, and the
+        revenue model uses a modest blended subscription assumption. The broader infant market is the
+        expansion story, not the headline.
+      </p>
+
+      <div class="market-layout">
+        <!-- Funnel visual -->
+        <figure class="funnel-fig">
+          <svg class="funnel" viewBox="0 0 600 360" role="img"
+               aria-label="Market funnel: TAM 49 million dollars per year, SAM 31 million dollars per year, SOM 1.6 million dollars annual recurring revenue.">
+            <!-- TAM -->
+            <polygon points="30,15 570,15 500,130 100,130" class="funnel__band funnel__band--tam" />
+            <text x="300" y="62" class="funnel__tier">TAM</text>
+            <text x="300" y="98" class="funnel__amt">$49M / yr</text>
+            <!-- SAM -->
+            <polygon points="100,140 500,140 440,250 160,250" class="funnel__band funnel__band--sam" />
+            <text x="300" y="182" class="funnel__tier">SAM</text>
+            <text x="300" y="216" class="funnel__amt">$31M / yr</text>
+            <!-- SOM -->
+            <polygon points="160,260 440,260 385,350 215,350" class="funnel__band funnel__band--som" />
+            <text x="300" y="298" class="funnel__tier funnel__tier--dark">SOM</text>
+            <text x="300" y="332" class="funnel__amt funnel__amt--dark">$1.6M ARR</text>
+          </svg>
+          <figcaption>US twins only · modeled at a conservative $150/yr blended ARPU</figcaption>
+        </figure>
+
+        <!-- Definitions table -->
+        <div class="market-detail">
+          <table class="market-table">
+            <thead>
+              <tr><th>Layer</th><th>Who it counts</th><th>Math</th><th>Size</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>TAM</strong><span class="market-table__sub">Total addressable</span></td>
+                <td>All US households raising twins, ages 0–5</td>
+                <td>327,000 &times; $150</td>
+                <td class="market-table__fig">~$49M<span>/yr</span></td>
+              </tr>
+              <tr>
+                <td><strong>SAM</strong><span class="market-table__sub">Serviceable available</span></td>
+                <td>US twin households in the core 0–3 sleep window, smartphone-owning</td>
+                <td>208,000 &times; $150</td>
+                <td class="market-table__fig">~$31M<span>/yr</span></td>
+              </tr>
+              <tr class="market-table__row--highlight">
+                <td><strong>SOM</strong><span class="market-table__sub">Serviceable obtainable</span></td>
+                <td>Realistic 3–5 year capture, ~5% of SAM (range 3–7%)</td>
+                <td>~10,400 &times; $150</td>
+                <td class="market-table__fig">~$1.6M<span>ARR</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="market-note">
+            SOM range: <strong>$0.9M–$2.2M ARR</strong> at 3–7% penetration. For reference, the leading
+            generalist baby-sleep app (Huckleberry, single-child) is estimated at ~$7M ARR — so a focused
+            twins product reaching one to two million in recurring revenue is a conservative, well-supported
+            target, not a stretch.
+          </p>
+        </div>
+      </div>
+
+      <!-- Competitive gap -->
+      <div class="gap-block">
+        <h3 class="tm-subhead">The competitive gap</h3>
+        <p>
+          No incumbent is built for two-baby households. Huckleberry, Napper, and Nanit are all
+          architected around a single child — "add a second baby" means toggling between two profiles
+          with no coordinated wake-window math and no joint bedtime. The <em>only</em> dedicated twins
+          app on the market is a community log-book with no sleep intelligence at all. The offline
+          alternative — a human sleep consultant experienced with multiples — runs
+          <strong>$795–$1,915 for a single engagement</strong>, and many charge twin families a premium
+          on top. Tandem sits in the open space between a generic single-baby app and a one-time
+          four-figure consultation.
+        </p>
+      </div>
+
+      <!-- Business model -->
+      <div class="gap-block">
+        <h3 class="tm-subhead">Business model</h3>
+        <p>
+          A premium consumer subscription. The market model above assumes a blended <strong>$150/yr</strong>
+          ARPU — positioned between leading single-baby sleep apps (~$120/yr) and the one-time cost of a
+          human consultant, and far below it. Twin families are a documented high-spend, high-intent
+          cohort, which supports both a premium price band and stronger willingness to pay than the
+          generalist market.
+        </p>
+      </div>
+
+      <!-- Expansion -->
+      <div class="gap-block">
+        <h3 class="tm-subhead">The expansion path</h3>
+        <p>
+          Twins are the beachhead, not the ceiling. The coordination engine generalizes to any number of
+          children, and the clinical foundation applies to every infant — so the same product extends
+          naturally into the far larger single-baby market once the twins niche is owned. That broader
+          market is upside; it is deliberately <em>not</em> counted in the figures above.
+        </p>
+      </div>
+
+      <!-- Methodology -->
+      <div class="gap-block">
+        <h3 class="tm-subhead">Methodology &amp; assumptions</h3>
+        <ul class="method-list">
+          <li><strong>Population.</strong> CDC / NCHS 2023 final natality data — ~55,000 new US twin deliveries per year. Living stock = annual cohort × years in the age band (0–5 ≈ six cohorts).</li>
+          <li><strong>Age bands.</strong> TAM spans 0–5; SAM narrows to <strong>0–3</strong>, the intensive nap-coordination window where Tandem's core value concentrates.</li>
+          <li><strong>Reach.</strong> 96% smartphone ownership among parents aged 30–49 (Pew, 2025) — conservative here, since twin parents skew older and higher-income (ART-driven).</li>
+          <li><strong>ARPU.</strong> $150/yr blended — between Huckleberry (~$120/yr) and the $795–$1,915 one-time cost of a twin sleep consultant.</li>
+          <li><strong>Penetration.</strong> SOM models ~5% of SAM captured over 3–5 years.</li>
+        </ul>
+        <p class="method-foot">Population counts are sourced facts; household-stock, ARPU, and penetration
+        are clearly-labeled estimates. Full citations in the Sources section below.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Brand identity (dark island — Tandem's own theme) ── -->
+  <section class="tm-brand" id="brand">
+    <div class="container fade-in">
+      <h2 class="section-heading section-heading--on-dark">Brand Identity</h2>
+      <div class="section-heading__bar"></div>
+
+      <p class="brand-purpose">
+        "We know your babies — not just babies." Tandem is the only system built for the chaos of raising
+        two, not a single-baby app with a twin toggle bolted on. The brand meets parents in the mess and
+        walks them to clarity — grounded in evidence, and never precious about it.
+      </p>
+
+      <div class="brand-layout">
+        <div class="brand-mark">
+          <!-- "The Clasp" — canonical mark (brand/clasp-spec.md, 48px in-app variant) -->
+          <svg viewBox="0 0 38 48" class="clasp" role="img" aria-label="The Clasp — two crescents opening outward, backs meeting at a gold dot">
+            <path d="M 7.5 7 A 12 15 0 0 1 7.5 34" fill="none" stroke="#6B52C8" stroke-width="4" stroke-linecap="round" />
+            <path d="M 30.5 14 A 12 15 0 0 0 30.5 41" fill="none" stroke="#4A82CC" stroke-width="4" stroke-linecap="round" />
+            <circle cx="19" cy="24" r="2.5" fill="#F0AD00" />
+          </svg>
+          <p class="brand-wordmark">tandem<span>.</span></p>
+          <p class="brand-mark__caption">"The Clasp" — two crescents, backs together, meeting at a single
+          gold point. The dot is the bond between siblings: <em>"I've got your back."</em></p>
+        </div>
+
+        <div class="brand-detail">
+          <div class="brand-row">
+            <span class="brand-row__label">Palette</span>
+            <div class="brand-row__body">
+              <div class="swatches">
+                <span class="swatch" style="background:#6B52C8" title="Royal purple #6B52C8 — dominant brand color"></span>
+                <span class="swatch" style="background:#4A82CC" title="Tandem blue #4A82CC"></span>
+                <span class="swatch" style="background:#F0AD00" title="Gold #F0AD00 — the sole warm element"></span>
+                <span class="swatch swatch--ink" style="background:#0A0B0D" title="Ink #0A0B0D"></span>
+              </div>
+              <p class="brand-row__text">The two children's colors sit a deliberate <strong>50° apart in
+              hue</strong> — so a sleep-deprived parent tells them apart by color, not just position. Gold
+              carries the palette's entire warmth: one warm note against two cool ones.</p>
+            </div>
+          </div>
+          <div class="brand-row">
+            <span class="brand-row__label">Type</span>
+            <p class="brand-row__text">DM&nbsp;Sans — one humanist family at multiple weights, lowercase
+            throughout. The wordmark closes on a gold period. The brand doesn't shout.</p>
+          </div>
+          <div class="brand-row">
+            <span class="brand-row__label">Voice</span>
+            <p class="brand-row__text">"The friend with twins, tattoos, and a stack of research papers — the
+            one you call at 3&nbsp;a.m." Direct, honest, warm-not-soft: irreverent enough to swear in
+            marketing, disciplined enough never to swear in clinical guidance.</p>
+          </div>
+          <div class="brand-row">
+            <span class="brand-row__label">Refuses</span>
+            <p class="brand-row__text">Not a medical device. Not a generic tracker with a twin toggle.
+            Not soft or precious.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="brand-principles">
+        <span>built for two</span>
+        <span>shows its work</span>
+        <span>talks like a person</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Status & roadmap (light) ── -->
+  <section class="tm-section tm-section--alt" id="status">
+    <div class="container fade-in">
+      <h2 class="section-heading">Status &amp; Roadmap</h2>
+      <div class="section-heading__bar"></div>
+      <div class="roadmap">
+        <div class="roadmap__item">
+          <span class="roadmap__phase">Today</span>
+          <p>A working production system — clinical corpus, joint scheduler, evaluation harness, and a
+          React app — in daily use in its creator's own home.</p>
+        </div>
+        <div class="roadmap__item">
+          <span class="roadmap__phase">Next</span>
+          <p>Hardening for multiple households and preparing the twins experience for a broader release.</p>
+        </div>
+        <div class="roadmap__item">
+          <span class="roadmap__phase">Then</span>
+          <p>Extending the coordination engine and clinical foundation from twins into the far larger
+          single-baby market.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Skills in evidence (light) ── -->
+  <section class="tm-section" id="skills">
+    <div class="container fade-in">
+      <h2 class="section-heading">Skills in Evidence</h2>
+      <div class="section-heading__bar"></div>
+      <p class="tm-section__intro">
+        Tandem isn't a slide — it's a shipped system. Here's the research, analytics, and product
+        toolkit it puts to work, mapped to exactly where each one shows up.
+      </p>
+
+      <div class="skills-grid">
+        <div class="skillcard">
+          <h3 class="skillcard__title">Quantitative Analysis</h3>
+          <ul class="skillcard__list">
+            <li><strong>Python</strong> — a production Python system: FastAPI, async retrieval and scheduling pipelines.</li>
+            <li><strong>SQL · data extraction</strong> — event data modeled and queried in SQL (SQLite / Postgres), feeding daily and weekly analytics rollups.</li>
+            <li><strong>Experimental design · A/B testing</strong> — competing prediction strategies are A/B-scored offline via shadow methods and replay comparison before any one ships.</li>
+            <li><strong>Machine learning</strong> — vector embeddings plus cross-encoder reranking for retrieval, and adaptive per-child forecasting (EMA with a Holt trend term).</li>
+            <li><strong>Hypothesis testing</strong> — every change is validated against statistical quality gates: claim precision / recall and retrieval-drift KL divergence.</li>
+          </ul>
+        </div>
+
+        <div class="skillcard">
+          <h3 class="skillcard__title">Market Research</h3>
+          <ul class="skillcard__list">
+            <li><strong>Market sizing · TAM/SAM/SOM</strong> — the funnel on this page, built bottom-up from CDC natality data and peer-reviewed twinning research.</li>
+            <li><strong>Competitive analysis</strong> — 10+ products and human sleep consultants benchmarked on price and capability.</li>
+            <li><strong>Segmentation &amp; personas</strong> — segmented by age band around a sharply defined, underserved twin-parent persona.</li>
+            <li><strong>Voice of customer</strong> — requirements drawn from the target user's lived pain and validated in daily, in-home use.</li>
+            <li><strong>Thematic analysis</strong> — the clinical knowledge base is organized by LLM-assisted topic clustering across ~47 themes.</li>
+          </ul>
+        </div>
+
+        <div class="skillcard">
+          <h3 class="skillcard__title">Marketing Strategy</h3>
+          <ul class="skillcard__list">
+            <li><strong>Positioning</strong> — Tandem is positioned as the twins-first wedge between a generic single-baby app and a four-figure human consultant.</li>
+            <li><strong>Differentiation</strong> — a defensible gap thesis: every incumbent assumes one child; Tandem owns the two-baby coordination problem.</li>
+            <li><strong>Go-to-market</strong> — a beachhead plan: win the acute twins niche first, then extend the same engine into the far larger single-baby market.</li>
+          </ul>
+        </div>
+
+        <div class="skillcard">
+          <h3 class="skillcard__title">AI &amp; Product</h3>
+          <ul class="skillcard__list">
+            <li><strong>AI strategy</strong> — an evaluation-first approach: ship only what a three-tier eval harness proves improves quality.</li>
+            <li><strong>LLMs &amp; generative AI</strong> — retrieval-augmented generation over a clinical corpus, synthesis constrained to retrieved evidence — hallucinations cut from 14% to 2.5%.</li>
+            <li><strong>AI agent development</strong> — a production agent: multi-step decomposition, parallel sub-question execution, ReAct-style verification, and safety routing.</li>
+            <li><strong>Product-market fit</strong> — acute, underserved pain matched to documented willingness-to-pay versus incumbents and consultants.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="skills-bridge">
+        Tandem exercises the production, AI, and market-analysis side of the toolkit. The
+        statistical-research side — survey design &amp; programming (Qualtrics), in-depth qualitative
+        interviewing, regression / GLM, causal inference, and conjoint / MaxDiff in SPSS and R — is
+        documented across 10+ peer-reviewed publications and seven years of applied SMB and nonprofit
+        studies. <a href="index.html#research">See the research →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Sources (light) ── -->
+  <section class="tm-section tm-sources" id="sources">
+    <div class="container fade-in">
+      <h2 class="section-heading">Sources</h2>
+      <div class="section-heading__bar"></div>
+      <p class="tm-section__intro">Market figures are built from primary and peer-reviewed sources. The
+      population counts are hard demographic facts; the revenue assumptions are stated and conservative.</p>
+      <ul class="sources-list">
+        <li>
+          <a href="https://www.cdc.gov/nchs/data/nvsr/nvsr74/nvsr74-1.pdf" target="_blank" rel="noopener">CDC / NCHS — Births: Final Data for 2023</a>
+          <span>US twin live births (110,393) and twin birth rate (30.7 / 1,000).</span>
+        </li>
+        <li>
+          <a href="https://www.cdc.gov/nchs/fastats/multiple.htm" target="_blank" rel="noopener">CDC / NCHS FastStats — Multiple Births</a>
+          <span>Authoritative summary of US multiple-birth statistics.</span>
+        </li>
+        <li>
+          <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8129593/" target="_blank" rel="noopener">Monden, Smits &amp; Pison — <em>Human Reproduction</em> (2021)</a>
+          <span>Global twinning rate (~12 / 1,000) and ~1.6M twin births worldwide per year.</span>
+        </li>
+        <li>
+          <a href="https://www.pewresearch.org/internet/fact-sheet/mobile/" target="_blank" rel="noopener">Pew Research Center — Mobile Fact Sheet (2025)</a>
+          <span>Smartphone ownership among parents aged 30–49 (96%).</span>
+        </li>
+        <li>
+          <a href="https://huckleberrycare.com/pricing" target="_blank" rel="noopener">Huckleberry — pricing</a>
+          <span>Leading single-child sleep app; ARPU anchor (~$120/yr).</span>
+        </li>
+        <li>
+          <a href="https://sleepwiseconsulting.com/twins/" target="_blank" rel="noopener">Sleep Wise Consulting — twins packages</a>
+          <span>Human twin sleep-consultant pricing ($795–$1,915 per engagement).</span>
+        </li>
+      </ul>
+      <p class="sources-foot">
+        Derived figures (household stock, ARPU, obtainable share) are the author's own estimates, clearly
+        labeled as such, built on the sourced inputs above.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── CTA (dark island) ── -->
+  <section class="tm-cta">
+    <div class="container tm-cta__inner fade-in">
+      <h2 class="tm-cta__title">Want the full story?</h2>
+      <p>Happy to walk through the product, the architecture, or the underlying research.</p>
+      <div class="tm-cta__buttons">
+        <a href="mailto:miles.condon@gmail.com" class="btn btn--primary">Email Me</a>
+        <a href="index.html#projects" class="btn btn--outline">Back to Portfolio</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Miles Condon · Tandem is an independent product built by Miles Condon.</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
