@@ -504,11 +504,25 @@ img { max-width: 100%; display: block; }
 }
 
 .card__link {
-  font-size: 0.85rem;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   color: var(--gold-ink);
-  margin-top: 12px;
-  display: block;
+  margin-top: 18px;
+  align-self: flex-start;
+  padding: 9px 18px;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  background: rgba(201, 168, 76, 0.08);
+  transition: all 0.3s;
+}
+
+/* The whole card is a link — fill the pill gold when the card is hovered */
+.card:hover .card__link {
+  background: var(--gold);
+  color: var(--navy);
 }
 
 @media (max-width: 1024px) {
