@@ -11,11 +11,27 @@ if (toggle) {
     toggle.setAttribute('aria-expanded', isOpen);
   });
 
+  const closeMenu = () => {
+    nav.classList.remove('nav--open');
+    toggle.setAttribute('aria-expanded', false);
+  };
+
   navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      nav.classList.remove('nav--open');
-      toggle.setAttribute('aria-expanded', false);
-    });
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Tap outside the drawer (anywhere not in the nav) closes it
+  document.addEventListener('click', (e) => {
+    if (nav.classList.contains('nav--open') && !nav.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  // Escape key closes it
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('nav--open')) {
+      closeMenu();
+    }
   });
 }
 

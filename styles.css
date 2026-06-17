@@ -115,6 +115,8 @@ img { max-width: 100%; display: block; }
   border: none;
   cursor: pointer;
   padding: 8px;
+  position: relative;
+  z-index: 1100; /* stay above the open drawer so the "X" is tappable to close */
 }
 
 .nav__hamburger,
