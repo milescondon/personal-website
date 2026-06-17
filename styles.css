@@ -525,6 +525,14 @@ img { max-width: 100%; display: block; }
   color: var(--navy);
 }
 
+/* Touch devices can't hover — show the prominent filled state by default */
+@media (hover: none) {
+  .card__link {
+    background: var(--gold);
+    color: var(--navy);
+  }
+}
+
 @media (max-width: 1024px) {
   .card-grid {
     grid-template-columns: repeat(2, 1fr);
