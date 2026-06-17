@@ -95,6 +95,20 @@ img { max-width: 100%; display: block; }
   color: var(--gold);
 }
 
+/* Nav "Email Me" — gold pill so it stands out from the text links */
+.nav__links a.nav__cta {
+  background: var(--gold);
+  color: var(--navy);
+  padding: 8px 18px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.nav__links a.nav__cta:hover {
+  color: var(--navy);
+  filter: brightness(1.08);
+}
+
 .nav__toggle {
   display: none;
   background: none;
