@@ -1531,3 +1531,63 @@ img { max-width: 100%; display: block; }
   position: relative;
   top: -1px;
 }
+
+/* ── Paper reader pages ── */
+
+.paper {
+  padding: 48px 0 80px;
+}
+
+.paper__eyebrow {
+  color: var(--gold-ink);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+}
+
+.paper__title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.15;
+  margin: 8px 0 16px;
+}
+
+.paper__summary {
+  max-width: 720px;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-body);
+  margin-bottom: 28px;
+}
+
+.paper__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.paper-viewer {
+  width: 100%;
+  height: 85vh;
+  min-height: 500px;
+  border: 1px solid var(--border-card);
+  border-radius: 6px;
+  background: var(--bg-card);
+}
+
+.paper-viewer__fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 56px 24px;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 600px) {
+  .paper-viewer { height: 70vh; min-height: 360px; }
+  .paper__actions .btn { flex: 1 1 auto; text-align: center; }
+}
