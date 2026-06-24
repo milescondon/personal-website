@@ -113,8 +113,9 @@ pages therefore do not rely on the `fade-in` reveal animation.
 New `.paper-*` rules change `styles.css`, so per the project convention the `styles.css?v=`
 query string is bumped to a new date stamp in **every** HTML file that links the stylesheet:
 `index.html`, `tandem.html`, `resume.html`, `404.html`, and the three new paper pages. The same
-bump is applied to the existing `script.js?v=` references in `index.html` and `tandem.html` for
-consistency. New stamp: `v=20260624`.
+bump is applied to the existing `script.js?v=` references in `index.html`, `tandem.html`, and
+`404.html` for consistency (`resume.html` and the new paper pages do not load `script.js`). New
+stamp: `v=20260624`.
 
 ## Out of scope (YAGNI)
 
