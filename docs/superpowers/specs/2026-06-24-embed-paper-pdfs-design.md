@@ -102,13 +102,19 @@ The three research cards change from outbound `<a href="https://...publisher..."
 label are otherwise unchanged. The publisher URLs move into the new pages' `View on publisher`
 buttons (they are not lost).
 
+## Scripts
+
+The three new paper pages **do not include `script.js`**. They use the static `resume-bar`
+header (no hamburger nav) and the same precedent as `resume.html`, which omits the script. The
+pages therefore do not rely on the `fade-in` reveal animation.
+
 ## Cache busting
 
 New `.paper-*` rules change `styles.css`, so per the project convention the `styles.css?v=`
 query string is bumped to a new date stamp in **every** HTML file that links the stylesheet:
 `index.html`, `tandem.html`, `resume.html`, `404.html`, and the three new paper pages. The same
-bump is applied to `script.js?v=` where pages include it, for consistency. New stamp:
-`v=20260624`.
+bump is applied to the existing `script.js?v=` references in `index.html` and `tandem.html` for
+consistency. New stamp: `v=20260624`.
 
 ## Out of scope (YAGNI)
 
