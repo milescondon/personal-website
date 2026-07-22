@@ -53,7 +53,7 @@
         </div>
         <div class="tm-stat">
           <span class="tm-stat__value">~217K</span>
-          <span class="tm-stat__label">US households raising twins aged 0–3 — an acutely underserved niche</span>
+          <span class="tm-stat__label">US households raising twins under age 4 — an acutely underserved niche</span>
         </div>
       </div>
 
@@ -66,6 +66,7 @@
         <a href="#demo" class="btn btn--primary btn--play">Watch the Demo</a>
         <a href="#product" class="btn btn--outline">How It Works</a>
         <a href="#market" class="btn btn--outline">See the Market</a>
+        <a href="#intel" class="btn btn--outline">Competitive Intel</a>
         <a href="#brand" class="btn btn--outline">Brand Identity</a>
       </div>
     </div>
@@ -154,8 +155,9 @@
       <div class="trust-grid">
         <div class="trust">
           <span class="trust__kicker">Grounding</span>
-          <p>Every answer is retrieved from and constrained to a clinical evidence base. Measured
-          hallucination rate fell from <strong>14% to 2.5%</strong>.</p>
+          <p>Every answer is retrieved from and constrained to a clinical evidence base. Company-measured
+          hallucination rate fell from <strong>14% to 2.5%</strong> — a figure the roadmap replaces with a
+          public, reproducible evaluation.</p>
         </div>
         <div class="trust">
           <span class="trust__kicker">Evaluation</span>
@@ -188,65 +190,69 @@
       <div class="section-heading__bar"></div>
       <p class="tm-section__intro">
         Tandem starts where the pain is most acute — parents of twins — a focused, well-bounded
-        niche with no incumbent built for it. The sizing below is deliberately <strong>conservative and
-        US-only</strong>: every population figure is drawn from CDC and peer-reviewed sources, and the
-        revenue model uses a modest blended subscription assumption. The broader infant market is the
-        expansion story, not the headline.
+        niche with no incumbent built for it. The sizing below is deliberately <strong>conservative,
+        US-only, and honest about its own soft spots</strong>: the population base is reconstructed from
+        CDC/NCHS natality data, but every step beneath it — tracker use, willingness to pay, capture rate —
+        is a labeled assumption shown as a range, not a point. The sober conclusion is that the twins
+        beachhead alone is a wedge, not a business. That is exactly why the expansion path matters.
       </p>
 
       <div class="market-layout">
         <!-- Funnel visual -->
         <figure class="funnel-fig">
           <svg class="funnel" viewBox="0 0 600 360" role="img"
-               aria-label="Market funnel: TAM 49 million dollars per year, SAM 31 million dollars per year, SOM 1.6 million dollars annual recurring revenue.">
+               aria-label="Market funnel: TAM about 217 thousand twin households, SAM about 23 thousand paying households, SOM about 80 to 137 thousand dollars annual recurring revenue.">
             <!-- TAM -->
             <polygon points="30,15 570,15 500,130 100,130" class="funnel__band funnel__band--tam" />
             <text x="300" y="62" class="funnel__tier">TAM</text>
-            <text x="300" y="98" class="funnel__amt">$49M / yr</text>
+            <text x="300" y="98" class="funnel__amt">~217K homes</text>
             <!-- SAM -->
             <polygon points="100,140 500,140 440,250 160,250" class="funnel__band funnel__band--sam" />
             <text x="300" y="182" class="funnel__tier">SAM</text>
-            <text x="300" y="216" class="funnel__amt">$31M / yr</text>
+            <text x="300" y="216" class="funnel__amt">~23K paying</text>
             <!-- SOM -->
             <polygon points="160,260 440,260 385,350 215,350" class="funnel__band funnel__band--som" />
             <text x="300" y="298" class="funnel__tier funnel__tier--dark">SOM</text>
-            <text x="300" y="332" class="funnel__amt funnel__amt--dark">$1.6M ARR</text>
+            <text x="300" y="332" class="funnel__amt funnel__amt--dark">~$110K ARR</text>
           </svg>
-          <figcaption>US twins only · modeled at a conservative $150/yr blended ARPU</figcaption>
+          <figcaption>US twins only · TAM/SAM in households, SOM in ARR · base case, $70–120/yr</figcaption>
         </figure>
 
         <!-- Definitions table -->
         <div class="market-detail">
           <table class="market-table">
             <thead>
-              <tr><th>Layer</th><th>Who it counts</th><th>Math</th><th>Size</th></tr>
+              <tr><th>Layer</th><th>Who it counts</th><th>How it's built</th><th>Size</th></tr>
             </thead>
             <tbody>
               <tr>
                 <td><strong>TAM</strong><span class="market-table__sub">Total addressable</span></td>
-                <td>All US households raising twins, ages 0–5</td>
-                <td>327,000 &times; $150</td>
-                <td class="market-table__fig">~$49M<span>/yr</span></td>
+                <td>US households raising twins with a child under 4 (2021–24 birth cohorts)</td>
+                <td>CDC/NCHS twin deliveries, 4 cohorts</td>
+                <td class="market-table__fig">~217K<span>homes</span></td>
               </tr>
               <tr>
                 <td><strong>SAM</strong><span class="market-table__sub">Serviceable available</span></td>
-                <td>US twin households in the core 0–3 sleep window, smartphone-owning</td>
-                <td>208,000 &times; $150</td>
-                <td class="market-table__fig">~$31M<span>/yr</span></td>
+                <td>&hellip;that use a digital tracker (~70%) and will pay for a subscription (~15%)</td>
+                <td>217K &times; 0.70 &times; 0.15</td>
+                <td class="market-table__fig">~23K<span>homes</span></td>
               </tr>
               <tr class="market-table__row--highlight">
                 <td><strong>SOM</strong><span class="market-table__sub">Serviceable obtainable</span></td>
-                <td>Realistic 3–5 year capture, ~5% of SAM (range 3–7%)</td>
-                <td>~10,400 &times; $150</td>
-                <td class="market-table__fig">~$1.6M<span>ARR</span></td>
+                <td>Realistic 3-year capture, ~5% of SAM, at $70–120/yr</td>
+                <td>~1,140 subs &times; $70–120</td>
+                <td class="market-table__fig">~$80–137K<span>ARR</span></td>
               </tr>
             </tbody>
           </table>
           <p class="market-note">
-            SOM range: <strong>$0.9M–$2.2M ARR</strong> at 3–7% penetration. For reference, the leading
-            generalist baby-sleep app (Huckleberry, single-child) is estimated at ~$7M ARR — so a focused
-            twins product reaching one to two million in recurring revenue is a conservative, well-supported
-            target, not a stretch.
+            <strong>Read the band, not the point.</strong> Across the two softest inputs — tracker use and
+            willingness to pay — the honest output spans <strong>$13K–$664K ARR</strong>, a roughly 50×
+            spread that reflects real uncertainty, not precision. The base case (~$80–137K ARR) is sobering:
+            the twins beachhead alone does not sustain a business. The only observed comparables suggest the
+            paid-conversion assumption is generous — Napper's ~SEK 61M (2024) implies single-digit paid
+            penetration, and the new entrant Bambii reports ~1,000 users in roughly its first year across
+            the whole baby market. That is the strongest argument for the expansion path below.
           </p>
         </div>
       </div>
@@ -255,14 +261,15 @@
       <div class="gap-block">
         <h3 class="tm-subhead">The competitive gap</h3>
         <p>
-          No incumbent is built for two-baby households. Huckleberry, Napper, and Nanit are all
-          architected around a single child — "add a second baby" means toggling between two profiles
-          with no coordinated wake-window math and no joint bedtime. The <em>only</em> dedicated twins
-          app on the market is a community log-book with no sleep intelligence at all. The offline
-          alternative — a human sleep consultant experienced with multiples — runs
-          <strong>$795–$1,915 for a single engagement</strong>, and many charge twin families a premium
-          on top. Tandem sits in the open space between a generic single-baby app and a one-time
-          four-figure consultation.
+          The precise, defensible claim is not "no app helps twins" — it is that <strong>no scaled app
+          coordinates two babies into one schedule with cited guidance.</strong> Huckleberry, Napper, and
+          the new price-cutting entrant Bambii are all architected around a single child; "add a second
+          baby" means separate profiles with no joint wake-window math. Smart Sleep Coach by Pampers markets
+          itself as "ideal for twins" but keeps four <em>parallel</em> timers, not one merged schedule. The
+          only twins-dedicated app is a community log-book rated <strong>2.1★</strong> with no sleep
+          intelligence at all. The offline alternative — a human sleep consultant — runs
+          <strong>$300–$2,500 per package</strong> (twins specialists like Sleep Wise, $795–$1,915). Tandem
+          sits in the open space between a generic single-baby app and a four-figure consultation.
         </p>
       </div>
 
@@ -270,11 +277,13 @@
       <div class="gap-block">
         <h3 class="tm-subhead">Business model</h3>
         <p>
-          A premium consumer subscription. The market model above assumes a blended <strong>$150/yr</strong>
-          ARPU — positioned between leading single-baby sleep apps (~$120/yr) and the one-time cost of a
-          human consultant, and far below it. Twin families are a documented high-spend, high-intent
-          cohort, which supports both a premium price band and stronger willingness to pay than the
-          generalist market.
+          A premium consumer subscription. The model above assumes <strong>$70–120/yr</strong> — in the band
+          of leading single-baby sleep apps (Napper ~$70/yr, Huckleberry Premium ~$180/yr) and an order of
+          magnitude below a human consultant. Twin families are a documented higher-acuity, higher-intent
+          cohort — about 62% of twins are born preterm, and their parents carry elevated
+          postpartum-depression risk — which supports willingness to pay. But the honesty cuts both ways:
+          the only twin-parent price evidence in this research shows resistance to even a $5/mo
+          subscription, so the pricing assumption is flagged as unproven and carried as a range.
         </p>
       </div>
 
@@ -282,10 +291,12 @@
       <div class="gap-block">
         <h3 class="tm-subhead">The expansion path</h3>
         <p>
-          Twins are the beachhead, not the ceiling. The coordination engine generalizes to any number of
-          children, and the clinical foundation applies to every infant — so the same product extends
-          naturally into the far larger single-baby market once the twins niche is owned. That broader
-          market is upside; it is deliberately <em>not</em> counted in the figures above.
+          Twins are the beachhead, not the ceiling — and given the sobering base case above, the expansion
+          is the plan, not merely upside. The coordination engine generalizes to any number of children, and
+          the clinical foundation applies to every infant, so the same product extends naturally from twins
+          to all multiples to high-need singletons (preterm, reflux) and into the far larger single-baby
+          market once the niche is owned. That broader market is deliberately <em>not</em> counted in the
+          figures above.
         </p>
       </div>
 
@@ -293,14 +304,104 @@
       <div class="gap-block">
         <h3 class="tm-subhead">Methodology &amp; assumptions</h3>
         <ul class="method-list">
-          <li><strong>Population.</strong> CDC / NCHS 2023 final natality data — ~55,000 new US twin deliveries per year. Living stock = annual cohort × years in the age band (0–5 ≈ six cohorts).</li>
-          <li><strong>Age bands.</strong> TAM spans 0–5; SAM narrows to <strong>0–3</strong>, the intensive nap-coordination window where Tandem's core value concentrates.</li>
-          <li><strong>Reach.</strong> 96% smartphone ownership among parents aged 30–49 (Pew, 2025) — conservative here, since twin parents skew older and higher-income (ART-driven).</li>
-          <li><strong>ARPU.</strong> $150/yr blended — between Huckleberry (~$120/yr) and the $795–$1,915 one-time cost of a twin sleep consultant.</li>
-          <li><strong>Penetration.</strong> SOM models ~5% of SAM captured over 3–5 years.</li>
+          <li><strong>Population.</strong> CDC/NCHS natality data — ~55,000 US twin deliveries per year. TAM = four single-year birth cohorts (2021–2024), netting to ~217K households after attrition.</li>
+          <li><strong>A declining base.</strong> US twin births fell 19% over the decade to ~109,000 in 2024; the beachhead erodes ~2%/yr in births and the twin rate ~1%/yr. A real, if slow, headwind.</li>
+          <li><strong>Tracker use &amp; willingness to pay.</strong> ~70% and ~15% — the two softest inputs, labeled assumptions carried across ranges (55–85% and 8–30%), not measured facts.</li>
+          <li><strong>ARPU.</strong> $70–120/yr — between Napper (~$70) and Huckleberry Premium (~$180), far below the $300–$2,500 cost of a human consultant.</li>
+          <li><strong>Penetration.</strong> SOM models ~5% of SAM captured over 3 years (range 2–10%), anchored on Bambii's observed ~1,000 first-year users.</li>
         </ul>
-        <p class="method-foot">Population counts are sourced facts; household-stock, ARPU, and penetration
-        are clearly-labeled estimates. Full citations in the Sources section below.</p>
+        <p class="method-foot">Population counts are sourced facts; tracker use, willingness to pay, and
+        penetration are clearly-labeled estimates carried as ranges. Full citations in the Sources section
+        below, and the complete competitive assessment is linked above.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Competitive intelligence (light alt) ── -->
+  <section class="tm-section tm-section--alt" id="intel">
+    <div class="container fade-in">
+      <h2 class="section-heading">Competitive Intelligence</h2>
+      <div class="section-heading__bar"></div>
+      <p class="tm-section__intro">
+        Building the product is half the work; knowing whether it can win is the other half. This is a full
+        competitive-intelligence assessment of Tandem's market — a work sample built entirely from open
+        sources, written to survive a skeptical reader rather than to flatter the product.
+      </p>
+
+      <h3 class="tm-subhead">Three key judgments</h3>
+      <div class="trust-grid">
+        <div class="trust">
+          <span class="trust__kicker">The white space is real</span>
+          <p>No scaled app among 17 tracked coordinates two babies onto one schedule or grounds its answers
+          in cited pediatric research. The leading twin-parent community's own "best tracker" roundup names
+          only loggers and paper — not one prediction or AI app appears.</p>
+        </div>
+        <div class="trust">
+          <span class="trust__kicker">The beachhead is small</span>
+          <p>Base-case SAM is ~23K paying households and a realistic 3-year SOM is ~$80–137K ARR, on a base
+          eroding ~2%/yr. Twins is a wedge, not a business on its own — which makes the expansion path
+          mandatory, not optional.</p>
+        </div>
+        <div class="trust">
+          <span class="trust__kicker">The threat is a fast-follower</span>
+          <p>Bambii shipped prediction, an AI chat, and multi-child profiles and undercut the leader on
+          price inside a year. If Huckleberry (5M+ families) adds twin coordination, the moat is gone. The
+          defenses that survive a clone are proprietary coordination data and clinical credibility.</p>
+        </div>
+      </div>
+
+      <h3 class="tm-subhead">The honesty test: two maps, both true</h3>
+      <div class="gap-block">
+        <p>
+          A positioning map is only as honest as its axes. On design × capability, Tandem sits alone in an
+          empty top-right quadrant — that map is <em>why the opportunity exists</em>. Re-plotted on the two
+          axes Tandem loses — scale and clinical validation — it is last on the board and Huckleberry is
+          first — that map is <em>why it isn't Tandem's yet</em>. Holding both at once is the actual
+          strategic picture, and it is what the recommendations exist to resolve.
+        </p>
+      </div>
+
+      <h3 class="tm-subhead">Battlecard — Tandem vs. Huckleberry</h3>
+      <div class="feature-grid">
+        <div class="feature">
+          <h3 class="feature__title">Where we win</h3>
+          <p>One coordinated schedule across both babies vs. per-child plans; every answer traceable to
+          published research, not in-house opinion; twin-first, built by a parent of twins.</p>
+        </div>
+        <div class="feature">
+          <h3 class="feature__title">Where they win</h3>
+          <p>Scale, brand, and the field's only real clinical validation — a Harvard-linked pilot and an
+          independent NIH-funded trial. On single-child sleep, they are excellent.</p>
+        </div>
+        <div class="feature">
+          <h3 class="feature__title">Don't say this</h3>
+          <p>Never claim "no app helps twins" — false, and easily rebutted. Say no app <em>coordinates</em>
+          them. Don't fight on prediction; it's commoditized. Don't claim clinical proof not yet earned.</p>
+        </div>
+      </div>
+
+      <h3 class="tm-subhead">Independent support for the grounding thesis</h3>
+      <div class="gap-block">
+        <p>
+          The case for cited grounding is a safety argument, not a marketing line — and it is now
+          peer-reviewed. In <em>Digital Health</em> (Tan et al., 2026), nine senior pediatric experts judged
+          27–32% of ChatGPT's guideline-based pediatric answers partially or completely incorrect, yet 73%
+          of parents trusted them. The authors prescribe retrieval-augmented generation over curated
+          clinical guidelines as the remedy — the exact architecture Tandem already ships. That
+          trust-accuracy gap is the market.
+        </p>
+        <p class="market-note">
+          Honest caveat: this assessment is open-source intelligence plus one small exploratory sample.
+          Tandem's own metrics are company-reported and unverified, and no published trial yet shows that
+          adaptive AI beats static behavioral guidance in infant sleep — so the category's core premise,
+          Tandem's included, is still unvalidated. The full report holds both the flattering map and the
+          skeptical one.
+        </p>
+      </div>
+
+      <div class="paper__actions" style="margin-top: 2rem;">
+        <a href="tandem-ci-assessment.html" class="btn btn--primary">Read the full assessment</a>
+        <a href="papers/tandem-ci-assessment.pdf" class="btn btn--outline" download>Download PDF</a>
       </div>
     </div>
   </section>
@@ -422,7 +523,7 @@
           <h3 class="skillcard__title">Market Research</h3>
           <ul class="skillcard__list">
             <li><strong>Market sizing · TAM/SAM/SOM</strong> — the funnel on this page, built bottom-up from CDC natality data and peer-reviewed twinning research.</li>
-            <li><strong>Competitive analysis</strong> — 10+ products and human sleep consultants benchmarked on price and capability.</li>
+            <li><strong>Competitive intelligence</strong> — a full CI assessment: 17 products and human consultants benchmarked, PESTLE and Porter's Five Forces, a battlecard, SWOT, and trigger-event monitoring, all OSINT-sourced.</li>
             <li><strong>Segmentation &amp; personas</strong> — segmented by age band around a sharply defined, underserved twin-parent persona.</li>
             <li><strong>Voice of customer</strong> — requirements drawn from the target user's lived pain and validated in daily, in-home use.</li>
             <li><strong>Thematic analysis</strong> — the clinical knowledge base is organized by LLM-assisted topic clustering across ~47 themes.</li>
@@ -472,6 +573,22 @@
           <span>US twin live births (110,393) and twin birth rate (30.7 / 1,000).</span>
         </li>
         <li>
+          <a href="https://www.cdc.gov/nchs/data/hestat/hestat117.htm" target="_blank" rel="noopener">CDC / NCHS — A Decade of Decline in Twin Childbearing, 2014–2024 (Health E-Stat 117)</a>
+          <span>Twin births fell 19% over the decade to ~109,000 in 2024 (~2%/yr erosion).</span>
+        </li>
+        <li>
+          <a href="https://doi.org/10.1177/20552076261427505" target="_blank" rel="noopener">Tan J, Wang L, Wang G, et al. — <em>Digital Health</em> (2026)</a>
+          <span>Experts judged 27–32% of ChatGPT's pediatric answers incorrect while 73% of parents trusted them; prescribes RAG over clinical guidelines as the fix.</span>
+        </li>
+        <li>
+          <a href="https://www.revenuecat.com/state-of-subscription-apps-2025/" target="_blank" rel="noopener">RevenueCat — State of Subscription Apps 2025</a>
+          <span>Annual-plan 12-month retention 44.1%; ~30% of annual subscriptions cancel in month one.</span>
+        </li>
+        <li>
+          <a href="https://bambii.app" target="_blank" rel="noopener">Bambii (Digitl Inc.) — features &amp; pricing</a>
+          <span>New entrant: ML prediction, AI chat, multi-child profiles at $44.99/yr — the fast-follower thesis, live.</span>
+        </li>
+        <li>
           <a href="https://www.cdc.gov/nchs/fastats/multiple.htm" target="_blank" rel="noopener">CDC / NCHS FastStats — Multiple Births</a>
           <span>Authoritative summary of US multiple-birth statistics.</span>
         </li>
@@ -485,7 +602,7 @@
         </li>
         <li>
           <a href="https://huckleberrycare.com/pricing" target="_blank" rel="noopener">Huckleberry — pricing</a>
-          <span>Leading single-child sleep app; ARPU anchor (~$120/yr).</span>
+          <span>Category leader (5M+ families); Berry AI (Feb 2026); Premium ~$180/yr ($14.99/mo) — the primary competitive threat.</span>
         </li>
         <li>
           <a href="https://sleepwiseconsulting.com/twins/" target="_blank" rel="noopener">Sleep Wise Consulting — twins packages</a>
