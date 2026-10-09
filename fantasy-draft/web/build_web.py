@@ -21,7 +21,7 @@ def build_data():
     bp = board['params']
     if bp.get('keeper_source') != cfg['keepers'].get('source_of_truth'):
         sys.exit('board was built from a different keeper source -- run build_board.py first')
-    keep = ['name', 'nba', 'pos', 'games', 'fair', 'z', 'bbm_rank', 'kept_by', 'keeper_cost']
+    keep = ['name', 'nba', 'pos', 'games', 'fair', 'z', 'bbm_rank', 'kept_by', 'keeper_cost', 'room_anchor']
     return {
         'league': cfg['name'], 'draft_time': cfg['draft']['datetime'],
         'players': [{k: p[k] for k in keep} for p in board['players']],
@@ -65,7 +65,10 @@ def snapshot(D, O, ctx):
     out = {'teams': {t: [x['budget'], x['open'], x['max_bid']] for t, x in ctx.teams.items()},
            'k': ctx.k, 'k_raw': ctx.k_raw, 'n_open': ctx.n_open,
            'top': [[p['name']] + list(D.Ctx.my_price(ctx, p)[:2]) +
-                   [ctx.pricers[me].adj(p), ctx.market.adj(p)] for p in top],
+                   [ctx.pricers[me].adj(p), ctx.market.adj(p), ctx.room_price(p)] for p in top],
+           'room_k': ctx.room_k,
+           'room_nom': [[x[1]['name'] for x in xs] for xs in O.room_nominations(
+               sorted(ctx.avail, key=lambda p: -ctx.market.adj(p)), ctx.teams, me, pm, ctx.room_price)],
            'alerts': [list(a) for a in D.alerts(ctx)],
            'emitted': sorted(ctx.st['emitted']), 'last_k': ctx.st['last_k'],
            'w': [ctx.wts[me][1][c] for c in O.CATS],

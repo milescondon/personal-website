@@ -76,7 +76,9 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .nominee { border: 2px solid var(--ink); }
 .nm-name { font: 800 26px/1.05 var(--f-display); letter-spacing: .01em; text-wrap: balance; }
 .nm-meta { color: var(--muted); font-size: 13px; }
-.board-nums { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.board-nums { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 480px) { .board-nums { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.bn.room b { color: var(--muted); }
 .bn { background: var(--raised); border-radius: var(--r); padding: 8px 10px; display: grid; gap: 2px; }
 .bn span { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
 .bn b { font: 800 40px/1 var(--f-display); font-variant-numeric: tabular-nums; }
@@ -128,6 +130,9 @@ td.maxc { font-weight: 700; color: var(--accent); }
 .nomlist { display: grid; gap: 8px; font-size: 13px; }
 .nomlist h3 { margin: 0; font: 700 12px var(--f-body); text-transform: uppercase; letter-spacing: .06em; }
 .nomlist ul { margin: 2px 0 0; padding-left: 18px; }
+.plan { display: grid; gap: 2px; }
+.plan .logrow span:last-child { font-variant-numeric: tabular-nums; }
+.plan .sum { font-weight: 700; border-bottom: 0; }
 .logrow { display: flex; justify-content: space-between; gap: 8px; font: 12px var(--f-mono); border-bottom: 1px solid var(--line); padding-block: 3px; }
 .logrow span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .btns { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -167,7 +172,7 @@ textarea.copy { width: 100%; min-height: 80px; font: 11px var(--f-mono); backgro
       <section class="panel" id="p-board">
         <div class="ph"><h2>Best available for you</h2>
           <div class="filters" id="filters" role="group" aria-label="Filter by position"></div></div>
-        <div class="tw"><table><thead><tr><th>Player</th><th>Pos</th><th class="r">MAX</th><th class="r">TGT</th><th class="r">Mkt</th><th class="r">GP</th></tr></thead><tbody id="board"></tbody></table></div>
+        <div class="tw"><table><thead><tr><th>Player</th><th>Pos</th><th class="r">MAX</th><th class="r">TGT</th><th class="r">Mkt</th><th class="r">Room</th><th class="r">GP</th></tr></thead><tbody id="board"></tbody></table></div>
       </section>
     </div>
     <div class="col">
@@ -296,6 +301,11 @@ textarea.copy { width: 100%; min-height: 80px; font: 11px var(--f-mono); backgro
     else if (fold.length) verdict = `<div class="verdict fold">FOLD RISK: ${fold.slice(0, 3).map((r) =>
         `${esc(r.id)} values him ${money(r.val)}${r.need ? ' and needs ' + esc(p.pos.join('/')) : ''} ($${fx(r.per_spot, 0)}/spot)`).join('; ')}. Likely goes past your MAX; don't chase.</div>`;
     else verdict = `<div class="verdict open">${th.length} rival${th.length > 1 ? 's' : ''} can go past $${mx}; ${keen.length ? 'keen but cash-short: ' + keen.slice(0, 3).map((r) => `${esc(r.id)} ${money(r.val)}`).join(', ') : 'none values him above your MAX'}.</div>`;
+    const rm = DE.roomPrice(ctx, p);
+    const hasAnchor = p.room_anchor !== null && p.room_anchor !== undefined;
+    const roomNote = !hasAnchor ? '<div class="tag">Room: no Yahoo price for him, so it shows market value.</div>'
+      : rm >= mx + 3 ? `<div class="verdict fold">ROOM OVERPAYS: Yahoo-anchored bidders will likely go to about ${money(rm)}. Let him go, or nominate him early.</div>`
+      : rm <= pr.target ? `<div class="verdict safe">ROOM UNDERVALUES: Yahoo prices him near ${money(rm)}. Bid toward your TARGET.</div>` : '';
     const cs = DE.catSplit(p);
     const diff = pr.mine - pr.market;
     const fit = diff >= 2 ? `fits your categories (+${money(diff)})` : diff <= -2 ? `your categories need him less (−${money(-diff)})` : 'neutral fit';
@@ -305,8 +315,10 @@ textarea.copy { width: 100%; min-height: 80px; font: 11px var(--f-mono); backgro
         <div class="bn max"><span>Max</span><b>$${mx}</b></div>
         <div class="bn"><span>Target</span><b>$${pr.target}</b></div>
         <div class="bn"><span>Market</span><b>${money(pr.market)}</b></div>
+        <div class="bn room"><span>Room</span><b>${money(rm)}</b></div>
       </div>
       ${verdict}
+      ${roomNote}
       <div class="cats">${cs.good.map(([n, v]) => `<span class="cat g">${n} ${DE.sgn(v, 1)}</span>`).join('')}${cs.bad.map(([n, v]) => `<span class="cat b">${n} ${DE.sgn(v, 1)}</span>`).join('')}</div>
       <dl class="kv">
         <dt>Fit</dt><dd>${fit}${pr.capped ? '; capped by your $1-per-slot reserve' : ''}</dd>
@@ -330,7 +342,7 @@ textarea.copy { width: 100%; min-height: 80px; font: 11px var(--f-mono); backgro
     $('board').innerHTML = rows.map((p) => {
       const r = E.myPrice(ctx, p);
       return `<tr class="click" data-key="${esc(p.key)}"><td class="name">${esc(p.name)}</td><td>${esc(p.pos.join('/'))}</td>
-        <td class="r maxc">${r.max}</td><td class="r">${r.target}</td><td class="r">${fx(r.market, 0)}</td><td class="r">${fx(p.games, 0)}</td></tr>`;
+        <td class="r maxc">${r.max}</td><td class="r">${r.target}</td><td class="r">${fx(r.market, 0)}</td><td class="r">${fx(DE.roomPrice(ctx, p), 0)}</td><td class="r">${fx(p.games, 0)}</td></tr>`;
     }).join('');
   }
 
@@ -362,13 +374,20 @@ textarea.copy { width: 100%; min-height: 80px; font: 11px var(--f-mono); backgro
     }).join('');
     const lo = DE.CATS.filter((c) => w[c] < thr && d[c] < 0).map((c) => DE.SHORT[c]);
     $('punts').textContent = lo.length ? 'punting ' + lo.join(', ') : 'no punts yet';
-    $('me').innerHTML = `<div>${roster}</div><div class="tag">Needs: ${esc(DE.unfilled(me.roster).join(', ') || 'none')}. Bars are your category z-sums; the right number is how much each category still counts in your prices.</div>${bars}`;
+    const plan = DE.spendPlan(E, ctx);
+    const planHtml = !plan ? (me.open > 0 ? '<div class="tag">No spend plan fits your cash and open positions. Fill your missing positions first.</div>' : '') : `<div class="plan"><div class="tag">Spend plan: the best set you can afford at expected prices (midway between room and market). A guide, not a promise; value-minded rivals bid too.</div>
+      ${plan.picks.map((c) => `<div class="logrow"><span>${esc(c.p.name)}</span><span>~$${c.cost} · worth ${money(c.val)}</span></div>`).join('')}
+      ${plan.fillers ? `<div class="logrow"><span>${plan.fillers} × $1 filler</span><span>$${plan.fillers}</span></div>` : ''}
+      <div class="logrow sum"><span>Total</span><span>$${plan.spend + plan.fillers} of $${me.budget}</span></div></div>`;
+    $('me').innerHTML = `<div>${roster}</div>${planHtml}<div class="tag">Needs: ${esc(DE.unfilled(me.roster).join(', ') || 'none')}. Bars are your category z-sums; the right number is how much each category still counts in your prices.</div>${bars}`;
   }
 
   function renderNom() {
-    const n = DE.nominations(ctx);
+    const n = DE.nominations(ctx), rn = DE.roomNominations(ctx);
     const li = (xs, f) => '<ul>' + xs.slice(0, 3).map((x) => `<li>${f(x)}</li>`).join('') + '</ul>';
     let html = '';
+    if (rn.overpay.length) html += `<div><h3>Nominate early: room overpays</h3><div class="tag">Yahoo-anchored bidders will pay well past his value to you. Let a rival burn the cash.</div>${li(rn.overpay, (x) => `${esc(x[1].name)}: room about ${money(x[2])}, worth ${money(x[3])} to you`)}</div>`;
+    if (rn.late.length) html += `<div><h3>Nominate late: room undervalues</h3><div class="tag">Worth more to you than Yahoo suggests. Bring him up when budgets are thin.</div>${li(rn.late, (x) => `${esc(x[1].name)}: worth ${money(x[3])} to you, room about ${money(x[2])}`)}</div>`;
     if (n.steal.length) html += `<div><h3>Steal</h3><div class="tag">No rival can outbid you. Nominate and take him.</div>${li(n.steal, (x) => `${esc(x[1].name)}: rivals capped at $${x[2]}`)}</div>`;
     if (n.push.length) html += `<div><h3>Push</h3><div class="tag">You value him below market and 2+ rivals want him. Drains their cash.</div>${li(n.push, (x) => `${esc(x[1].name)}: market ${money(x[2])}, you ${money(x[3])}, wanted by ${esc(x[4].slice(0, 4).join(', '))}`)}</div>`;
     if (n.drain.length && !n.push.length) html += `<div><h3>Drain</h3><div class="tag">Pricey, and you're fine losing him at market.</div>${li(n.drain, (x) => `${esc(x[1].name)}: market ${money(x[2])}, ${x[4].length} rivals can afford`)}</div>`;

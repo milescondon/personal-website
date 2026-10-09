@@ -136,6 +136,10 @@ class Ctx:
             self.wts[tid] = (d, w, wn)
             self.pricers[tid] = O.Pricer(self.players, wn, self.rostered, self.dpv, self.k)
         self.market = O.Pricer(self.players, {c: 1.0 for c in O.CATS}, self.rostered, self.dpv, self.k)
+        self.room_k = O.room_k(self.avail, teams, n_open, K_MAX)
+
+    def room_price(self, p):
+        return O.room_price(p, self.room_k, self.market)
 
     _idx_all = None
     def idx_all(self):
@@ -301,6 +305,11 @@ def cmd_price(ctx, raw):
     diff = f" -- fits your cats +${mine - mkt:.0f}" if mine - mkt >= 2 else (
            f" -- your cats need him less, -${mkt - mine:.0f}" if mkt - mine >= 2 else '')
     print(f"MAX {money(mx)}  TARGET {money(tgt)}{note}   market {money(mkt)}{diff}")
+    rm = ctx.room_price(p)
+    rnote = (" -- room likely pays past your MAX; let him go" if rm >= mx + 3 else
+             " -- room may let him go cheap; bid toward TARGET" if rm <= tgt else '')
+    src = '' if p.get('room_anchor') is not None else ' (no Yahoo price; market)'
+    print(f"room ~{money(rm)}{src}{rnote}")
     print(cat_line(p))
     ceil, who = O.rival_ceiling(ctx.teams, ctx.me)
     th = O.threats(p, mx, ctx.teams, ctx.me, ctx.pricers)
@@ -380,10 +389,11 @@ def cmd_board(ctx, n=15):
     rows = sorted(ctx.avail, key=lambda p: -me.adj(p))[:n]
     print(f"inflation {ctx.k:.3f} | {ctx.n_open} spots open | you {money(ctx.teams[ctx.me]['budget'])}"
           f" / {ctx.teams[ctx.me]['open']} open")
-    print(f"{'player':24s} {'pos':4s} {'MAX':>4s} {'TGT':>4s} {'mkt':>4s} {'gp':>3s}")
+    print(f"{'player':24s} {'pos':4s} {'MAX':>4s} {'TGT':>4s} {'mkt':>4s} {'room':>4s} {'gp':>3s}")
     for p in rows:
         mx, tgt, mine, mkt, _ = ctx.my_price(p)
-        print(f"{p['name'][:24]:24s} {'/'.join(p['pos'])[:4]:4s} {mx:>4d} {tgt:>4d} {mkt:>4.0f} {p['games']:>3.0f}")
+        print(f"{p['name'][:24]:24s} {'/'.join(p['pos'])[:4]:4s} {mx:>4d} {tgt:>4d} {mkt:>4.0f} "
+              f"{ctx.room_price(p):>4.0f} {p['games']:>3.0f}")
 
 def cmd_me(ctx):
     me = ctx.teams[ctx.me]
@@ -419,6 +429,14 @@ def cmd_nom(ctx):
     push, drain, hold, steal = O.nominations(
         sorted(ctx.avail, key=lambda p: -ctx.market.adj(p)), ctx.teams, ctx.me,
         ctx.pricers[ctx.me], ctx.market.adj, ctx.pricers)
+    by_mkt = sorted(ctx.avail, key=lambda p: -ctx.market.adj(p))
+    overpay, late = O.room_nominations(by_mkt, ctx.teams, ctx.me, ctx.pricers[ctx.me], ctx.room_price)
+    if overpay:
+        print("EARLY (room overpays vs your value -- a rival burns the cash):")
+        for _, p, r, mine in overpay[:3]: print(f"  {p['name']}  room ~{money(r)} vs you {money(mine)}")
+    if late:
+        print("LATE (room undervalues him -- nominate when budgets are thin):")
+        for _, p, r, mine in late[:3]: print(f"  {p['name']}  you {money(mine)} vs room ~{money(r)}")
     if steal:
         print("STEAL (no rival can outbid you -- nominate and take him):")
         for _, p, ceil in steal[:3]: print(f"  {p['name']} -- rivals capped at ${ceil}")
@@ -433,7 +451,7 @@ def cmd_nom(ctx):
     if hold:
         print("HOLD (your bargains -- don't nominate while rivals are flush):")
         for _, p, m, mine in hold[:3]: print(f"  {p['name']}  you {money(mine)} vs market {money(m)}")
-    if not (steal or push or drain or hold): print("no strong nomination signal -- nominate a $1-3 player you'd take")
+    if not (steal or push or drain or hold or overpay or late): print("no strong nomination signal -- nominate a $1-3 player you'd take")
 
 def cmd_status(ctx):
     n = len([e for e in ctx.st['picks'] if e['type'] == 'pick'])

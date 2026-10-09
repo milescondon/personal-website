@@ -185,6 +185,133 @@
     return { push: srt(push), drain: srt(drain), hold: srt(hold), steal: srt(steal) };
   }
 
+  // ------------------------------------------------------------ room prices (opponents.py)
+  function roomK(ctx) {
+    const numer = fsum(ctx.order.map((t) => ctx.teams[t].budget)) - ctx.n_open;
+    const top = sortBy(ctx.avail.filter((p) => p.room_anchor !== null && p.room_anchor !== undefined),
+                       (p) => -p.room_anchor).slice(0, Math.max(ctx.n_open, 0));
+    const denom = fsum(top.map((p) => Math.max(p.room_anchor - 1.0, 0.0)));
+    const k = denom > 0.5 ? numer / denom : (numer > 0 ? K_MAX : 1.0);
+    return Math.max(0.0, Math.min(k, K_MAX));
+  }
+  function roomPrice(ctx, p) {
+    const a = p.room_anchor;
+    if (a === null || a === undefined) return ctx.market.adj(p);
+    return 1.0 + Math.max(a - 1.0, 0.0) * ctx.room_k;
+  }
+  function roomNominations(ctx, n = 5) {
+    const me = ctx.me, pm = ctx.pricers[me], overpay = [], late = [];
+    const avail = sortBy(ctx.avail, (p) => -ctx.market.adj(p));
+    for (const p of avail.slice(0, 90)) {
+      const r = roomPrice(ctx, p), mine = pm.adj(p);
+      const able = rivalRows(ctx, me).filter((t) => t.max_bid >= r);
+      if (r >= 10 && r - mine >= 5 && able.length >= 2) overpay.push([r - mine, p, r, mine]);
+      if (mine >= 8 && mine - r >= 5) late.push([mine - r, p, r, mine]);
+    }
+    return { overpay: sortBy(overpay, (x) => -x[0]).slice(0, n), late: sortBy(late, (x) => -x[0]).slice(0, n) };
+  }
+
+  // Spend plan (page only): the set of available players that maximizes your value at the
+  // prices you should expect to pay, within your cash and open spots. Expected price is the
+  // midpoint of the room price (Yahoo anchors) and market value, because the room holds both
+  // anchor-followers and value-modelers. Slots left empty are filled with $1 players worth ~$1.
+  // Position groups for the plan: guard (PG/SG), forward (SF/PF), center. Starting slots are
+  // PG,SG,G / SF,PF,F / C / Util, so a roster needs 3 guards, 3 forwards and 1 C, and more than
+  // 3 centers is dead weight. $1 fillers can be any position, so they can cover a shortfall.
+  const PLAN_RULES = { gMin: 3, fMin: 3, cMin: 1, cMax: 3 };
+  function posGroup(pos) {
+    const ps = pos || [];
+    if (ps.includes('PG') || ps.includes('SG')) return 'g';
+    if (ps.includes('SF') || ps.includes('PF')) return 'f';
+    if (ps.includes('C')) return 'c';
+    return 'x';
+  }
+  function spendPlan(E, ctx, nCand = 50) {
+    const me = ctx.teams[ctx.me], slots = me.open, B = me.budget;
+    if (slots <= 0 || B < slots) return null;
+    const pm = ctx.pricers[ctx.me];
+    const have = { g: 0, f: 0, c: 0 };
+    for (const p of me.roster) { const g = posGroup(p.pos); if (g in have) have[g]++; }
+    const cand = sortBy(ctx.avail, (p) => -pm.adj(p)).slice(0, nCand).map((p) => ({
+      p, grp: posGroup(p.pos), val: pm.adj(p),
+      cost: Math.max(1, pyRound((roomPrice(ctx, p) + ctx.market.adj(p)) / 2)) }))
+      .filter((c) => c.val > 1);
+    return planKnapsack(cand, slots, B, have);
+  }
+  // Pick at most S of `cand` ({val, cost, grp}) maximizing total val + $1 per unfilled slot,
+  // keeping $1 for every filler, never holding more than cMax centers, and leaving enough
+  // fillers to cover any guard/forward/center shortfall.
+  function planKnapsack(cand, S, B, have, rules) {
+    have = have || { g: 0, f: 0, c: 0 }; rules = rules || PLAN_RULES;
+    const G = rules.gMin, F = rules.fMin, CM = rules.cMax, W = B + 1, NEG = -1e18;
+    const c0 = have.c;
+    const g0 = Math.min(G, have.g), f0 = Math.min(F, have.f);
+    const CN = Math.max(CM, c0) + 1;                       // center counts 0..max(cMax, have)
+    const stride = [(G + 1) * (F + 1) * CN * W, (F + 1) * CN * W, CN * W, W];
+    const at = (j, g, f, c, b) => j * stride[0] + g * stride[1] + f * stride[2] + c * stride[3] + b;
+    const dp = new Float64Array((S + 1) * stride[0]).fill(NEG);
+    dp[at(0, g0, f0, c0, 0)] = 0;
+    const take = [];                                       // per item: 0 no, 1 counter +1, 2 counter at cap
+    for (const it of cand) {
+      const t = new Uint8Array(dp.length);
+      for (let j = S; j >= 1; j--) {
+        for (let g = 0; g <= G; g++) for (let f = 0; f <= F; f++) for (let c = 0; c < CN; c++) {
+          // where did this state come from if `it` is the j-th buy?
+          let pg = g, pf = f, pc = c, mode = 1;
+          if (it.grp === 'g') { if (g === G) { mode = 2; } else { pg = g - 1; } }
+          else if (it.grp === 'f') { if (f === F) { mode = 2; } else { pf = f - 1; } }
+          else if (it.grp === 'c') { if (c > CM) continue; pc = c - 1; }
+          if (pg < 0 || pf < 0 || pc < 0) continue;
+          const base = at(j, g, f, c, 0), prev = at(j - 1, pg, pf, pc, 0);
+          for (let b = B; b >= it.cost; b--) {
+            const pv = dp[prev + b - it.cost];
+            if (pv <= NEG / 2) continue;
+            const v = pv + it.val;
+            if (v > dp[base + b] + 1e-9) { dp[base + b] = v; t[base + b] = mode; }
+          }
+          // a capped guard/forward state can also come from one below the cap
+          if (mode === 2) {
+            const prev2 = it.grp === 'g' ? at(j - 1, g - 1, f, c, 0) : at(j - 1, g, f - 1, c, 0);
+            if ((it.grp === 'g' ? g - 1 : f - 1) >= 0) for (let b = B; b >= it.cost; b--) {
+              const pv = dp[prev2 + b - it.cost];
+              if (pv <= NEG / 2) continue;
+              const v = pv + it.val;
+              if (v > dp[base + b] + 1e-9) { dp[base + b] = v; t[base + b] = 1; }
+            }
+          }
+        }
+      }
+      take.push(t);
+    }
+    let best = null;
+    for (let j = 0; j <= S; j++) {
+      const fill = S - j, cap = B - fill;
+      for (let g = 0; g <= G; g++) for (let f = 0; f <= F; f++) for (let c = 0; c < CN; c++) {
+        const short = (G - g) + (F - f) + Math.max(0, rules.cMin - c);
+        if (short > fill) continue;
+        for (let b = 0; b <= cap; b++) {
+          const v = dp[at(j, g, f, c, b)];
+          if (v <= NEG / 2) continue;
+          const total = v + fill;
+          if (!best || total > best.total + 1e-9) best = { total, j, g, f, c, b };
+        }
+      }
+    }
+    if (!best) return null;
+    const picks = []; let { j, g, f, c, b } = best;
+    for (let i = cand.length - 1; i >= 0 && j > 0; i--) {
+      const m = take[i][at(j, g, f, c, b)];
+      if (!m) continue;
+      const it = cand[i];
+      picks.push(it); b -= it.cost; j--;
+      if (m === 1) { if (it.grp === 'g') g--; else if (it.grp === 'f') f--; }
+      if (it.grp === 'c') c--;
+    }
+    picks.reverse();
+    const spend = fsum(picks.map((x) => x.cost));
+    return { picks, spend, fillers: S - picks.length, left: B - spend, value: best.total };
+  }
+
   // ------------------------------------------------------------ state + derive (draft_state.py)
   function create(DATA) {
     const players = DATA.players.map((p, i) => Object.assign({}, p, { key: canon(p.name), rank: i + 1 }));
@@ -252,6 +379,7 @@
       }
       const ones = {}; for (const c of CATS) ones[c] = 1.0;
       ctx.market = new Pricer(players, ones, DATA.rostered, DATA.dpv, ctx.k);
+      ctx.room_k = roomK(ctx);
       return ctx;
     }
 
@@ -516,7 +644,7 @@
     }
   }
 
-  return { create, exec, alerts, nominations, threats, foldRisk, rivalCeiling, roomPerSpot, unfilled,
+  return { create, exec, alerts, nominations, roomPrice, roomNominations, spendPlan, planKnapsack, threats, foldRisk, rivalCeiling, roomPerSpot, unfilled,
            weights, tierOf, catSplit, canon, nameParts, pyRound, pyFixed, sgn, money,
            CATS, SHORT, K_MAX, sortBy };
 });

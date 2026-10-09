@@ -355,7 +355,10 @@
    },
    "bbm_rank": 1.0,
    "kept_by": "whyyy",
-   "keeper_cost": 89.0
+   "keeper_cost": 89.0,
+   "yahoo_avg": 81.6,
+   "yahoo_proj": 61.0,
+   "room_anchor": 71.3
   },
   {
    "name": "Victor Wembanyama",
@@ -385,7 +388,10 @@
    },
    "bbm_rank": 2.0,
    "kept_by": "batmanu",
-   "keeper_cost": 67.0
+   "keeper_cost": 67.0,
+   "yahoo_avg": 79.3,
+   "yahoo_proj": 60.0,
+   "room_anchor": 69.65
   },
   {
    "name": "Shai Gilgeous-Alexander",
@@ -415,7 +421,10 @@
    },
    "bbm_rank": 3.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 67.0,
+   "yahoo_proj": 58.0,
+   "room_anchor": 62.5
   },
   {
    "name": "Tyrese Maxey",
@@ -445,7 +454,10 @@
    },
    "bbm_rank": 5.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 55.1,
+   "yahoo_proj": 52.0,
+   "room_anchor": 53.55
   },
   {
    "name": "Kawhi Leonard",
@@ -475,7 +487,10 @@
    },
    "bbm_rank": 4.0,
    "kept_by": "andtai",
-   "keeper_cost": 14.0
+   "keeper_cost": 14.0,
+   "yahoo_avg": 27.9,
+   "yahoo_proj": 26.0,
+   "room_anchor": 26.95
   },
   {
    "name": "Luka Doncic",
@@ -505,7 +520,10 @@
    },
    "bbm_rank": 6.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 73.1,
+   "yahoo_proj": 59.0,
+   "room_anchor": 66.05
   },
   {
    "name": "Jamal Murray",
@@ -535,7 +553,10 @@
    },
    "bbm_rank": 9.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 39.2,
+   "yahoo_proj": 40.0,
+   "room_anchor": 39.6
   },
   {
    "name": "Scottie Barnes",
@@ -565,7 +586,10 @@
    },
    "bbm_rank": 13.0,
    "kept_by": "ocaptains",
-   "keeper_cost": 33.0
+   "keeper_cost": 33.0,
+   "yahoo_avg": 46.3,
+   "yahoo_proj": 42.0,
+   "room_anchor": 44.15
   },
   {
    "name": "Donovan Mitchell",
@@ -595,7 +619,10 @@
    },
    "bbm_rank": 7.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 47.8,
+   "yahoo_proj": 44.0,
+   "room_anchor": 45.9
   },
   {
    "name": "Kevin Durant",
@@ -625,7 +652,10 @@
    },
    "bbm_rank": 15.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 49.6,
+   "yahoo_proj": 42.0,
+   "room_anchor": 45.8
   },
   {
    "name": "Trey Murphy",
@@ -655,7 +685,10 @@
    },
    "bbm_rank": 11.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 22.8,
+   "yahoo_proj": 30.0,
+   "room_anchor": 26.4
   },
   {
    "name": "Jalen Johnson",
@@ -685,7 +718,10 @@
    },
    "bbm_rank": 18.0,
    "kept_by": "dynasty",
-   "keeper_cost": 15.0
+   "keeper_cost": 15.0,
+   "yahoo_avg": 49.5,
+   "yahoo_proj": 46.0,
+   "room_anchor": 47.75
   },
   {
    "name": "Chet Holmgren",
@@ -715,7 +751,10 @@
    },
    "bbm_rank": 19.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 30.3,
+   "yahoo_proj": 29.0,
+   "room_anchor": 29.65
   },
   {
    "name": "Karl-Anthony Towns",
@@ -745,7 +784,10 @@
    },
    "bbm_rank": 25.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 41.6,
+   "yahoo_proj": 41.0,
+   "room_anchor": 41.3
   },
   {
    "name": "Anthony Edwards",
@@ -775,7 +817,10 @@
    },
    "bbm_rank": 14.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 59.1,
+   "yahoo_proj": 50.0,
+   "room_anchor": 54.55
   },
   {
    "name": "Cade Cunningham",
@@ -805,7 +850,10 @@
    },
    "bbm_rank": 17.0,
    "kept_by": "amens",
-   "keeper_cost": 45.0
+   "keeper_cost": 45.0,
+   "yahoo_avg": 63.1,
+   "yahoo_proj": 57.0,
+   "room_anchor": 60.05
   },
   {
    "name": "Nickeil Alexander-Walker",
@@ -835,7 +883,10 @@
    },
    "bbm_rank": 28.0,
    "kept_by": "2bert",
-   "keeper_cost": 7.0
+   "keeper_cost": 7.0,
+   "yahoo_avg": 4.0,
+   "yahoo_proj": 17.0,
+   "room_anchor": 10.5
   },
   {
    "name": "James Harden",
@@ -865,7 +916,10 @@
    },
    "bbm_rank": 23.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 23.8,
+   "yahoo_proj": 27.0,
+   "room_anchor": 25.4
   },
   {
    "name": "Amen Thompson",
@@ -895,7 +949,10 @@
    },
    "bbm_rank": 31.0,
    "kept_by": "amens",
-   "keeper_cost": 16.0
+   "keeper_cost": 16.0,
+   "yahoo_avg": 29.8,
+   "yahoo_proj": 35.0,
+   "room_anchor": 32.4
   },
   {
    "name": "Derrick White",
@@ -925,7 +982,10 @@
    },
    "bbm_rank": 30.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 14.9,
+   "yahoo_proj": 25.0,
+   "room_anchor": 19.95
   },
   {
    "name": "Desmond Bane",
@@ -955,7 +1015,10 @@
    },
    "bbm_rank": 40.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 9.1,
+   "yahoo_proj": 22.0,
+   "room_anchor": 15.55
   },
   {
    "name": "Jalen Duren",
@@ -985,7 +1048,10 @@
    },
    "bbm_rank": 32.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 21.3,
+   "yahoo_proj": 28.0,
+   "room_anchor": 24.65
   },
   {
    "name": "Mikal Bridges",
@@ -1015,7 +1081,10 @@
    },
    "bbm_rank": 43.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 2.8,
+   "yahoo_proj": 12.0,
+   "room_anchor": 7.4
   },
   {
    "name": "Lauri Markkanen",
@@ -1045,7 +1114,10 @@
    },
    "bbm_rank": 8.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 20.7,
+   "yahoo_proj": 29.0,
+   "room_anchor": 24.85
   },
   {
    "name": "Donovan Clingan",
@@ -1075,7 +1147,10 @@
    },
    "bbm_rank": 36.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 16.2,
+   "yahoo_proj": 23.0,
+   "room_anchor": 19.6
   },
   {
    "name": "Stephen Curry",
@@ -1105,7 +1180,10 @@
    },
    "bbm_rank": 10.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 31.7,
+   "yahoo_proj": 31.0,
+   "room_anchor": 31.35
   },
   {
    "name": "Bam Adebayo",
@@ -1135,7 +1213,10 @@
    },
    "bbm_rank": 37.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 25.3,
+   "yahoo_proj": 31.0,
+   "room_anchor": 28.15
   },
   {
    "name": "Onyeka Okongwu",
@@ -1165,7 +1246,10 @@
    },
    "bbm_rank": 41.0,
    "kept_by": "amens",
-   "keeper_cost": 18.0
+   "keeper_cost": 18.0,
+   "yahoo_avg": 7.7,
+   "yahoo_proj": 22.0,
+   "room_anchor": 14.85
   },
   {
    "name": "O.G. Anunoby",
@@ -1195,7 +1279,10 @@
    },
    "bbm_rank": 35.0,
    "kept_by": "chaqing",
-   "keeper_cost": 18.0
+   "keeper_cost": 18.0,
+   "yahoo_avg": 3.7,
+   "yahoo_proj": 16.0,
+   "room_anchor": 9.85
   },
   {
    "name": "Dyson Daniels",
@@ -1225,7 +1312,10 @@
    },
    "bbm_rank": 45.0,
    "kept_by": "2bert",
-   "keeper_cost": 7.0
+   "keeper_cost": 7.0,
+   "yahoo_avg": 4.1,
+   "yahoo_proj": 17.0,
+   "room_anchor": 10.55
   },
   {
    "name": "Cooper Flagg",
@@ -1255,7 +1345,10 @@
    },
    "bbm_rank": 42.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 50.6,
+   "yahoo_proj": 47.0,
+   "room_anchor": 48.8
   },
   {
    "name": "LaMelo Ball",
@@ -1285,7 +1378,10 @@
    },
    "bbm_rank": 44.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 31.2,
+   "yahoo_proj": 32.0,
+   "room_anchor": 31.6
   },
   {
    "name": "Austin Reaves",
@@ -1315,7 +1411,10 @@
    },
    "bbm_rank": 27.0,
    "kept_by": "bbspartan",
-   "keeper_cost": 29.0
+   "keeper_cost": 29.0,
+   "yahoo_avg": 31.7,
+   "yahoo_proj": 33.0,
+   "room_anchor": 32.35
   },
   {
    "name": "Michael Porter Jr.",
@@ -1345,7 +1444,10 @@
    },
    "bbm_rank": 29.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 3.5,
+   "yahoo_proj": 17.0,
+   "room_anchor": 10.25
   },
   {
    "name": "Kevin Porter Jr.",
@@ -1375,7 +1477,10 @@
    },
    "bbm_rank": 16.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Jalen Brunson",
@@ -1405,7 +1510,10 @@
    },
    "bbm_rank": 47.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 33.3,
+   "yahoo_proj": 30.0,
+   "room_anchor": 31.65
   },
   {
    "name": "Ryan Rollins",
@@ -1435,7 +1543,10 @@
    },
    "bbm_rank": 52.0,
    "kept_by": "chaqing",
-   "keeper_cost": 8.0
+   "keeper_cost": 8.0,
+   "yahoo_avg": 2.0,
+   "yahoo_proj": 17.0,
+   "room_anchor": 9.5
   },
   {
    "name": "Alperen Sengun",
@@ -1465,7 +1576,10 @@
    },
    "bbm_rank": 53.0,
    "kept_by": "whyyy",
-   "keeper_cost": 36.0
+   "keeper_cost": 36.0,
+   "yahoo_avg": 33.2,
+   "yahoo_proj": 32.0,
+   "room_anchor": 32.6
   },
   {
    "name": "Jimmy Butler",
@@ -1495,7 +1609,10 @@
    },
    "bbm_rank": 20.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Immanuel Quickley",
@@ -1525,7 +1642,10 @@
    },
    "bbm_rank": 54.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 1.4,
+   "yahoo_proj": 9.0,
+   "room_anchor": 5.2
   },
   {
    "name": "Keyonte George",
@@ -1555,7 +1675,10 @@
    },
    "bbm_rank": 39.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 14.7,
+   "yahoo_proj": 23.0,
+   "room_anchor": 18.85
   },
   {
    "name": "Evan Mobley",
@@ -1585,7 +1708,10 @@
    },
    "bbm_rank": 49.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 27.1,
+   "yahoo_proj": 30.0,
+   "room_anchor": 28.55
   },
   {
    "name": "Kel'el Ware",
@@ -1615,7 +1741,10 @@
    },
    "bbm_rank": 59.0,
    "kept_by": "andtai",
-   "keeper_cost": 6.0
+   "keeper_cost": 6.0,
+   "yahoo_avg": 3.8,
+   "yahoo_proj": 13.0,
+   "room_anchor": 8.4
   },
   {
    "name": "VJ Edgecombe",
@@ -1645,7 +1774,10 @@
    },
    "bbm_rank": 60.0,
    "kept_by": "chaqing",
-   "keeper_cost": 7.0
+   "keeper_cost": 7.0,
+   "yahoo_avg": 6.9,
+   "yahoo_proj": 10.0,
+   "room_anchor": 8.45
   },
   {
    "name": "Joel Embiid",
@@ -1675,7 +1807,10 @@
    },
    "bbm_rank": 24.0,
    "kept_by": "andtai",
-   "keeper_cost": 18.0
+   "keeper_cost": 18.0,
+   "yahoo_avg": 7.3,
+   "yahoo_proj": 19.0,
+   "room_anchor": 13.15
   },
   {
    "name": "LeBron James",
@@ -1705,7 +1840,10 @@
    },
    "bbm_rank": 50.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 20.8,
+   "yahoo_proj": 24.0,
+   "room_anchor": 22.4
   },
   {
    "name": "Jaylen Brown",
@@ -1735,7 +1873,10 @@
    },
    "bbm_rank": 62.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 22.9,
+   "yahoo_proj": 23.0,
+   "room_anchor": 22.95
   },
   {
    "name": "Kon Knueppel",
@@ -1765,7 +1906,10 @@
    },
    "bbm_rank": 66.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 9.5,
+   "yahoo_proj": 17.0,
+   "room_anchor": 13.25
   },
   {
    "name": "Neemias Queta",
@@ -1795,7 +1939,10 @@
    },
    "bbm_rank": 68.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Jalen Suggs",
@@ -1825,7 +1972,10 @@
    },
    "bbm_rank": 51.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 2.3,
+   "yahoo_proj": 5.0,
+   "room_anchor": 3.65
   },
   {
    "name": "Andrew Wiggins",
@@ -1855,7 +2005,10 @@
    },
    "bbm_rank": 61.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 1.1,
+   "yahoo_proj": 6.0,
+   "room_anchor": 3.55
   },
   {
    "name": "Reed Sheppard",
@@ -1885,7 +2038,10 @@
    },
    "bbm_rank": 71.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Brandon Miller",
@@ -1915,7 +2071,10 @@
    },
    "bbm_rank": 56.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 19.3,
+   "yahoo_proj": 26.0,
+   "room_anchor": 22.65
   },
   {
    "name": "Jaden McDaniels",
@@ -1945,7 +2104,10 @@
    },
    "bbm_rank": 70.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 1.2,
+   "yahoo_proj": 6.0,
+   "room_anchor": 3.6
   },
   {
    "name": "Nikola Vucevic",
@@ -1975,7 +2137,10 @@
    },
    "bbm_rank": 58.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "DeMar DeRozan",
@@ -2005,7 +2170,10 @@
    },
    "bbm_rank": 76.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 1.3,
+   "yahoo_proj": 5.0,
+   "room_anchor": 3.15
   },
   {
    "name": "Devin Booker",
@@ -2035,7 +2203,10 @@
    },
    "bbm_rank": 65.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 31.1,
+   "yahoo_proj": 31.0,
+   "room_anchor": 31.05
   },
   {
    "name": "Jaren Jackson Jr.",
@@ -2065,7 +2236,10 @@
    },
    "bbm_rank": 48.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 15.3,
+   "yahoo_proj": 25.0,
+   "room_anchor": 20.15
   },
   {
    "name": "Payton Pritchard",
@@ -2095,7 +2269,10 @@
    },
    "bbm_rank": 72.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 3.6,
+   "yahoo_proj": 12.0,
+   "room_anchor": 7.8
   },
   {
    "name": "Julius Randle",
@@ -2125,7 +2302,10 @@
    },
    "bbm_rank": 80.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 5.8,
+   "yahoo_proj": 15.0,
+   "room_anchor": 10.4
   },
   {
    "name": "Paul George",
@@ -2155,7 +2335,10 @@
    },
    "bbm_rank": 34.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 1.8,
+   "yahoo_proj": 13.0,
+   "room_anchor": 7.4
   },
   {
    "name": "Matas Buzelis",
@@ -2185,7 +2368,10 @@
    },
    "bbm_rank": 74.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 6.0,
+   "yahoo_proj": 16.0,
+   "room_anchor": 11.0
   },
   {
    "name": "Alexandre Sarr",
@@ -2215,7 +2401,10 @@
    },
    "bbm_rank": 55.0,
    "kept_by": "2bert",
-   "keeper_cost": 15.0
+   "keeper_cost": 15.0,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Jarrett Allen",
@@ -2245,7 +2434,10 @@
    },
    "bbm_rank": 69.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 3.9,
+   "yahoo_proj": 14.0,
+   "room_anchor": 8.95
   },
   {
    "name": "De'Aaron Fox",
@@ -2275,7 +2467,10 @@
    },
    "bbm_rank": 79.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 4.3,
+   "yahoo_proj": 15.0,
+   "room_anchor": 9.65
   },
   {
    "name": "Brandon Ingram",
@@ -2305,7 +2500,10 @@
    },
    "bbm_rank": 84.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 2.5,
+   "yahoo_proj": 11.0,
+   "room_anchor": 6.75
   },
   {
    "name": "Josh Giddey",
@@ -2335,7 +2533,10 @@
    },
    "bbm_rank": 64.0,
    "kept_by": "amens",
-   "keeper_cost": 28.0
+   "keeper_cost": 28.0,
+   "yahoo_avg": 37.4,
+   "yahoo_proj": 37.0,
+   "room_anchor": 37.2
   },
   {
    "name": "Collin Gillespie",
@@ -2365,7 +2566,10 @@
    },
    "bbm_rank": 87.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Saddiq Bey",
@@ -2395,7 +2599,10 @@
    },
    "bbm_rank": 85.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Mark Williams",
@@ -2425,7 +2632,10 @@
    },
    "bbm_rank": 73.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 1.0,
+   "yahoo_proj": 5.0,
+   "room_anchor": 3.0
   },
   {
    "name": "Jabari Smith Jr.",
@@ -2455,7 +2665,10 @@
    },
    "bbm_rank": 86.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 1.7,
+   "yahoo_proj": 5.0,
+   "room_anchor": 3.35
   },
   {
    "name": "Deni Avdija",
@@ -2485,7 +2698,10 @@
    },
    "bbm_rank": 78.0,
    "kept_by": "jamesthrones",
-   "keeper_cost": 17.0
+   "keeper_cost": 17.0,
+   "yahoo_avg": 16.1,
+   "yahoo_proj": 24.0,
+   "room_anchor": 20.05
   },
   {
    "name": "Tre Jones",
@@ -2515,7 +2731,10 @@
    },
    "bbm_rank": 83.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Naz Reid",
@@ -2545,7 +2764,10 @@
    },
    "bbm_rank": 91.0,
    "kept_by": "whyyy",
-   "keeper_cost": 16.0
+   "keeper_cost": 16.0,
+   "yahoo_avg": 4.1,
+   "yahoo_proj": 16.0,
+   "room_anchor": 10.05
   },
   {
    "name": "Norman Powell",
@@ -2575,7 +2797,10 @@
    },
    "bbm_rank": 75.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 2.4,
+   "yahoo_proj": 7.0,
+   "room_anchor": 4.7
   },
   {
    "name": "Josh Hart",
@@ -2605,7 +2830,10 @@
    },
    "bbm_rank": 88.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 1.5,
+   "yahoo_proj": 4.0,
+   "room_anchor": 2.75
   },
   {
    "name": "Ausar Thompson",
@@ -2635,7 +2863,10 @@
    },
    "bbm_rank": 97.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 2.6,
+   "yahoo_proj": 14.0,
+   "room_anchor": 8.3
   },
   {
    "name": "Anthony Davis",
@@ -2665,7 +2896,10 @@
    },
    "bbm_rank": 22.0,
    "kept_by": "andtai",
-   "keeper_cost": 18.0
+   "keeper_cost": 18.0,
+   "yahoo_avg": 19.1,
+   "yahoo_proj": 23.0,
+   "room_anchor": 21.05
   },
   {
    "name": "Rudy Gobert",
@@ -2695,7 +2929,10 @@
    },
    "bbm_rank": 94.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 5.1,
+   "yahoo_proj": 12.0,
+   "room_anchor": 8.55
   },
   {
    "name": "Tyler Herro",
@@ -2725,7 +2962,10 @@
    },
    "bbm_rank": 46.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 3.8,
+   "yahoo_proj": 16.0,
+   "room_anchor": 9.9
   },
   {
    "name": "Donte DiVincenzo",
@@ -2755,7 +2995,10 @@
    },
    "bbm_rank": 96.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Giannis Antetokounmpo",
@@ -2785,7 +3028,10 @@
    },
    "bbm_rank": 67.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 60.8,
+   "yahoo_proj": 55.0,
+   "room_anchor": 57.9
   },
   {
    "name": "Cason Wallace",
@@ -2815,7 +3061,10 @@
    },
    "bbm_rank": 101.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Grayson Allen",
@@ -2845,7 +3094,10 @@
    },
    "bbm_rank": 82.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Myles Turner",
@@ -2875,7 +3127,10 @@
    },
    "bbm_rank": 93.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Ayo Dosunmu",
@@ -2905,7 +3160,10 @@
    },
    "bbm_rank": 95.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Jayson Tatum",
@@ -2935,7 +3193,10 @@
    },
    "bbm_rank": 26.0,
    "kept_by": "amens",
-   "keeper_cost": 25.0
+   "keeper_cost": 25.0,
+   "yahoo_avg": 51.2,
+   "yahoo_proj": 54.0,
+   "room_anchor": 52.6
   },
   {
    "name": "Jay Huff",
@@ -2965,7 +3226,10 @@
    },
    "bbm_rank": 100.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Deandre Ayton",
@@ -2995,7 +3259,10 @@
    },
    "bbm_rank": 104.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Pascal Siakam",
@@ -3025,7 +3292,10 @@
    },
    "bbm_rank": 105.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 9.7,
+   "yahoo_proj": 17.0,
+   "room_anchor": 13.35
   },
   {
    "name": "Miles Bridges",
@@ -3055,7 +3325,10 @@
    },
    "bbm_rank": 107.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 2.1,
+   "yahoo_proj": 5.0,
+   "room_anchor": 3.55
   },
   {
    "name": "Franz Wagner",
@@ -3085,7 +3358,10 @@
    },
    "bbm_rank": 81.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 10.2,
+   "yahoo_proj": 21.0,
+   "room_anchor": 15.6
   },
   {
    "name": "Ajay Mitchell",
@@ -3115,7 +3391,10 @@
    },
    "bbm_rank": 106.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Kristaps Porzingis",
@@ -3145,7 +3424,10 @@
    },
    "bbm_rank": 77.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Jalen Williams",
@@ -3175,7 +3457,10 @@
    },
    "bbm_rank": 89.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 22.6,
+   "yahoo_proj": 25.0,
+   "room_anchor": 23.8
   },
   {
    "name": "Ty Jerome",
@@ -3205,7 +3490,10 @@
    },
    "bbm_rank": 38.0,
    "kept_by": "chaqing",
-   "keeper_cost": 8.0
+   "keeper_cost": 8.0,
+   "yahoo_avg": 1.4,
+   "yahoo_proj": 8.0,
+   "room_anchor": 4.7
   },
   {
    "name": "Tobias Harris",
@@ -3235,7 +3523,10 @@
    },
    "bbm_rank": 110.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "John Collins",
@@ -3265,7 +3556,10 @@
    },
    "bbm_rank": 115.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Zion Williamson",
@@ -3295,7 +3589,10 @@
    },
    "bbm_rank": 119.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 2.9,
+   "yahoo_proj": 12.0,
+   "room_anchor": 7.45
   },
   {
    "name": "Wendell Carter Jr.",
@@ -3325,7 +3622,10 @@
    },
    "bbm_rank": 117.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 1.1,
+   "yahoo_proj": 5.0,
+   "room_anchor": 3.05
   },
   {
    "name": "Kelly Oubre",
@@ -3355,7 +3655,10 @@
    },
    "bbm_rank": 113.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Jrue Holiday",
@@ -3385,7 +3688,10 @@
    },
    "bbm_rank": 108.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Isaiah Hartenstein",
@@ -3415,7 +3721,10 @@
    },
    "bbm_rank": 111.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 1.1,
+   "yahoo_proj": 5.0,
+   "room_anchor": 3.05
   },
   {
    "name": "Zach Edey",
@@ -3445,7 +3754,10 @@
    },
    "bbm_rank": 33.0,
    "kept_by": "jamesthrones",
-   "keeper_cost": 10.0
+   "keeper_cost": 10.0,
+   "yahoo_avg": 6.3,
+   "yahoo_proj": 16.0,
+   "room_anchor": 11.15
   },
   {
    "name": "Ivica Zubac",
@@ -3475,7 +3787,10 @@
    },
    "bbm_rank": 109.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 6.7,
+   "yahoo_proj": 18.0,
+   "room_anchor": 12.35
   },
   {
    "name": "Darius Garland",
@@ -3505,7 +3820,10 @@
    },
    "bbm_rank": 102.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 7.0,
+   "yahoo_proj": 19.0,
+   "room_anchor": 13.0
   },
   {
    "name": "Robert Williams",
@@ -3535,7 +3853,10 @@
    },
    "bbm_rank": 116.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Kyshawn George",
@@ -3565,7 +3886,10 @@
    },
    "bbm_rank": 112.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Brandin Podziemski",
@@ -3595,7 +3919,10 @@
    },
    "bbm_rank": 125.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "C.J. McCollum",
@@ -3625,7 +3952,10 @@
    },
    "bbm_rank": 120.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Dejounte Murray",
@@ -3655,7 +3985,10 @@
    },
    "bbm_rank": 63.0,
    "kept_by": "batmanu",
-   "keeper_cost": 9.0
+   "keeper_cost": 9.0,
+   "yahoo_avg": 3.2,
+   "yahoo_proj": 18.0,
+   "room_anchor": 10.6
   },
   {
    "name": "Keegan Murray",
@@ -3685,7 +4018,10 @@
    },
    "bbm_rank": 90.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Julian Champagnie",
@@ -3715,7 +4051,10 @@
    },
    "bbm_rank": 121.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Santi Aldama",
@@ -3745,7 +4084,10 @@
    },
    "bbm_rank": 114.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Cam Spencer",
@@ -3775,7 +4117,10 @@
    },
    "bbm_rank": 118.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Walker Kessler",
@@ -3805,7 +4150,10 @@
    },
    "bbm_rank": 12.0,
    "kept_by": "jamesthrones",
-   "keeper_cost": 6.0
+   "keeper_cost": 6.0,
+   "yahoo_avg": 18.2,
+   "yahoo_proj": 25.0,
+   "room_anchor": 21.6
   },
   {
    "name": "Paolo Banchero",
@@ -3835,7 +4183,10 @@
    },
    "bbm_rank": 129.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 12.8,
+   "yahoo_proj": 20.0,
+   "room_anchor": 16.4
   },
   {
    "name": "Devin Vassell",
@@ -3865,7 +4216,10 @@
    },
    "bbm_rank": 123.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Peyton Watson",
@@ -3895,7 +4249,10 @@
    },
    "bbm_rank": 124.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Moussa Diabate",
@@ -3925,7 +4282,10 @@
    },
    "bbm_rank": 132.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Royce O'Neale",
@@ -3955,7 +4315,10 @@
    },
    "bbm_rank": 128.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Toumani Camara",
@@ -3985,7 +4348,10 @@
    },
    "bbm_rank": 134.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Bez Mbeng",
@@ -4015,7 +4381,10 @@
    },
    "bbm_rank": 92.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Jakob Poeltl",
@@ -4045,7 +4414,10 @@
    },
    "bbm_rank": 127.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Domantas Sabonis",
@@ -4075,7 +4447,10 @@
    },
    "bbm_rank": 99.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 26.0,
+   "yahoo_proj": 26.0,
+   "room_anchor": 26.0
   },
   {
    "name": "Zach LaVine",
@@ -4105,7 +4480,10 @@
    },
    "bbm_rank": 122.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 1.2,
+   "yahoo_proj": 5.0,
+   "room_anchor": 3.1
   },
   {
    "name": "Kadary Richmond",
@@ -4135,7 +4513,10 @@
    },
    "bbm_rank": 21.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Anthony Black",
@@ -4165,7 +4546,10 @@
    },
    "bbm_rank": 136.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Andrew Nembhard",
@@ -4195,7 +4579,10 @@
    },
    "bbm_rank": 130.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Cam Johnson",
@@ -4225,7 +4612,10 @@
    },
    "bbm_rank": 131.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Jalen Slawson",
@@ -4255,7 +4645,10 @@
    },
    "bbm_rank": 103.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Cormac Ryan",
@@ -4285,7 +4678,10 @@
    },
    "bbm_rank": 98.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Alondes Williams",
@@ -4315,7 +4711,10 @@
    },
    "bbm_rank": 57.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Aaron Gordon",
@@ -4345,7 +4744,10 @@
    },
    "bbm_rank": 133.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Daniel Gafford",
@@ -4375,7 +4777,10 @@
    },
    "bbm_rank": 139.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Sandro Mamukelashvili",
@@ -4405,7 +4810,10 @@
    },
    "bbm_rank": 137.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Jusuf Nurkic",
@@ -4435,7 +4843,10 @@
    },
    "bbm_rank": 138.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Bilal Coulibaly",
@@ -4465,7 +4876,10 @@
    },
    "bbm_rank": 142.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Trae Young",
@@ -4495,7 +4909,10 @@
    },
    "bbm_rank": 126.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 37.1,
+   "yahoo_proj": 38.0,
+   "room_anchor": 37.55
   },
   {
    "name": "Matisse Thybulle",
@@ -4525,7 +4942,10 @@
    },
    "bbm_rank": 145.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Al Horford",
@@ -4555,7 +4975,10 @@
    },
    "bbm_rank": 135.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Moses Moody",
@@ -4585,7 +5008,10 @@
    },
    "bbm_rank": 140.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Derik Queen",
@@ -4615,7 +5041,10 @@
    },
    "bbm_rank": 144.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 3.4,
+   "yahoo_proj": 4.0,
+   "room_anchor": 3.7
   },
   {
    "name": "PJ Washington",
@@ -4645,7 +5074,10 @@
    },
    "bbm_rank": 143.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Andersson Garcia",
@@ -4675,7 +5107,10 @@
    },
    "bbm_rank": 147.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Lucas Williamson",
@@ -4705,7 +5140,10 @@
    },
    "bbm_rank": 152.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "John Konchar",
@@ -4735,7 +5173,10 @@
    },
    "bbm_rank": 149.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Hayden Gray",
@@ -4765,7 +5206,10 @@
    },
    "bbm_rank": 224.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Adama Bal",
@@ -4795,7 +5239,10 @@
    },
    "bbm_rank": 158.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "DaQuan Jeffries",
@@ -4825,7 +5272,10 @@
    },
    "bbm_rank": 186.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Jaylon Tyson",
@@ -4855,7 +5305,10 @@
    },
    "bbm_rank": 141.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Tre Scott",
@@ -4885,7 +5338,10 @@
    },
    "bbm_rank": 175.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Julian Reese",
@@ -4915,7 +5371,10 @@
    },
    "bbm_rank": 167.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Ja Morant",
@@ -4945,7 +5404,10 @@
    },
    "bbm_rank": 151.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 2.3,
+   "yahoo_proj": 5.0,
+   "room_anchor": 3.65
   },
   {
    "name": "Scotty Pippen Jr.",
@@ -4975,7 +5437,10 @@
    },
    "bbm_rank": 178.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "David Roddy",
@@ -5005,7 +5470,10 @@
    },
    "bbm_rank": 216.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Derrick Jones",
@@ -5035,7 +5503,10 @@
    },
    "bbm_rank": 156.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Kyle Filipowski",
@@ -5065,7 +5536,10 @@
    },
    "bbm_rank": 153.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Dereck Lively II",
@@ -5095,7 +5569,10 @@
    },
    "bbm_rank": 210.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Jordan Goodwin",
@@ -5125,7 +5602,10 @@
    },
    "bbm_rank": 159.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Jerami Grant",
@@ -5155,7 +5635,10 @@
    },
    "bbm_rank": 155.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Luke Kornet",
@@ -5185,7 +5668,10 @@
    },
    "bbm_rank": 146.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Mitchell Robinson",
@@ -5215,7 +5701,10 @@
    },
    "bbm_rank": 162.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Ryan Kalkbrenner",
@@ -5245,7 +5734,10 @@
    },
    "bbm_rank": 154.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Dylan Cardwell",
@@ -5275,7 +5767,10 @@
    },
    "bbm_rank": 163.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Malachi Smith",
@@ -5305,7 +5800,10 @@
    },
    "bbm_rank": 193.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Bobby Portis",
@@ -5335,7 +5833,10 @@
    },
    "bbm_rank": 148.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Sam Merrill",
@@ -5365,7 +5866,10 @@
    },
    "bbm_rank": 150.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Leaky Black",
@@ -5395,7 +5899,10 @@
    },
    "bbm_rank": 196.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Nicolas Claxton",
@@ -5425,7 +5932,10 @@
    },
    "bbm_rank": 161.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "R.J. Barrett",
@@ -5455,7 +5965,10 @@
    },
    "bbm_rank": 165.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Cedric Coward",
@@ -5485,7 +5998,10 @@
    },
    "bbm_rank": 157.0,
    "kept_by": "andtai",
-   "keeper_cost": 6.0
+   "keeper_cost": 6.0,
+   "yahoo_avg": 3.7,
+   "yahoo_proj": 13.0,
+   "room_anchor": 8.35
   },
   {
    "name": "Chaney Johnson",
@@ -5515,7 +6031,10 @@
    },
    "bbm_rank": 205.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Blake Hinson",
@@ -5545,7 +6064,10 @@
    },
    "bbm_rank": 208.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Max Strus",
@@ -5575,7 +6097,10 @@
    },
    "bbm_rank": 217.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Collin Sexton",
@@ -5605,7 +6130,10 @@
    },
    "bbm_rank": 164.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Maxime Raynaud",
@@ -5635,7 +6163,10 @@
    },
    "bbm_rank": 160.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Dillon Brooks",
@@ -5665,7 +6196,10 @@
    },
    "bbm_rank": 166.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Shaedon Sharpe",
@@ -5695,7 +6229,10 @@
    },
    "bbm_rank": 176.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Tari Eason",
@@ -5725,7 +6262,10 @@
    },
    "bbm_rank": 169.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Stephon Castle",
@@ -5755,7 +6295,10 @@
    },
    "bbm_rank": 170.0,
    "kept_by": "jamesthrones",
-   "keeper_cost": 10.0
+   "keeper_cost": 10.0,
+   "yahoo_avg": 4.3,
+   "yahoo_proj": 12.0,
+   "room_anchor": 8.15
   },
   {
    "name": "Naji Marshall",
@@ -5785,7 +6328,10 @@
    },
    "bbm_rank": 171.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Kris Dunn",
@@ -5815,7 +6361,10 @@
    },
    "bbm_rank": 168.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Bennedict Mathurin",
@@ -5845,7 +6394,10 @@
    },
    "bbm_rank": 173.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Obi Toppin",
@@ -5875,7 +6427,10 @@
    },
    "bbm_rank": 201.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Herb Jones",
@@ -5905,7 +6460,10 @@
    },
    "bbm_rank": 179.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Christian Braun",
@@ -5935,7 +6493,10 @@
    },
    "bbm_rank": 180.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Miles McBride",
@@ -5965,7 +6526,10 @@
    },
    "bbm_rank": 181.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "De'Anthony Melton",
@@ -5995,7 +6559,10 @@
    },
    "bbm_rank": 188.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Justin Champagnie",
@@ -6025,7 +6592,10 @@
    },
    "bbm_rank": 172.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Jalen Smith",
@@ -6055,7 +6625,10 @@
    },
    "bbm_rank": 177.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Isaiah Stewart",
@@ -6085,7 +6658,10 @@
    },
    "bbm_rank": 174.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Cam Payne",
@@ -6115,7 +6691,10 @@
    },
    "bbm_rank": 232.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Collin Murray-Boyles",
@@ -6145,7 +6724,10 @@
    },
    "bbm_rank": 184.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 1.0,
+   "yahoo_proj": 5.0,
+   "room_anchor": 3.0
   },
   {
    "name": "T.J. McConnell",
@@ -6175,7 +6757,10 @@
    },
    "bbm_rank": 191.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Ziaire Williams",
@@ -6205,7 +6790,10 @@
    },
    "bbm_rank": 195.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Russell Westbrook",
@@ -6235,7 +6823,10 @@
    },
    "bbm_rank": 190.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Jaime Jaquez Jr.",
@@ -6265,7 +6856,10 @@
    },
    "bbm_rank": 182.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Quentin Grimes",
@@ -6295,7 +6889,10 @@
    },
    "bbm_rank": 183.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Javon Small",
@@ -6325,7 +6922,10 @@
    },
    "bbm_rank": 215.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Davion Mitchell",
@@ -6355,7 +6955,10 @@
    },
    "bbm_rank": 189.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Isaiah Joe",
@@ -6385,7 +6988,10 @@
    },
    "bbm_rank": 185.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Marcus Smart",
@@ -6415,7 +7021,10 @@
    },
    "bbm_rank": 198.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Ace Bailey",
@@ -6445,7 +7054,10 @@
    },
    "bbm_rank": 192.0,
    "kept_by": "chaqing",
-   "keeper_cost": 6.0
+   "keeper_cost": 6.0,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Aaron Nesmith",
@@ -6475,7 +7087,10 @@
    },
    "bbm_rank": 213.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Micah Potter",
@@ -6505,7 +7120,10 @@
    },
    "bbm_rank": 212.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Paul Reed",
@@ -6535,7 +7153,10 @@
    },
    "bbm_rank": 200.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Duncan Robinson",
@@ -6565,7 +7186,10 @@
    },
    "bbm_rank": 187.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Kevin Huerter",
@@ -6595,7 +7219,10 @@
    },
    "bbm_rank": 199.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Day'Ron Sharpe",
@@ -6625,7 +7252,10 @@
    },
    "bbm_rank": 214.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 4.0,
+   "yahoo_proj": 6.0,
+   "room_anchor": 5.0
   },
   {
    "name": "Marvin Bagley III",
@@ -6655,7 +7285,10 @@
    },
    "bbm_rank": 211.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Keldon Johnson",
@@ -6685,7 +7318,10 @@
    },
    "bbm_rank": 194.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Precious Achiuwa",
@@ -6715,7 +7351,10 @@
    },
    "bbm_rank": 206.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Jake LaRavia",
@@ -6745,7 +7384,10 @@
    },
    "bbm_rank": 204.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Max Christie",
@@ -6775,7 +7417,10 @@
    },
    "bbm_rank": 197.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Dylan Harper",
@@ -6805,7 +7450,10 @@
    },
    "bbm_rank": 209.0,
    "kept_by": "andtai",
-   "keeper_cost": 6.0
+   "keeper_cost": 6.0,
+   "yahoo_avg": 4.6,
+   "yahoo_proj": 10.0,
+   "room_anchor": 7.3
   },
   {
    "name": "Tristan da Silva",
@@ -6835,7 +7483,10 @@
    },
    "bbm_rank": 203.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Anfernee Simons",
@@ -6865,7 +7516,10 @@
    },
    "bbm_rank": 221.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Egor Demin",
@@ -6895,7 +7549,10 @@
    },
    "bbm_rank": 233.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Goga Bitadze",
@@ -6925,7 +7582,10 @@
    },
    "bbm_rank": 223.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Dominick Barlow",
@@ -6955,7 +7615,10 @@
    },
    "bbm_rank": 220.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Tim Hardaway Jr.",
@@ -6985,7 +7648,10 @@
    },
    "bbm_rank": 202.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Brook Lopez",
@@ -7015,7 +7681,10 @@
    },
    "bbm_rank": 207.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Draymond Green",
@@ -7045,7 +7714,10 @@
    },
    "bbm_rank": 218.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Andre Drummond",
@@ -7075,7 +7747,10 @@
    },
    "bbm_rank": 227.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Jaylin Williams",
@@ -7105,7 +7780,10 @@
    },
    "bbm_rank": 222.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Dru Smith",
@@ -7135,7 +7813,10 @@
    },
    "bbm_rank": 234.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Rui Hachimura",
@@ -7165,7 +7846,10 @@
    },
    "bbm_rank": 228.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Jock Landale",
@@ -7195,7 +7879,10 @@
    },
    "bbm_rank": 231.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Javonte Green",
@@ -7225,7 +7912,10 @@
    },
    "bbm_rank": 225.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": null,
+   "yahoo_proj": null,
+   "room_anchor": null
   },
   {
    "name": "Jeremiah Fears",
@@ -7255,7 +7945,10 @@
    },
    "bbm_rank": 226.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Sam Hauser",
@@ -7285,7 +7978,10 @@
    },
    "bbm_rank": 219.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Brice Sensabaugh",
@@ -7315,7 +8011,10 @@
    },
    "bbm_rank": 230.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   },
   {
    "name": "Luke Kennard",
@@ -7345,7 +8044,10 @@
    },
    "bbm_rank": 229.0,
    "kept_by": null,
-   "keeper_cost": null
+   "keeper_cost": null,
+   "yahoo_avg": 0.0,
+   "yahoo_proj": 0.0,
+   "room_anchor": 0.0
   }
  ]
 }

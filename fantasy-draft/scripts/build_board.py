@@ -75,6 +75,20 @@ def main(root):
 
     sig = V.sigma_match(players, rostered, spots)
 
+    # ---- room anchors: what the room is likely to pay -----------------------
+    # Yahoo's average auction cost and Yahoo's projected $ are the two numbers managers see
+    # in Yahoo's draft room. room_anchor = their mean; draft_state scales it to the live money.
+    # Missing players get None and are priced at market instead.
+    ypath = f'{root}/data/yahoo_prices.csv'
+    yp_by = {}
+    if os.path.exists(ypath):
+        for r in csv.DictReader(open(ypath, encoding='utf-8')):
+            yp_by[V.canon(r['name'])] = (float(r['yahoo_avg']), float(r['yahoo_proj']))
+    for p in players:
+        a = yp_by.get(p['key']) or yp_by.get(idx['aliases'].get(p['key'], ''))
+        p['yahoo_avg'], p['yahoo_proj'] = (a if a else (None, None))
+        p['room_anchor'] = (a[0] + a[1]) / 2 if a else None
+
     # ---- surplus on keepers: who got a bargain -----------------------------
     ksurp = sorted(({'name': p['name'], 'owner': p['kept_by'], 'cost': p['keeper_cost'],
                      'fair': p['fair'], 'adj': p['adj'], 'surplus': p['adj'] - p['keeper_cost']}
@@ -104,7 +118,8 @@ def main(root):
                    'target': round(p['target'],1), 'tier': tier_of(p['adj']),
                    'z': {c: round(v,3) for c, v in p['z'].items()},
                    'bbm_rank': p['bbm_rank'], 'kept_by': p['kept_by'],
-                   'keeper_cost': p['keeper_cost']}
+                   'keeper_cost': p['keeper_cost'], 'yahoo_avg': p['yahoo_avg'],
+                   'yahoo_proj': p['yahoo_proj'], 'room_anchor': p['room_anchor']}
                   for p in ranked],
     }
     os.makedirs(f'{root}/build', exist_ok=True)
@@ -156,6 +171,9 @@ def main(root):
         print(f"    {p['name'][:24]:24s} me #{mine:<4d} bbm #{p['bbm_rank']:<5.0f} "
               f"GP={p['games']:.0f} mpg={p['mpg']:.1f}")
 
+    if yp_by:
+        have = sum(1 for p in avail[:auction_spots] if p['room_anchor'] is not None)
+        print(f"room anchors: {len(yp_by)} Yahoo prices, {have}/{auction_spots} of the auction pool covered")
     print(f"\nbiggest keeper bargains (adjusted value minus keeper cost):")
     for x in ksurp[:8]:
         print(f"    {x['name'][:24]:24s} {x['owner'][:12]:12s} cost ${x['cost']:>3.0f}  "

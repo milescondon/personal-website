@@ -115,3 +115,38 @@ def nominations(avail, teams, me, my_pricer, mkt, pricers, n=5):
             steal.append((mine, p, ceil))
     for xs in (push, drain, hold, steal): xs.sort(key=lambda x: -x[0])
     return push[:n], drain[:n], hold[:n], steal[:n]
+
+
+# ---------------------------------------------------------------- room prices
+# What the ROOM will likely pay, as opposed to what a player is worth to you. Managers
+# anchor on the two numbers Yahoo's draft room shows -- average auction cost and projected
+# $ -- so room_anchor is their mean (set at build time), scaled like inflation to the money
+# actually left: room = 1 + (anchor - 1) * room_k. Players Yahoo doesn't price fall back
+# to market value.
+
+def room_k(avail, teams, n_open, k_max):
+    numer = sum(t['budget'] for t in teams.values()) - n_open
+    top = sorted((p for p in avail if p.get('room_anchor') is not None),
+                 key=lambda p: -p['room_anchor'])[:n_open]
+    denom = sum(max(p['room_anchor'] - 1.0, 0.0) for p in top)
+    k = numer / denom if denom > 0.5 else (k_max if numer > 0 else 1.0)
+    return max(0.0, min(k, k_max))
+
+def room_price(p, rk, market):
+    a = p.get('room_anchor')
+    if a is None: return market.adj(p)
+    return 1.0 + max(a - 1.0, 0.0) * rk
+
+def room_nominations(avail, teams, me, my_pricer, room, n=5):
+    """Overpay: the room will pay well past your value -- nominate early so a rival burns
+    the cash.  Late: the room undervalues him -- nominate when budgets are thin."""
+    overpay, late = [], []
+    for p in avail[:90]:
+        r = room(p); mine = my_pricer.adj(p)
+        able = [t for t in rival_rows(teams, me) if t['max_bid'] >= r]
+        if r >= 10 and r - mine >= 5 and len(able) >= 2:
+            overpay.append((r - mine, p, r, mine))
+        if mine >= 8 and mine - r >= 5:
+            late.append((mine - r, p, r, mine))
+    overpay.sort(key=lambda x: -x[0]); late.sort(key=lambda x: -x[0])
+    return overpay[:n], late[:n]
