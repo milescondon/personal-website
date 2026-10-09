@@ -155,8 +155,8 @@ class Ctx:
             e = self.drafted.get(q['key'])
             if e: return None, f"{q['name']} already sold to {e['team']} for ${e['price']} (#{e['n']})"
         if how.startswith('ambiguous'):
-            k = V.canon(raw.split()[-1])
-            c = [p['name'] for p in self.avail if V.canon(p['name'].split()[-1]) == k
+            rp = V.name_parts(raw); k = V.canon(rp[-1]) if rp else ''
+            c = [p['name'] for p in self.avail if (V.name_parts(p['name']) or [''])[-1].lower() == k
                  or V.canon(p['name']).startswith(V.canon(raw))]
             return None, f"ambiguous '{raw}': {', '.join(c[:6])} -- add a first initial"
         close = difflib.get_close_matches(V.canon(raw), [p['key'] for p in self.avail], n=4, cutoff=0.6)

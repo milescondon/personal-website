@@ -174,12 +174,18 @@ def cat_weight(delta, sig):
 # reported rather than silently dropped -- an unresolved keeper would otherwise stay in
 # the available pool and get recommended.
 
+def name_parts(name):
+    """Name words, minus suffixes (Jr, III...) that canon() erases -- otherwise every
+    'X Porter Jr.' indexes under an empty last name and 'porter' finds nobody."""
+    words = re.split(r'\s+', re.sub(r'[^A-Za-z\s]', ' ', name).strip())
+    return [w for w in words if canon(w)]
+
 def build_index(players, aliases=None):
     idx = {'exact': {}, 'lastfirst': collections.defaultdict(list),
            'last': collections.defaultdict(list), 'players': players}
     for p in players:
         idx['exact'][p['key']] = p
-        parts = re.split(r'\s+', re.sub(r'[^A-Za-z\s]', ' ', p['name']).strip())
+        parts = name_parts(p['name'])
         if parts:
             last = canon(parts[-1]); first = canon(parts[0])
             idx['last'][last].append(p)
@@ -195,7 +201,7 @@ def resolve_name(idx, raw):
     if k in idx['exact']: return idx['exact'][k], 'exact'
     a = idx['aliases'].get(k)
     if a and a in idx['exact']: return idx['exact'][a], 'alias'
-    parts = re.split(r'\s+', re.sub(r'[^A-Za-z\s]', ' ', raw).strip())
+    parts = name_parts(raw)
     if len(parts) >= 2:
         cand = idx['lastfirst'].get((canon(parts[-1]), canon(parts[0])[:1]), [])
         if len(cand) == 1: return cand[0], 'lastfirst'
