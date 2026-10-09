@@ -361,6 +361,9 @@ def cmd_pick(ctx, toks, force=False, new=False):
     print(f"#{n} {entry['player']} ${price} -> {team}{verdict}{flag}")
     print(f"   {team}: ${t['budget']} left, {t['open']} open, max bid ${t['max_bid']}"
           f" | inflation {old_k:.3f} -> {ctx.k:.3f}")
+    if t['budget'] < t['open'] or t['open'] < 0:
+        print(f"  !! TRACKING ERROR: Yahoo makes this impossible ({team} now ${t['budget']} for "
+              f"{t['open']} open). A sale is missing or mistyped -- `log`, then `check` against the room")
     emit_new(ctx); save_state(ctx.st)
 
 def cmd_undo(ctx):
