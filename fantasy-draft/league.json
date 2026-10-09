@@ -2,6 +2,7 @@
   "name": "OG Keepers",
   "yahoo_league_id": 36010,
   "season": "2026-27",
+  "me": "dynasty",
   "draft": {
     "type": "live_salary_cap_auction",
     "datetime": "2026-10-09T21:30:00-05:00",
@@ -50,8 +51,9 @@
   },
   "keepers": {
     "escalator_per_year": 6,
-    "source_of_truth": "league_sheet",
-    "_note": "Escalator is +$6/yr, not +$5. Yahoo's Keeper Salary field is blank or stale for 20 of 28 rows, so the league sheet is authoritative for both membership and price."
+    "source_of_truth": "yahoo_room",
+    "_note": "Yahoo's draft room is authoritative (decided 2026-10-09): it enforces budgets and blocks nominating kept players. Its Draft Results page disagreed with the league sheet on 3 teams (amens +Tatum $25, bbspartan +Reaves $29, theogog no Durant). Re-sync by saving the page and running scripts/yahoo_sync.py. source_of_truth='league_sheet' restores data/keepers.csv. Escalator is +$6/yr.",
+    "room_file": "data/yahoo_room.json"
   },
   "departed_teams": [
     "wingfreak",
@@ -62,10 +64,13 @@
     "hr steve"
   ],
   "tuning": {
+    "availability_model": "waiver_fill",
+    "waiver_fill_games": 82,
+    "waiver_depth": 24,
     "availability_blend": 0.5,
     "target_margin": 0.175,
     "punt_weight_threshold": 0.3,
-    "_availability_note": "88 season acquisitions (6/wk) makes streaming around absences easy, so lean toward per-game.",
+    "_availability_note": "waiver_fill (chosen 2026-10-09): season = GP*per_game + (82-GP)*waiver_line, the per-game line of per-game ranks 133-156. 2 IL slots + 88 adds means missed games are streamed. availability_blend only applies when availability_model='blend' (0.5 there reproduces the 4f2613f board exactly).",
     "_depth_note": "132 rostered of 234 projected players. Shallow pool: replacement level is high, stars are relatively more valuable, punting is less forced than in a 14-team league.",
     "_playoff_note": "8 of 12 teams make playoffs (67%), so prefer ceiling over floor."
   },

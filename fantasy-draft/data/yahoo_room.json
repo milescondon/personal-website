@@ -1,0 +1,438 @@
+{
+ "source_file": "81f85dd9-Draft_Results___Fantasy_Basketball___Yahoo_Sports_2026.html",
+ "teams": [
+  {
+   "id": "ocaptains",
+   "yahoo_name": "🚢 O Captains My Captains",
+   "nomination_order": "-",
+   "start": 201,
+   "salaries": 33,
+   "remaining": 168,
+   "keepers": [
+    {
+     "name": "Scottie Barnes",
+     "cost": 33,
+     "nba": "TOR",
+     "pos": [
+      "SF",
+      "PF",
+      "C"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "2bert",
+   "yahoo_name": "2bert 2furious",
+   "nomination_order": "-",
+   "start": 201,
+   "salaries": 29,
+   "remaining": 172,
+   "keepers": [
+    {
+     "name": "Nickeil Alexander-Walker",
+     "cost": 7,
+     "nba": "ATL",
+     "pos": [
+      "PG",
+      "SG"
+     ]
+    },
+    {
+     "name": "Dyson Daniels",
+     "cost": 7,
+     "nba": "ATL",
+     "pos": [
+      "SG",
+      "SF"
+     ]
+    },
+    {
+     "name": "Alex Sarr",
+     "cost": 15,
+     "nba": "WAS",
+     "pos": [
+      "C"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "amens",
+   "yahoo_name": "Amen’s Apostles",
+   "nomination_order": "-",
+   "start": 200,
+   "salaries": 132,
+   "remaining": 68,
+   "keepers": [
+    {
+     "name": "Amen Thompson",
+     "cost": 16,
+     "nba": "HOU",
+     "pos": [
+      "PG",
+      "SG"
+     ]
+    },
+    {
+     "name": "Onyeka Okongwu",
+     "cost": 18,
+     "nba": "ATL",
+     "pos": [
+      "C"
+     ]
+    },
+    {
+     "name": "Cade Cunningham",
+     "cost": 45,
+     "nba": "DET",
+     "pos": [
+      "PG",
+      "SG"
+     ]
+    },
+    {
+     "name": "Josh Giddey",
+     "cost": 28,
+     "nba": "CHI",
+     "pos": [
+      "PG",
+      "SG"
+     ]
+    },
+    {
+     "name": "Jayson Tatum",
+     "cost": 25,
+     "nba": "BOS",
+     "pos": [
+      "SF",
+      "PF"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "andtai",
+   "yahoo_name": "AND TAI1",
+   "nomination_order": "-",
+   "start": 205,
+   "salaries": 75,
+   "remaining": 130,
+   "keepers": [
+    {
+     "name": "Scoot Henderson",
+     "cost": 5,
+     "nba": "POR",
+     "pos": [
+      "PG"
+     ]
+    },
+    {
+     "name": "Jared McCain",
+     "cost": 2,
+     "nba": "OKC",
+     "pos": [
+      "PG",
+      "SG"
+     ]
+    },
+    {
+     "name": "Kawhi Leonard",
+     "cost": 14,
+     "nba": "TOR",
+     "pos": [
+      "SG",
+      "SF",
+      "PF"
+     ]
+    },
+    {
+     "name": "Kel'el Ware",
+     "cost": 6,
+     "nba": "MIL",
+     "pos": [
+      "C"
+     ]
+    },
+    {
+     "name": "Joel Embiid",
+     "cost": 18,
+     "nba": "PHI",
+     "pos": [
+      "C"
+     ]
+    },
+    {
+     "name": "Dylan Harper",
+     "cost": 6,
+     "nba": "SAS",
+     "pos": [
+      "PG",
+      "SG"
+     ]
+    },
+    {
+     "name": "Cedric Coward",
+     "cost": 6,
+     "nba": "MEM",
+     "pos": [
+      "SG",
+      "SF"
+     ]
+    },
+    {
+     "name": "Anthony Davis",
+     "cost": 18,
+     "nba": "WAS",
+     "pos": [
+      "PF",
+      "C"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "batmanu",
+   "yahoo_name": "batmanu welcomes wemby",
+   "nomination_order": "-",
+   "start": 201,
+   "salaries": 79,
+   "remaining": 122,
+   "keepers": [
+    {
+     "name": "Victor Wembanyama",
+     "cost": 67,
+     "nba": "SAS",
+     "pos": [
+      "C"
+     ]
+    },
+    {
+     "name": "Dejounte Murray",
+     "cost": 9,
+     "nba": "NOP",
+     "pos": [
+      "PG"
+     ]
+    },
+    {
+     "name": "Damian Lillard",
+     "cost": 3,
+     "nba": "POR",
+     "pos": [
+      "PG"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bbspartan",
+   "yahoo_name": "BB® Spartan Beasts",
+   "nomination_order": "-",
+   "start": 201,
+   "salaries": 38,
+   "remaining": 163,
+   "keepers": [
+    {
+     "name": "Austin Reaves",
+     "cost": 29,
+     "nba": "LAL",
+     "pos": [
+      "PG",
+      "SG",
+      "SF"
+     ]
+    },
+    {
+     "name": "Tyrese Haliburton",
+     "cost": 9,
+     "nba": "IND",
+     "pos": [
+      "PG",
+      "SG"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chaqing",
+   "yahoo_name": "cha Qing Dynasty",
+   "nomination_order": "-",
+   "start": 201,
+   "salaries": 47,
+   "remaining": 154,
+   "keepers": [
+    {
+     "name": "OG Anunoby",
+     "cost": 18,
+     "nba": "NYK",
+     "pos": [
+      "SF",
+      "PF"
+     ]
+    },
+    {
+     "name": "Ryan Rollins",
+     "cost": 8,
+     "nba": "MIL",
+     "pos": [
+      "PG",
+      "SG"
+     ]
+    },
+    {
+     "name": "Ace Bailey",
+     "cost": 6,
+     "nba": "UTA",
+     "pos": [
+      "SF",
+      "PF"
+     ]
+    },
+    {
+     "name": "Ty Jerome",
+     "cost": 8,
+     "nba": "MEM",
+     "pos": [
+      "PG",
+      "SG"
+     ]
+    },
+    {
+     "name": "VJ Edgecombe",
+     "cost": 7,
+     "nba": "PHI",
+     "pos": [
+      "PG",
+      "SG"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dynasty",
+   "yahoo_name": "dy-nasty warrior",
+   "nomination_order": "-",
+   "start": 200,
+   "salaries": 15,
+   "remaining": 185,
+   "keepers": [
+    {
+     "name": "Jalen Johnson",
+     "cost": 15,
+     "nba": "ATL",
+     "pos": [
+      "SF",
+      "PF"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "jamesthrones",
+   "yahoo_name": "James of Thrones",
+   "nomination_order": "-",
+   "start": 201,
+   "salaries": 43,
+   "remaining": 158,
+   "keepers": [
+    {
+     "name": "Stephon Castle",
+     "cost": 10,
+     "nba": "SAS",
+     "pos": [
+      "PG",
+      "SG"
+     ]
+    },
+    {
+     "name": "Walker Kessler",
+     "cost": 6,
+     "nba": "LAL",
+     "pos": [
+      "C"
+     ]
+    },
+    {
+     "name": "Zach Edey",
+     "cost": 10,
+     "nba": "MEM",
+     "pos": [
+      "C"
+     ]
+    },
+    {
+     "name": "Deni Avdija",
+     "cost": 17,
+     "nba": "POR",
+     "pos": [
+      "SG",
+      "SF",
+      "PF"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hrsteve",
+   "yahoo_name": "HR Steve",
+   "nomination_order": "-",
+   "start": 201,
+   "salaries": 0,
+   "remaining": 201,
+   "keepers": []
+  },
+  {
+   "id": "theogog",
+   "yahoo_name": "The OG OG 💾",
+   "nomination_order": "-",
+   "start": 207,
+   "salaries": 0,
+   "remaining": 207,
+   "keepers": []
+  },
+  {
+   "id": "whyyy",
+   "yahoo_name": "Whyyy sooooo Gilgeous??!🃏",
+   "nomination_order": "-",
+   "start": 203,
+   "salaries": 141,
+   "remaining": 62,
+   "keepers": [
+    {
+     "name": "Nikola Jokić",
+     "cost": 89,
+     "nba": "DEN",
+     "pos": [
+      "C"
+     ]
+    },
+    {
+     "name": "Naz Reid",
+     "cost": 16,
+     "nba": "CHA",
+     "pos": [
+      "PF",
+      "C"
+     ]
+    },
+    {
+     "name": "Alperen Şengün",
+     "cost": 36,
+     "nba": "HOU",
+     "pos": [
+      "PF",
+      "C"
+     ]
+    }
+   ]
+  }
+ ],
+ "totals": {
+  "keepers": 35,
+  "keeper_dollars": 632,
+  "auction_dollars": 1790,
+  "auction_spots": 97
+ },
+ "errors": []
+}

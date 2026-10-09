@@ -10,9 +10,12 @@ Key choices, and why:
     that volume, then z-score those impacts.
   * The z-score pool is refined iteratively. Including 234 players when only 132 get
     rostered drags the means down and inflates everyone's z-scores.
-  * Availability is blended, not absolute: blended_games = (1-a)*games + a*ref_games.
-    This league allows 88 acquisitions (6/wk), so absences are partly streamable and a
-    pure-totals penalty would overstate them.
+  * Availability is WAIVER-FILL by default: season = games*per_game + (82-games)*waiver_line,
+    where waiver_line is the per-game production of the best unrostered players. With 2 IL
+    slots and 88 acquisitions (6/wk), a missed game gets streamed, not lost, so value above
+    replacement is games*(per_game - waiver_line). Durability is only worth something on top
+    of above-waiver production. The older blend (blended_games = (1-a)*games + a*ref) is kept
+    behind tuning.availability_model = "blend".
   * Inflation multiplies only the SURPLUS above $1, because no player can cost under $1.
 """
 import csv, json, math, re, unicodedata, collections
@@ -45,16 +48,36 @@ def load_players(path):
 def blended_games(p, ref, alpha):
     return (1 - alpha) * p['games'] + alpha * ref
 
-def compute_totals(players, alpha):
+def compute_totals(players, alpha, model='blend', waiver=None, fill_games=82.0):
+    """Season totals per player. model='blend': counting stats x blended games.
+    model='waiver_fill': own per-game for games played, `waiver` per-game line for the rest."""
     ref = sorted(p['games'] for p in players)[len(players) // 2]
     for p in players:
-        g = blended_games(p, ref, alpha)
+        if model == 'waiver_fill':
+            g = p['games']; f = max(0.0, fill_games - g); w = waiver
+        else:
+            g = blended_games(p, ref, alpha); f = 0.0; w = None
         p['bg'] = g
-        for c in COUNTING: p['t_' + c] = p[c] * g
+        for c in COUNTING: p['t_' + c] = p[c] * g + (w[c] * f if f else 0.0)
         for pc, att in PCT.items():
-            p['t_' + att] = p[att] * g              # total attempts
-            p['t_' + pc.replace('_pct', 'm')] = p[pc] * p[att] * g   # total makes
+            mk = 't_' + pc.replace('_pct', 'm')
+            p['t_' + att] = p[att] * g + (w[att] * f if f else 0.0)          # total attempts
+            p[mk] = p[pc] * p[att] * g + (w[pc] * w[att] * f if f else 0.0)  # total makes
     return ref
+
+def waiver_line(players, rostered, depth=24):
+    """Per-game line of the best UNROSTERED players: per-game ranks rostered+1..rostered+depth.
+    This is what a streamed replacement produces on the nights a rostered player sits."""
+    compute_totals(players, 1.0)            # alpha=1: everyone at the same games -> per-game rank
+    refine_pool(players, rostered)
+    for p in players: p['Vw'] = weighted_value(p, {})
+    wire = sorted(players, key=lambda p: -p['Vw'])[rostered:rostered + depth]
+    line = {c: sum(p[c] for p in wire) / len(wire) for c in COUNTING}
+    for pc, att in PCT.items():
+        a = sum(p[att] for p in wire) / len(wire)
+        m = sum(p[pc] * p[att] for p in wire) / len(wire)
+        line[att] = a; line[pc] = m / a if a else 0.0
+    return line
 
 def zscores(players, pool):
     """Z-scores for every player, with means/SDs taken from `pool` only."""
@@ -69,7 +92,8 @@ def zscores(players, pool):
         mk = 't_' + pc.replace('_pct', 'm')
         tot_m = sum(p[mk] for p in pool); tot_a = sum(p['t_' + att] for p in pool)
         rate = tot_m / tot_a if tot_a else 0.0
-        imps = [p['t_' + att] * (p[pc] - rate) for p in pool]
+        # makes above what a pool-average shooter gets on the same attempts
+        imps = [p[mk] - rate * p['t_' + att] for p in pool]
         mu = sum(imps) / len(imps)
         sd = math.sqrt(sum((x - mu) ** 2 for x in imps) / len(imps)) or 1e-9
         stats[pc] = (mu, sd, rate)
@@ -82,7 +106,7 @@ def zscores(players, pool):
             z[c] = -v if c in INVERTED else v
         for pc, att in PCT.items():
             mu, sd, rate = stats[pc]
-            p['imp_' + pc] = p['t_' + att] * (p[pc] - rate)
+            p['imp_' + pc] = p['t_' + pc.replace('_pct', 'm')] - rate * p['t_' + att]
             z[pc] = (p['imp_' + pc] - mu) / sd
         p['z'] = z
         p['V'] = sum(z.values())

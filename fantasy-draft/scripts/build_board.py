@@ -16,16 +16,35 @@ def main(root):
     rostered = nteams * spots
     budget_of = {t['id']: t['budget'] for t in cfg['teams_list']}
     TB = sum(budget_of.values())
-    alpha = cfg['tuning']['availability_blend']
-    margin = cfg['tuning']['target_margin']
+    tun = cfg['tuning']
+    alpha = tun['availability_blend']
+    model = tun.get('availability_model', 'blend')
+    margin = tun['target_margin']
 
     players = V.load_players(f'{root}/data/projections.csv')
-    ref = V.compute_totals(players, alpha)
+    wline = None
+    if model == 'waiver_fill':
+        wline = V.waiver_line(players, rostered, tun.get('waiver_depth', 24))
+    ref = V.compute_totals(players, alpha, model, wline, tun.get('waiver_fill_games', 82))
     pool, stats = V.refine_pool(players, rostered)
     ranked, repl = V.fair_dollars(players, rostered, TB)
 
     # ---- keepers ------------------------------------------------------------
-    keepers = list(csv.DictReader(open(f'{root}/data/keepers.csv', encoding='utf-8')))
+    # Yahoo's room is the default truth: it enforces budgets and blocks nominating keepers.
+    ksrc = cfg['keepers'].get('source_of_truth', 'league_sheet')
+    if ksrc == 'yahoo_room':
+        room = json.load(open(f"{root}/{cfg['keepers']['room_file']}", encoding='utf-8'))
+        if room.get('errors'): sys.exit(f"FATAL yahoo_room.json failed its checks: {room['errors']}")
+        for t in room['teams']:
+            if t['start'] != budget_of[t['id']]:
+                sys.exit(f"FATAL {t['id']}: Yahoo start ${t['start']} != league.json ${budget_of[t['id']]}")
+        keepers = [{'player': k['name'], 'owner': t['id'], 'owner_canon': t['id'],
+                    'keeper_cost': k['cost']} for t in room['teams'] for k in t['keepers']]
+        team_salaries = {t['id']: t['salaries'] for t in room['teams']}
+    else:
+        keepers = list(csv.DictReader(open(f'{root}/data/keepers.csv', encoding='utf-8')))
+        team_salaries = {r['owner_canon']: float(r['sheet_keeper_cost'] or 0) for r in
+                         csv.DictReader(open(f'{root}/data/teams.csv', encoding='utf-8'))}
     aliases = json.load(open(f'{root}/data/player_aliases.json', encoding='utf-8'))
     idx = V.build_index(players, aliases)
     kept, unmatched, fuzzy = {}, [], []
@@ -38,6 +57,9 @@ def main(root):
         else:
             unmatched.append((k['player'], k['owner'], cost, how))
     keeper_dollars = sum(float(k['keeper_cost']) for k in keepers)
+    kc_by_team = collections.Counter()
+    for k in keepers: kc_by_team[k['owner_canon']] += float(k['keeper_cost'])
+    recon_bad = [t for t in budget_of if abs(kc_by_team[t] - float(team_salaries.get(t, 0))) > 0.5]
     auction_dollars = TB - keeper_dollars
     auction_spots = rostered - len(keepers)
 
@@ -65,7 +87,10 @@ def main(root):
                  'auction_dollars': auction_dollars, 'auction_spots': auction_spots,
                  'inflation_multiplier': round(k_infl, 4),
                  'replacement_V': round(repl, 4), 'ref_games': ref,
-                 'availability_blend': alpha, 'target_margin': margin},
+                 'dollars_per_vorp': (TB - rostered) / (sum(max(p['vorp'], 0) for p in ranked[:rostered]) or 1e-9),
+                 'availability_model': model, 'availability_blend': alpha,
+                 'waiver_line': wline, 'keeper_source': ksrc, 'me': cfg.get('me'),
+                 'target_margin': margin},
       'sigma_match': {c: round(s, 3) for c, s in sig.items()},
       'unmatched_keepers': [{'player': n, 'owner': o, 'cost': c, 'why': h}
                             for n, o, c, h in unmatched],
@@ -88,14 +113,26 @@ def main(root):
 
     # ---- report -------------------------------------------------------------
     print(f"league {cfg['name']}: {nteams} teams x {spots} spots = {rostered} rostered")
+    print(f"availability model: {model}" + (f" (waiver line {wline['pts']:.1f}p {wline['tpm']:.1f}3 "
+          f"{wline['reb']:.1f}r {wline['ast']:.1f}a)" if wline else f" alpha={alpha}"))
+    print(f"keeper source: {ksrc}")
     print(f"budget ${TB:.0f} | keepers {len(keepers)} costing ${keeper_dollars:.0f}")
     print(f"auction ${auction_dollars:.0f} for {auction_spots} spots (${auction_dollars/auction_spots:.2f}/spot)")
     print(f"fair value of the {auction_spots}-player auction pool: ${rem_val:.0f}")
     print(f"\n>>> INFLATION MULTIPLIER = {k_infl:.3f}  "
           f"({'inflation' if k_infl>1 else 'DEFLATION'}: a $40 fair player costs "
           f"${1+(40-1)*k_infl:.0f})")
-    if not (0.8 <= k_infl <= 1.6):
-        print("    !! outside the plausible 0.8-1.6 band -- check the keeper list")
+    # the verification checks -- each must say PASS
+    fair_sum = sum(p['fair'] for p in ranked[:rostered])
+    max_sum = sum(1 + (p['fair'] - 1) * k_infl for p in auction_pool)
+    checks = [('fair values over top %d sum to budget $%.0f' % (rostered, TB), abs(fair_sum - TB) < 0.01),
+              ('MAX over the %d-player auction pool sums to $%.0f' % (auction_spots, auction_dollars),
+               abs(max_sum - auction_dollars) < 0.01),
+              ('keeper costs reconcile per team (%d mismatches)' % len(recon_bad), not recon_bad),
+              ('inflation %.3f inside 0.8-1.6' % k_infl, 0.8 <= k_infl <= 1.6)]
+    print()
+    for name, ok in checks: print(f"  [{'PASS' if ok else 'FAIL'}] {name}")
+    if not all(ok for _, ok in checks): print("  !! a check FAILED -- do not trust this board")
     if fuzzy:
         print(f"\nkeepers matched non-exactly ({len(fuzzy)}) -- verify these:")
         for a,b,h in fuzzy: print(f"    {a:26s} -> {b:26s} via {h}")
