@@ -1,0 +1,164 @@
+{
+  "name": "OG Keepers",
+  "yahoo_league_id": 36010,
+  "season": "2026-27",
+  "draft": {
+    "type": "live_salary_cap_auction",
+    "datetime": "2026-10-09T21:30:00-05:00",
+    "nomination_seconds": 30,
+    "bid_seconds": 20
+  },
+  "scoring": {
+    "type": "h2h_categories",
+    "categories": [
+      "fg_pct",
+      "ft_pct",
+      "tpm",
+      "pts",
+      "reb",
+      "ast",
+      "stl",
+      "blk",
+      "to"
+    ],
+    "inverted": [
+      "to"
+    ],
+    "percentage": {
+      "fg_pct": "fga",
+      "ft_pct": "fta"
+    }
+  },
+  "teams": 12,
+  "roster": {
+    "slots": [
+      "PG",
+      "SG",
+      "G",
+      "SF",
+      "PF",
+      "F",
+      "C",
+      "Util",
+      "BN",
+      "BN",
+      "BN"
+    ],
+    "active_spots": 11,
+    "il_slots": 2,
+    "_note": "IL slots are not drafted. Last season's draft was exactly 154 picks = 14 teams x 11, confirming 11 drafted spots."
+  },
+  "keepers": {
+    "escalator_per_year": 6,
+    "source_of_truth": "league_sheet",
+    "_note": "Escalator is +$6/yr, not +$5. Yahoo's Keeper Salary field is blank or stale for 20 of 28 rows, so the league sheet is authoritative for both membership and price."
+  },
+  "departed_teams": [
+    "wingfreak",
+    "the city",
+    "maatombo"
+  ],
+  "new_teams": [
+    "hr steve"
+  ],
+  "tuning": {
+    "availability_blend": 0.5,
+    "target_margin": 0.175,
+    "punt_weight_threshold": 0.3,
+    "_availability_note": "88 season acquisitions (6/wk) makes streaming around absences easy, so lean toward per-game.",
+    "_depth_note": "132 rostered of 234 projected players. Shallow pool: replacement level is high, stars are relatively more valuable, punting is less forced than in a 14-team league.",
+    "_playoff_note": "8 of 12 teams make playoffs (67%), so prefer ceiling over floor."
+  },
+  "teams_list": [
+    {
+      "id": "ocaptains",
+      "budget": 201,
+      "aliases": [
+        "🚢 O Captains My Captains",
+        "O Captain My Captains"
+      ]
+    },
+    {
+      "id": "2bert",
+      "budget": 201,
+      "aliases": [
+        "2bert 2furious"
+      ]
+    },
+    {
+      "id": "amens",
+      "budget": 200,
+      "aliases": [
+        "Amen’s Apostles",
+        "Amen's Apostles"
+      ]
+    },
+    {
+      "id": "andtai",
+      "budget": 205,
+      "aliases": [
+        "AND TAI1",
+        "AND TAI 1"
+      ]
+    },
+    {
+      "id": "batmanu",
+      "budget": 201,
+      "aliases": [
+        "batmanu welcomes wemby"
+      ]
+    },
+    {
+      "id": "bbspartan",
+      "budget": 201,
+      "aliases": [
+        "BB® Spartan Beasts"
+      ]
+    },
+    {
+      "id": "chaqing",
+      "budget": 201,
+      "aliases": [
+        "cha Qing Dynasty"
+      ]
+    },
+    {
+      "id": "dynasty",
+      "budget": 200,
+      "aliases": [
+        "dy-nasty warrior"
+      ]
+    },
+    {
+      "id": "jamesthrones",
+      "budget": 201,
+      "aliases": [
+        "James of Thrones"
+      ]
+    },
+    {
+      "id": "hrsteve",
+      "budget": 201,
+      "aliases": [
+        "HR Steve"
+      ]
+    },
+    {
+      "id": "theogog",
+      "budget": 207,
+      "aliases": [
+        "The OG OG 💾",
+        "The OG OG"
+      ]
+    },
+    {
+      "id": "whyyy",
+      "budget": 203,
+      "aliases": [
+        "Whyyy sooooo Gilgeous??!🃏",
+        "Whyy Sooooo Gilgeous??!"
+      ]
+    }
+  ],
+  "_budget_note": "Not flat $200: each team is $200 + bracket-challenge winnings. Verified identical between the league sheet (starting+winnings) and Yahoo's draft budget table. Team names differ between the two sources, so aliases are explicit rather than fuzzy-matched."
+}
