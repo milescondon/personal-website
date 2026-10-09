@@ -190,6 +190,25 @@ the closed form `sqrt(2×11)=4.69`. Punt threshold `w<0.3`.
 
 ---
 
+## 4b. The Draft Room web page
+
+https://claude.ai/artifact/5uQ4uJacVXoj694L1XTVru, a private claude.ai page with the
+`db` capability. It is the primary sale log for the draft.
+
+- `web/engine.js` is a line-for-line port of `draft_state.py` + `opponents.py` + name
+  resolution, copying Python's round-half-even and half-even formatting.
+- `web/build_web.py parity <seed> <out>` records a simulated draft through the Python engine;
+  `node web/parity_test.js <fixtures>` replays it through the JS engine. 3 seeded drafts (412
+  commands, 51 rejected) match exactly; 4 planted mutations are each caught.
+- State lives in the artifact db doc `draft/state` as `{rev, state, saved_at}`, mirrored to
+  localStorage. The page adopts whichever copy has the higher `rev`.
+- `draft_state.py import <file>` adopts a saved copy of that doc so chat can answer questions
+  from the live log.
+- Rebuild + republish: `python3 -I fantasy-draft/web/build_web.py data && python3 -I
+  fantasy-draft/web/build_web.py page`, then publish `web/dist/draft-room.html` to the same URL.
+  The board data is baked into the page, so a board rebuild (e.g. a keeper change at 9pm)
+  needs a republish. The db log survives republishes.
+
 ## 5. Remaining work
 
 - **~9:00pm CDT:** save the Draft Results page after nomination order is set → `sync`. Enables

@@ -523,6 +523,21 @@ def main(argv):
         if os.path.exists(STATE): journal("INIT --force (previous state discarded)")
         save_state(fresh_state(cfg, room)); print("fresh draft state from the Yahoo room")
         Ctx(); return
+    if line.startswith('import'):
+        # adopt the web Draft Room's state (ArtifactData get of draft/state, saved to a file)
+        src = line[len('import'):].strip()
+        doc = load_json(src)
+        doc = doc.get('data', doc)                     # an ArtifactData get wraps it in data
+        new = doc.get('state', doc)                    # the page wraps it in {rev, state}
+        cfg = load_json(os.path.join(ROOT, 'league.json'))
+        want = {t['id'] for t in cfg['teams_list']}
+        if set(new.get('teams', {})) != want or not isinstance(new.get('picks'), list):
+            die("that file is not a draft state for this league -- nothing changed")
+        if os.path.exists(STATE): journal("IMPORT replaced previous state")
+        save_state(new); journal(f"IMPORT {src} rev={doc.get('rev')}")
+        ctx = Ctx()
+        n = len([e for e in new['picks'] if e['type'] == 'pick'])
+        print(f"imported {n} sales from the Draft Room (rev {doc.get('rev')})"); cmd_status(ctx); return
     ctx = Ctx()
     force = line.endswith('!')
     line = line.rstrip('!').strip()

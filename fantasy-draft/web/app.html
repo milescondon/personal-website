@@ -1,0 +1,547 @@
+<title>OG Keepers Draft Room</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;600;700&display=swap">
+<style>
+/* Layout: a courtside scorer's table. Command line on top, the nominee's price card is the
+   scoreboard; board, rivals and your roster sit in columns that stack on a phone. */
+:root {
+  --bg: #eef1f5; --surface: #ffffff; --raised: #f6f8fa; --ink: #142031; --muted: #5a6778;
+  --line: #d6dde6; --accent: #cf5317; --accent-ink: #ffffff; --accent-soft: #fbe7dc;
+  --good: #17805a; --good-soft: #dff2ea; --warn: #9a6512; --warn-soft: #f8ecd2;
+  --bad: #b8322a; --bad-soft: #f8dfdc; --me: #fff3e9;
+  --f-display: "Big Shoulders Display", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --f-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --r: 6px;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0d141e; --surface: #152031; --raised: #1a2738; --ink: #e6ecf3; --muted: #8b99ab;
+  --line: #26344a; --accent: #f0793a; --accent-ink: #1a0d05; --accent-soft: #3a2316;
+  --good: #47c08b; --good-soft: #143127; --warn: #e2a948; --warn-soft: #33270f;
+  --bad: #f06a5e; --bad-soft: #3a1a18; --me: #2a2016; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #0d141e; --surface: #152031; --raised: #1a2738; --ink: #e6ecf3; --muted: #8b99ab;
+  --line: #26344a; --accent: #f0793a; --accent-ink: #1a0d05; --accent-soft: #3a2316;
+  --good: #47c08b; --good-soft: #143127; --warn: #e2a948; --warn-soft: #33270f;
+  --bad: #f06a5e; --bad-soft: #3a1a18; --me: #2a2016; color-scheme: dark; }
+html, body { height: 100%; }
+body { background: var(--bg); color: var(--ink); font: 14px/1.45 var(--f-body); }
+.wrap { padding-inline: 16px; padding-block: 12px 40px; max-width: 1500px; margin: 0 auto; display: grid; gap: 12px; }
+h2 { font: 800 15px/1 var(--f-display); letter-spacing: .08em; text-transform: uppercase; margin: 0; color: var(--muted); }
+.num { font-variant-numeric: tabular-nums; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* top bar */
+.top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; }
+.brand { font: 800 22px/1 var(--f-display); letter-spacing: .02em; margin-right: auto; }
+.brand small { font: 600 12px var(--f-body); color: var(--muted); letter-spacing: 0; margin-left: 6px; }
+.stat { display: flex; flex-direction: column; min-width: 0; }
+.stat b { font: 800 22px/1 var(--f-display); font-variant-numeric: tabular-nums; }
+.stat span { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.pill { font-size: 12px; padding: 2px 8px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+.pill.ok { color: var(--good); border-color: var(--good); }
+.pill.err { color: var(--bad); border-color: var(--bad); }
+
+/* command line */
+.cmd { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 6px; display: grid; gap: 6px; }
+.cmd-row { display: flex; gap: 8px; }
+#cmd { flex: 1; min-width: 0; font: 500 18px/1.2 var(--f-mono); padding: 12px 14px; border-radius: var(--r);
+       border: 2px solid var(--line); background: var(--surface); color: var(--ink); }
+#cmd:focus { border-color: var(--accent); outline: none; }
+#go { padding: 0 16px; border-radius: var(--r); border: 0; background: var(--accent); color: var(--accent-ink); font-weight: 700; }
+.sugs { display: flex; flex-wrap: wrap; gap: 6px; min-height: 28px; }
+.sug { border: 1px solid var(--line); background: var(--surface); border-radius: 99px; padding: 3px 10px; font-size: 13px; }
+.sug b { font-variant-numeric: tabular-nums; color: var(--accent); margin-left: 4px; }
+.sug.first { border-color: var(--accent); }
+.result { font: 13px/1.4 var(--f-mono); padding: 8px 10px; border-radius: var(--r); background: var(--surface); border-left: 4px solid var(--line); white-space: pre-wrap; overflow-wrap: anywhere; }
+.result.ok { border-left-color: var(--good); }
+.result.err { border-left-color: var(--bad); background: var(--bad-soft); }
+.hint { font-size: 12px; color: var(--muted); }
+.hint code { font-family: var(--f-mono); background: var(--raised); padding: 0 4px; border-radius: 3px; }
+
+/* grid */
+.grid { display: grid; gap: 12px; grid-template-columns: minmax(0, 1fr); align-items: start; }
+@media (min-width: 760px) { .grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+@media (min-width: 1180px) { .grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) minmax(0, 1fr); } }
+.col { display: grid; gap: 12px; min-width: 0; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 12px; display: grid; gap: 10px; min-width: 0; }
+.panel.flash { animation: flash 900ms ease-out; }
+@keyframes flash { from { box-shadow: 0 0 0 3px var(--accent); } to { box-shadow: 0 0 0 0 transparent; } }
+@media (prefers-reduced-motion: reduce) { .panel.flash { animation: none; } }
+.ph { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+
+/* nominee scoreboard */
+.nominee { border: 2px solid var(--ink); }
+.nm-name { font: 800 26px/1.05 var(--f-display); letter-spacing: .01em; text-wrap: balance; }
+.nm-meta { color: var(--muted); font-size: 13px; }
+.board-nums { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.bn { background: var(--raised); border-radius: var(--r); padding: 8px 10px; display: grid; gap: 2px; }
+.bn span { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.bn b { font: 800 40px/1 var(--f-display); font-variant-numeric: tabular-nums; }
+.bn.max { background: var(--accent); color: var(--accent-ink); }
+.bn.max span { color: var(--accent-ink); opacity: .85; }
+.verdict { font-weight: 700; padding: 6px 10px; border-radius: var(--r); }
+.verdict.safe { background: var(--good-soft); color: var(--good); }
+.verdict.fold { background: var(--bad-soft); color: var(--bad); }
+.verdict.open { background: var(--warn-soft); color: var(--warn); }
+.cats { display: flex; flex-wrap: wrap; gap: 4px; }
+.cat { font: 500 12px var(--f-mono); padding: 2px 6px; border-radius: 4px; }
+.cat.g { background: var(--good-soft); color: var(--good); }
+.cat.b { background: var(--bad-soft); color: var(--bad); }
+.kv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 10px; font-size: 13px; }
+.kv dt { color: var(--muted); }
+.kv dd { margin: 0; min-width: 0; }
+.empty { color: var(--muted); font-size: 13px; }
+
+/* alerts */
+.alerts { display: grid; gap: 6px; }
+.alert { font-size: 13px; padding: 6px 8px; border-radius: 4px; background: var(--warn-soft); color: var(--ink); border-left: 3px solid var(--warn); }
+.alert.new { border-left-color: var(--accent); background: var(--accent-soft); }
+
+/* tables */
+.tw { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { text-align: left; font-weight: 600; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; padding: 4px 6px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { padding: 5px 6px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; }
+td.name { white-space: normal; min-width: 9em; }
+tbody tr.click { cursor: pointer; }
+tbody tr.click:hover { background: var(--raised); }
+tr.me td { background: var(--me); font-weight: 600; }
+td.maxc { font-weight: 700; color: var(--accent); }
+.tag { font-size: 11px; color: var(--muted); }
+.filters { display: flex; gap: 4px; flex-wrap: wrap; }
+.filters button { border: 1px solid var(--line); background: var(--surface); border-radius: 4px; padding: 2px 8px; font-size: 12px; }
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+
+/* me: category bars */
+.cbar { display: grid; grid-template-columns: 3.2em minmax(0, 1fr) 3.4em 2.8em; align-items: center; gap: 6px; font-size: 12px; }
+.cbar .track { position: relative; height: 10px; background: var(--raised); border-radius: 3px; }
+.cbar .mid { position: absolute; left: 50%; top: -2px; bottom: -2px; width: 1px; background: var(--muted); }
+.cbar .fill { position: absolute; top: 0; bottom: 0; border-radius: 3px; }
+.cbar .fill.pos { background: var(--good); }
+.cbar .fill.neg { background: var(--bad); }
+.cbar .w.low { color: var(--bad); font-weight: 700; }
+
+.nomlist { display: grid; gap: 8px; font-size: 13px; }
+.nomlist h3 { margin: 0; font: 700 12px var(--f-body); text-transform: uppercase; letter-spacing: .06em; }
+.nomlist ul { margin: 2px 0 0; padding-left: 18px; }
+.logrow { display: flex; justify-content: space-between; gap: 8px; font: 12px var(--f-mono); border-bottom: 1px solid var(--line); padding-block: 3px; }
+.logrow span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btns { display: flex; flex-wrap: wrap; gap: 6px; }
+.btn { border: 1px solid var(--line); background: var(--raised); border-radius: 4px; padding: 4px 10px; font-size: 13px; }
+.btn.danger { color: var(--bad); border-color: var(--bad); }
+textarea.copy { width: 100%; min-height: 80px; font: 11px var(--f-mono); background: var(--raised); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; }
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <div class="brand">OG Keepers Draft Room<small id="who"></small></div>
+    <div class="stat"><b id="s-k" class="num">–</b><span>Inflation</span></div>
+    <div class="stat"><b id="s-sold" class="num">–</b><span>Sold</span></div>
+    <div class="stat"><b id="s-me" class="num">–</b><span>You: left / open</span></div>
+    <div class="stat"><b id="s-maxbid" class="num">–</b><span>Your max bid</span></div>
+    <span id="sync" class="pill">Loading…</span>
+  </div>
+
+  <form class="cmd" id="cmdform" autocomplete="off">
+    <div class="cmd-row">
+      <label for="cmd" hidden>Command</label>
+      <input id="cmd" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="durant 54 theo   ·   giannis?   ·   undo">
+      <button id="go" type="submit">Enter</button>
+    </div>
+    <div class="sugs" id="sugs" aria-live="polite"></div>
+    <div class="result" id="result" hidden></div>
+    <div class="hint">Type a name to price him. Add a price and team to log the sale: <code>murray 55 hr</code>. Teams: <code>t1</code>–<code>t12</code> once the order is set, or a prefix like <code>am</code>, <code>theo</code>, <code>me</code>. Tab picks the first suggestion, ↑ recalls the last line. <code>undo</code> · <code>punt ft</code> · <code>adj am -5</code> · <code>new Name 2 hr</code> · end with <code>!</code> to force.</div>
+  </form>
+
+  <div class="grid">
+    <div class="col">
+      <section class="panel nominee" id="p-nominee" aria-live="polite"></section>
+      <section class="panel" id="p-alerts"><div class="ph"><h2>Alerts</h2></div><div class="alerts" id="alerts"></div></section>
+      <section class="panel" id="p-nom"><div class="ph"><h2>What to nominate</h2></div><div class="nomlist" id="nom"></div></section>
+    </div>
+    <div class="col">
+      <section class="panel" id="p-board">
+        <div class="ph"><h2>Best available for you</h2>
+          <div class="filters" id="filters" role="group" aria-label="Filter by position"></div></div>
+        <div class="tw"><table><thead><tr><th>Player</th><th>Pos</th><th class="r">MAX</th><th class="r">TGT</th><th class="r">Mkt</th><th class="r">GP</th></tr></thead><tbody id="board"></tbody></table></div>
+      </section>
+    </div>
+    <div class="col">
+      <section class="panel" id="p-teams">
+        <div class="ph"><h2>Rivals</h2><span class="tag" id="roomavg"></span></div>
+        <div class="tw"><table><thead><tr><th>Team</th><th class="r">Left</th><th class="r">Open</th><th class="r">Max bid</th><th class="r">$/spot</th><th>Needs</th></tr></thead><tbody id="teams"></tbody></table></div>
+      </section>
+      <section class="panel" id="p-me"><div class="ph"><h2>Your team</h2><span class="tag" id="punts"></span></div><div id="me"></div></section>
+      <section class="panel" id="p-log">
+        <div class="ph"><h2>Sales</h2><button class="btn" id="undo" type="button">Undo last</button></div>
+        <div id="log"></div>
+        <div class="btns">
+          <label class="btn" for="yfile">Check Yahoo page…</label>
+          <input id="yfile" type="file" accept=".html,.htm,text/html" hidden>
+          <button class="btn" id="copy" type="button">Copy state</button>
+          <button class="btn danger" id="reset" type="button">Reset draft…</button>
+        </div>
+        <div id="tools"></div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<script>/*__ENGINE__*/</script>
+<script>/*__DATA__*/</script>
+<script>
+(function () {
+  'use strict';
+  const DE = window.DraftEngine, DATA = window.DRAFT_DATA, E = DE.create(DATA);
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  const money = DE.money, fx = DE.pyFixed;
+  const LS = 'ogk-draft-room-v1';
+  const TEAM_NAME = {}; for (const t of DATA.room.teams) TEAM_NAME[t.id] = t.yahoo_name;
+
+  // ---------------------------------------------------------------- state + saving
+  let wrap = loadLocal() || { rev: 0, state: E.freshState() };
+  let st = wrap.state, ctx = E.derive(st);
+  let focusKey = null, preview = false, newAlertKeys = new Set(), posFilter = 'All', history = [];
+  let docRef = null, syncMode = 'local', inflight = null, dirty = false;
+
+  function loadLocal() {
+    try { const w = JSON.parse(localStorage.getItem(LS) || 'null'); return w && w.state && w.state.teams ? w : null; }
+    catch (e) { return null; }
+  }
+  function saveLocal() { try { localStorage.setItem(LS, JSON.stringify(wrap)); } catch (e) { /* storage blocked */ } }
+  function setSync(mode, note) {
+    syncMode = mode;
+    const el = $('sync');
+    el.className = 'pill' + (mode === 'saved' ? ' ok' : mode === 'error' ? ' err' : '');
+    el.textContent = { saved: 'Saved', saving: 'Saving…', local: 'This browser only', error: 'Not saved: ' + (note || 'retrying') }[mode] || mode;
+    el.title = mode === 'local' ? 'Cloud storage is unavailable here; the draft is kept in this browser. Use Copy state as a backup.' : '';
+  }
+  function commit(newState) {
+    st = newState;
+    wrap = { rev: wrap.rev + 1, state: st, saved_at: new Date().toISOString() };
+    saveLocal(); pushRemote();
+  }
+  function pushRemote() {
+    if (!docRef) return;
+    if (inflight) { dirty = true; return; }
+    setSync('saving');
+    const payload = JSON.parse(JSON.stringify(wrap));
+    inflight = docRef.set(payload).then(() => { setSync('saved'); }, (e) => {
+      const code = e && e.code;
+      setSync('error', code === 'quota_exceeded' ? 'storage full' : 'retrying');
+      if (code === 'unavailable' || code === 'resource_exhausted') dirty = true;
+    }).then(() => {
+      inflight = null;
+      if (dirty) { dirty = false; setTimeout(pushRemote, 400 + Math.random() * 600); }
+    });
+  }
+  function adopt(w) {
+    wrap = JSON.parse(JSON.stringify(w)); st = wrap.state; saveLocal(); refresh();
+  }
+  (async function connect() {
+    let db = null;
+    try { db = window.claude && window.claude.use ? await window.claude.use('db') : null; } catch (e) { db = null; }
+    if (!db) { setSync('local'); return; }
+    docRef = db.doc('draft/state');
+    try {
+      const snap = await docRef.get();
+      const remote = snap.exists ? snap.data() : null;
+      if (remote && remote.state && (remote.rev || 0) > wrap.rev) adopt(remote);
+      else if (wrap.rev > 0 && (!remote || wrap.rev > (remote.rev || 0))) pushRemote();
+      if (!inflight) setSync('saved');
+      docRef.onSnapshot((s) => {
+        const w = s.exists ? s.data() : null;
+        if (w && w.state && (w.rev || 0) > wrap.rev) adopt(w);
+      }, () => setSync('error', 'connection lost'));
+    } catch (e) { setSync('error', 'cannot reach storage'); }
+  })();
+
+  // ---------------------------------------------------------------- rendering
+  function refresh() { ctx = E.derive(st); render(); }
+  function render() {
+    const me = ctx.teams[ctx.me];
+    const sold = st.picks.filter((e) => e.type === 'pick').length;
+    $('who').textContent = '· ' + (TEAM_NAME[ctx.me] || ctx.me);
+    $('s-k').textContent = fx(ctx.k, 3) + (ctx.k_raw > DE.K_MAX ? '+' : '');
+    $('s-sold').textContent = sold + ' / ' + DATA.auction_spots;
+    $('s-me').textContent = '$' + me.budget + ' / ' + me.open;
+    $('s-maxbid').textContent = '$' + me.max_bid;
+    renderNominee(); renderAlerts(); renderBoard(); renderTeams(); renderMe(); renderNom(); renderLog();
+  }
+
+  function renderNominee() {
+    const el = $('p-nominee');
+    const p = focusKey ? E.byKey.get(focusKey) : null;
+    if (!p) {
+      el.innerHTML = '<div class="ph"><h2>Nominee</h2></div><div class="empty">Type a player\'s name, or click one on the board, to see your walk-away price and who can outbid you.</div>';
+      return;
+    }
+    const sold = ctx.drafted.get(p.key);
+    if (sold || p.kept_by) {
+      el.innerHTML = `<div class="ph"><h2>Nominee</h2></div><div class="nm-name">${esc(p.name)}</div>
+        <div class="verdict open">${sold ? `Sold to ${esc(sold.team)} for $${sold.price} (#${sold.n})` : `Kept by ${esc(p.kept_by)} at ${money(p.keeper_cost)}`}</div>`;
+      return;
+    }
+    const pr = E.myPrice(ctx, p), mx = pr.max;
+    const [ceil, who] = DE.rivalCeiling(ctx, ctx.me);
+    const th = DE.threats(ctx, p, mx), fold = DE.foldRisk(th, mx);
+    const keen = th.filter((r) => r.val >= mx + 2);
+    let verdict;
+    if (!th.length) verdict = `<div class="verdict safe">SAFE: no rival can bid past $${mx}. You win at MAX or less.</div>`;
+    else if (fold.length) verdict = `<div class="verdict fold">FOLD RISK: ${fold.slice(0, 3).map((r) =>
+        `${esc(r.id)} values him ${money(r.val)}${r.need ? ' and needs ' + esc(p.pos.join('/')) : ''} ($${fx(r.per_spot, 0)}/spot)`).join('; ')}. Likely goes past your MAX; don't chase.</div>`;
+    else verdict = `<div class="verdict open">${th.length} rival${th.length > 1 ? 's' : ''} can go past $${mx}; ${keen.length ? 'keen but cash-short: ' + keen.slice(0, 3).map((r) => `${esc(r.id)} ${money(r.val)}`).join(', ') : 'none values him above your MAX'}.</div>`;
+    const cs = DE.catSplit(p);
+    const diff = pr.mine - pr.market;
+    const fit = diff >= 2 ? `fits your categories (+${money(diff)})` : diff <= -2 ? `your categories need him less (−${money(-diff)})` : 'neutral fit';
+    el.innerHTML = `<div class="ph"><h2>${preview ? 'Preview' : 'Nominee'}</h2><span class="tag">${esc(p.pos.join('/'))} · ${esc(p.nba)} · ${fx(p.games, 0)} GP · ${DE.tierOf(pr.market)} · BBM #${fx(p.bbm_rank, 0)}</span></div>
+      <div class="nm-name">${esc(p.name)}</div>
+      <div class="board-nums">
+        <div class="bn max"><span>Max</span><b>$${mx}</b></div>
+        <div class="bn"><span>Target</span><b>$${pr.target}</b></div>
+        <div class="bn"><span>Market</span><b>${money(pr.market)}</b></div>
+      </div>
+      ${verdict}
+      <div class="cats">${cs.good.map(([n, v]) => `<span class="cat g">${n} ${DE.sgn(v, 1)}</span>`).join('')}${cs.bad.map(([n, v]) => `<span class="cat b">${n} ${DE.sgn(v, 1)}</span>`).join('')}</div>
+      <dl class="kv">
+        <dt>Fit</dt><dd>${fit}${pr.capped ? '; capped by your $1-per-slot reserve' : ''}</dd>
+        <dt>You</dt><dd>$${ctx.teams[ctx.me].budget} left, ${ctx.teams[ctx.me].open} open, max bid $${ctx.teams[ctx.me].max_bid}</dd>
+        <dt>Top rival</dt><dd>can bid up to $${ceil}${who ? ' (' + esc(who) + ')' : ''}</dd>
+      </dl>`;
+  }
+
+  function renderAlerts() {
+    const al = DE.alerts(E, ctx);
+    $('alerts').innerHTML = al.length ? al.map(([k, m]) =>
+      `<div class="alert${newAlertKeys.has(k) ? ' new' : ''}">${esc(m)}</div>`).join('')
+      : '<div class="empty">No alerts. Tier cliffs, position runs, inflation swings, punts and cash pace show here as the draft moves.</div>';
+  }
+
+  function renderBoard() {
+    const pos = ['All', 'PG', 'SG', 'SF', 'PF', 'C'];
+    $('filters').innerHTML = pos.map((x) => `<button type="button" data-pos="${x}" aria-pressed="${x === posFilter}">${x}</button>`).join('');
+    const pm = ctx.pricers[ctx.me];
+    const rows = DE.sortBy(ctx.avail.filter((p) => posFilter === 'All' || p.pos.includes(posFilter)), (p) => -pm.adj(p)).slice(0, 40);
+    $('board').innerHTML = rows.map((p) => {
+      const r = E.myPrice(ctx, p);
+      return `<tr class="click" data-key="${esc(p.key)}"><td class="name">${esc(p.name)}</td><td>${esc(p.pos.join('/'))}</td>
+        <td class="r maxc">${r.max}</td><td class="r">${r.target}</td><td class="r">${fx(r.market, 0)}</td><td class="r">${fx(p.games, 0)}</td></tr>`;
+    }).join('');
+  }
+
+  function renderTeams() {
+    const ord = st.nom_order || [];
+    const avg = DE.roomPerSpot(ctx, null);
+    $('roomavg').textContent = `room avg $${fx(avg, 1)}/spot`;
+    const rows = DE.sortBy(ctx.order.map((t) => ctx.teams[t]), (t) => -t.max_bid);
+    $('teams').innerHTML = rows.map((t) => {
+      const tn = ord.includes(t.id) ? `t${ord.indexOf(t.id) + 1} ` : '';
+      const ps = t.open ? t.budget / t.open : 0;
+      return `<tr class="${t.id === ctx.me ? 'me' : ''}"><td><span class="tag">${tn}</span>${esc(t.id)}</td>
+        <td class="r">$${t.budget}</td><td class="r">${t.open}</td><td class="r">$${t.max_bid}</td>
+        <td class="r">${fx(ps, 1)}</td><td>${esc(DE.unfilled(t.roster).join(',') || '–')}</td></tr>`;
+    }).join('');
+  }
+
+  function renderMe() {
+    const me = ctx.teams[ctx.me], { d, w } = ctx.wts[ctx.me];
+    const thr = DATA.punt_threshold;
+    const roster = me.roster.map((p) => `<div class="logrow"><span>${p.kept ? 'K ' : ''}${esc(p.name)}</span><span>${esc((p.pos || []).join('/'))} $${p.price}</span></div>`).join('');
+    const scale = Math.max(6, ...DE.CATS.map((c) => Math.abs(d[c])));
+    const bars = DE.CATS.map((c) => {
+      const v = d[c], pct = Math.min(50, Math.abs(v) / scale * 50);
+      const pinned = c in st.weights_override;
+      return `<div class="cbar"><span>${DE.SHORT[c]}</span><div class="track"><div class="mid"></div>
+        <div class="fill ${v >= 0 ? 'pos' : 'neg'}" style="${v >= 0 ? 'left:50%' : 'right:50%'};width:${pct}%"></div></div>
+        <span class="num">${DE.sgn(v, 1)}</span><span class="w num${w[c] < thr ? ' low' : ''}" title="category weight">${pinned ? 'pin' : fx(w[c], 2)}</span></div>`;
+    }).join('');
+    const lo = DE.CATS.filter((c) => w[c] < thr && d[c] < 0).map((c) => DE.SHORT[c]);
+    $('punts').textContent = lo.length ? 'punting ' + lo.join(', ') : 'no punts yet';
+    $('me').innerHTML = `<div>${roster}</div><div class="tag">Needs: ${esc(DE.unfilled(me.roster).join(', ') || 'none')}. Bars are your category z-sums; the right number is how much each category still counts in your prices.</div>${bars}`;
+  }
+
+  function renderNom() {
+    const n = DE.nominations(ctx);
+    const li = (xs, f) => '<ul>' + xs.slice(0, 3).map((x) => `<li>${f(x)}</li>`).join('') + '</ul>';
+    let html = '';
+    if (n.steal.length) html += `<div><h3>Steal</h3><div class="tag">No rival can outbid you. Nominate and take him.</div>${li(n.steal, (x) => `${esc(x[1].name)}: rivals capped at $${x[2]}`)}</div>`;
+    if (n.push.length) html += `<div><h3>Push</h3><div class="tag">You value him below market and 2+ rivals want him. Drains their cash.</div>${li(n.push, (x) => `${esc(x[1].name)}: market ${money(x[2])}, you ${money(x[3])}, wanted by ${esc(x[4].slice(0, 4).join(', '))}`)}</div>`;
+    if (n.drain.length && !n.push.length) html += `<div><h3>Drain</h3><div class="tag">Pricey, and you're fine losing him at market.</div>${li(n.drain, (x) => `${esc(x[1].name)}: market ${money(x[2])}, ${x[4].length} rivals can afford`)}</div>`;
+    if (n.hold.length) html += `<div><h3>Hold</h3><div class="tag">Your bargains. Don't nominate while rivals are flush.</div>${li(n.hold, (x) => `${esc(x[1].name)}: you ${money(x[3])} vs market ${money(x[2])}`)}</div>`;
+    $('nom').innerHTML = html || '<div class="empty">No strong signal. Nominate a $1–3 player you would take.</div>';
+  }
+
+  function renderLog() {
+    const rows = st.picks.slice().reverse().slice(0, 40).map((e) => e.type === 'pick'
+      ? `<div class="logrow"><span>#${e.n} ${esc(e.player)}</span><span>$${e.price} ${esc(e.team)}</span></div>`
+      : `<div class="logrow"><span>budget fix</span><span>${e.delta > 0 ? '+' : ''}${e.delta} ${esc(e.team)}</span></div>`).join('');
+    $('log').innerHTML = rows || '<div class="empty">No sales yet. Log each one as it closes: <code>name price team</code>.</div>';
+    $('undo').disabled = !st.picks.length;
+  }
+
+  // ---------------------------------------------------------------- command line
+  const input = $('cmd');
+  function namePart(text) {
+    const t = text.replace(/[?!]+$/, '').trim().split(/\s+/).filter(Boolean);
+    if (t.length >= 2 && /^\$?\d+$/.test(t[t.length - 1])) return { name: t.slice(0, -1).join(' '), tail: t.slice(-1) };
+    if (t.length >= 3 && /^\$?\d+$/.test(t[t.length - 2])) return { name: t.slice(0, -2).join(' '), tail: t.slice(-2) };
+    return { name: t.join(' '), tail: [] };
+  }
+  const COMMANDS = new Set(['undo', 'board', 'me', 'teams', 'nom', 'status', 'alerts', 'log', 'check', 'adj', 'punt', 'unpunt', 'order', 'new', 'price', '?']);
+  function suggestions(text) {
+    const { name } = namePart(text);
+    const head = (name.split(/\s+/)[0] || '').toLowerCase();
+    if (!name || COMMANDS.has(head)) return [];
+    const q = DE.canon(name);
+    if (q.length < 2) return [];
+    const parts = DE.nameParts(name).map((w) => DE.canon(w));
+    const hit = ctx.avail.filter((p) => {
+      if (p.key.includes(q)) return true;
+      const pp = DE.nameParts(p.name).map((w) => DE.canon(w));
+      return parts.length >= 2 ? pp[pp.length - 1].startsWith(parts[parts.length - 1]) && pp[0].startsWith(parts[0])
+                               : pp.some((w) => w.startsWith(q));
+    });
+    return DE.sortBy(hit, (p) => -ctx.market.adj(p)).slice(0, 6);
+  }
+  function onInput() {
+    const text = input.value;
+    const sugs = suggestions(text);
+    $('sugs').innerHTML = sugs.map((p, i) => `<button type="button" class="sug${i === 0 ? ' first' : ''}" data-key="${esc(p.key)}">${esc(p.name)}<b>$${E.myPrice(ctx, p).max}</b></button>`).join('');
+    const { name } = namePart(text);
+    if (sugs.length === 1 || (sugs.length && DE.canon(sugs[0].name) === DE.canon(name))) {
+      focusKey = sugs[0].key; preview = true; renderNominee();
+    } else if (sugs.length) {
+      const [p] = E.resolveAvail(ctx, name);
+      if (p) { focusKey = p.key; preview = true; renderNominee(); }
+    }
+  }
+  function acceptSuggestion(key) {
+    const p = E.byKey.get(key); if (!p) return;
+    const { tail } = namePart(input.value);
+    input.value = p.name + ' ' + (tail.length ? tail.join(' ') + ' ' : '');
+    focusKey = key; preview = true;
+    input.focus(); onInput();
+  }
+  function show(lines, ok) {
+    const r = $('result'); r.hidden = false;
+    r.className = 'result ' + (ok ? 'ok' : 'err'); r.textContent = lines.join('\n');
+  }
+  function flash(id) { const el = $(id); el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); el.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+  function run(text) {
+    const r = DE.exec(E, st, text);
+    if (!r.ok) { show(r.lines, false); return false; }
+    history.push(text);
+    if (r.changed) {
+      newAlertKeys = new Set((r.newAlerts || []).map(([k]) => k));
+      commit(r.state); ctx = E.derive(st);
+    }
+    if (r.kind === 'price') { focusKey = r.player.key; preview = false; show([r.player.name + ': priced below'], true); }
+    else if (r.kind === 'pick') { focusKey = r.entry.key; preview = false; show(r.lines.concat((r.newAlerts || []).map(([, m]) => '! ' + m)), true); }
+    else { show(r.lines.length ? r.lines : ['ok'], true); }
+    render();
+    const target = { board: 'p-board', teams: 'p-teams', me: 'p-me', nom: 'p-nom', status: 'p-alerts', log: 'p-log' }[r.kind];
+    if (target) flash(target);
+    return true;
+  }
+  $('cmdform').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const text = input.value.trim(); if (!text) return;
+    if (run(text)) { input.value = ''; $('sugs').innerHTML = ''; }
+    input.focus();
+  });
+  input.addEventListener('input', onInput);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab' && !e.shiftKey) {
+      const first = $('sugs').querySelector('.sug'); if (first) { e.preventDefault(); acceptSuggestion(first.dataset.key); }
+    } else if (e.key === 'ArrowUp' && !input.value && history.length) { e.preventDefault(); input.value = history[history.length - 1]; }
+    else if (e.key === 'Escape') { input.value = ''; $('sugs').innerHTML = ''; }
+  });
+  $('sugs').addEventListener('click', (e) => { const b = e.target.closest('.sug'); if (b) acceptSuggestion(b.dataset.key); });
+  $('board').addEventListener('click', (e) => {
+    const tr = e.target.closest('tr[data-key]'); if (!tr) return;
+    focusKey = tr.dataset.key; preview = false; renderNominee();
+    $('p-nominee').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  });
+  $('filters').addEventListener('click', (e) => { const b = e.target.closest('button[data-pos]'); if (b) { posFilter = b.dataset.pos; renderBoard(); } });
+  $('undo').addEventListener('click', () => { run('undo'); input.focus(); });
+
+  // ---------------------------------------------------------------- backup + reset
+  $('copy').addEventListener('click', () => {
+    const text = JSON.stringify(wrap);
+    const fallback = () => { $('tools').innerHTML = '<textarea class="copy" id="copybox" readonly></textarea><div class="tag">Select all and copy. Paste it to Claude to restore the draft in chat.</div>'; const t = $('copybox'); t.value = text; t.select(); };
+    try { navigator.clipboard.writeText(text).then(() => show(['State copied. Paste it to Claude to restore the draft in chat.'], true), fallback); }
+    catch (e) { fallback(); }
+  });
+  let resetArmed = null;
+  $('reset').addEventListener('click', () => {
+    const n = st.picks.filter((e) => e.type === 'pick').length;
+    if (!resetArmed) {
+      $('reset').textContent = `Erase all ${n} sales? Click again`;
+      resetArmed = setTimeout(() => { resetArmed = null; $('reset').textContent = 'Reset draft…'; }, 4000);
+      return;
+    }
+    clearTimeout(resetArmed); resetArmed = null; $('reset').textContent = 'Reset draft…';
+    const keepOrder = st.nom_order;
+    const fresh = E.freshState(); if (keepOrder && keepOrder.length) fresh.nom_order = keepOrder;
+    commit(fresh); focusKey = null; refresh(); show(['Draft reset. Keepers and budgets reloaded from the Yahoo room.'], true);
+  });
+
+  // ---------------------------------------------------------------- Yahoo page check
+  const normTeam = (s) => (s || '').replace(/’/g, "'").replace(/\s+/g, ' ').trim().toLowerCase();
+  const ALIAS = {}; for (const t of DATA.teams_list) for (const n of [t.id].concat(t.aliases)) ALIAS[normTeam(n)] = t.id;
+  const dollars = (s) => { const m = /-?\$?\s*(-?\d+)/.exec(s || ''); return m ? parseInt(m[1], 10) : null; };
+  $('yfile').addEventListener('change', async (e) => {
+    const f = e.target.files && e.target.files[0]; e.target.value = '';
+    if (!f) return;
+    const doc = new DOMParser().parseFromString(await f.text(), 'text/html');
+    const table = [...doc.querySelectorAll('table')].find((t) => {
+      const h = [...t.querySelectorAll('th')].map((x) => x.textContent.trim());
+      return h.includes('Team') && h.includes('Remaining Budget');
+    });
+    if (!table) { show(["That page has no team budget table. Save Yahoo's Draft Results page and try again."], false); return; }
+    const hdr = [...table.querySelectorAll('thead th, tr:first-child th')].map((x) => x.textContent.trim());
+    const col = (name) => hdr.indexOf(name), nomCol = hdr.findIndex((h) => /^nomination/i.test(h));
+    const rows = [], unknown = [];
+    for (const tr of table.querySelectorAll('tbody tr')) {
+      const td = tr.querySelectorAll('td'); if (td.length < hdr.length) continue;
+      const tcell = td[col('Team')], name = tcell.getAttribute('title') || tcell.textContent.trim();
+      const id = ALIAS[normTeam(name)];
+      if (!id) { unknown.push(name); continue; }
+      const keepers = [...td[col('Keepers')].querySelectorAll('dt a')].map((a) => a.textContent.trim()).sort();
+      rows.push({ id, remaining: dollars(td[col('Remaining Budget')].textContent), nom: nomCol >= 0 ? td[nomCol].textContent.trim() : '', keepers });
+    }
+    if (unknown.length) { show([`Unknown team name(s) on that page: ${unknown.join(', ')}. Nothing changed.`], false); return; }
+    const out = [];
+    const nums = rows.filter((r) => /^\d+$/.test(r.nom));
+    const ns = JSON.parse(JSON.stringify(st)); let changed = false;
+    if (nums.length === E.order.length) {
+      ns.nom_order = DE.sortBy(nums, (r) => parseInt(r.nom, 10)).map((r) => r.id); changed = true;
+      out.push('Nomination order set: ' + ns.nom_order.map((x, i) => `t${i + 1}=${x}`).join(' '));
+    } else out.push('Nomination order not on that page yet (Yahoo sets it about 30 minutes before the draft).');
+    const sold = st.picks.filter((p) => p.type === 'pick').length;
+    if (!sold) {
+      const diffs = rows.filter((r) => {
+        const t = DATA.room.teams.find((x) => x.id === r.id);
+        return t.remaining !== r.remaining || JSON.stringify(t.keepers.map((k) => k.name).sort()) !== JSON.stringify(r.keepers);
+      });
+      if (diffs.length) out.push(`Yahoo's keepers or budgets CHANGED for ${diffs.map((r) => r.id).join(', ')}. Send this page to Claude to rebuild the board before the first sale.`);
+      else out.push("Keepers and budgets match Yahoo's room.");
+    } else {
+      const mism = rows.filter((r) => r.remaining !== null && r.remaining !== ctx.teams[r.id].budget);
+      out.push(mism.length ? mism.map((r) => `MISMATCH ${r.id}: Yahoo $${r.remaining}, tracked $${ctx.teams[r.id].budget}`).join('\n')
+                           : `All ${rows.length} budgets match Yahoo.`);
+    }
+    if (changed) { commit(ns); refresh(); }
+    show(out, !out.some((l) => /CHANGED|MISMATCH/.test(l)));
+  });
+
+  // boot
+  render();
+  input.focus();
+})();
+</script>

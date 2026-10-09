@@ -17,6 +17,20 @@ python3 fantasy-draft/scripts/draft_state.py <Miles's line, verbatim>
 
 Pass his line through unchanged. The script parses the shorthand itself.
 
+## The Draft Room page (primary log tonight)
+
+Miles logs sales in the **Draft Room** web page: https://claude.ai/artifact/5uQ4uJacVXoj694L1XTVru
+It runs the same engine in the browser (`web/engine.js`, which matches the Python engine
+command for command in `web/parity_test.js`) and saves its log to the artifact's
+database under `draft/state`. **Chat is for judgment questions.** When Miles asks something
+that needs the live state, pull the page's log into the Python engine first:
+
+1. `ArtifactData get` with url above, collection `draft`, doc_id `state`, `out_dir` set to the scratchpad.
+2. `python3 fantasy-draft/scripts/draft_state.py import <that saved .json>`.
+3. Then run whatever command answers the question (`me`, `teams`, `nom`, `<player>?`).
+
+Never write to `draft/state` from chat during the draft. The page owns that document.
+
 ## Shorthand
 
 | Miles types | Meaning | Runs |
