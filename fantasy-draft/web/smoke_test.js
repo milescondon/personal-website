@@ -68,6 +68,16 @@ const ok = (cond, msg) => { console.log((cond ? 'PASS ' : 'FAIL ') + msg); if (!
   ok(al.includes('PIVOT'), 'pivot signal fires after two bargain targets sell at full value: ' + al.split('\n')[0].slice(0, 160));
   await run('undo'); await run('undo');
   ok(!(await text('#alerts')).includes('PIVOT'), 'pivot signal clears after undo');
+  ok((await text('#me')).includes('midway between room and market until 4'), 'plan uses the 50/50 guess before any sales');
+  for (const c of ["giannis 77 hr", "flagg 65 theo", "edwards 72 2", "mikal bridges 10 bat", "sheppard 1 cha", "queta 1 jam"]) await run(c);
+  const meL = await text('#me');
+  const wm = meL.match(/learned from (\d+) sales: this room pays like (\d+)% Yahoo/);
+  ok(wm && +wm[1] === 6 && +wm[2] >= 90, 'learned room after 6 Yahoo-priced sales: ' + (wm ? wm[0] : meL.slice(0, 200)));
+  await run('derrick white?');
+  const nmL = await text('#p-nominee');
+  ok(/Likely price\s*~\$\d+ \(learned from 6 sales\)/.test(nmL), 'price card shows a learned likely price: ' + (nmL.match(/Likely price[^\n]*\n?[^\n]*/) || [''])[0].replace(/\s+/g, ' '));
+  for (let i = 0; i < 6; i++) await run('undo');
+  ok((await text('#s-sold')).startsWith('0 /'), 'undo x6 back to 0 sold');
 
   r = await run('maxey 76 me');
   console.log('  maxey 76 me -> result: ' + r.result.replace(/\s+/g, ' ').slice(0, 300) + `  [${r.wall} ms incl. 150ms wait]`);

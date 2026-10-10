@@ -268,8 +268,10 @@ textarea.copy { width: 100%; min-height: 80px; font: 11px var(--f-mono); backgro
   })();
 
   // ---------------------------------------------------------------- rendering
+  const learnMemo = new Map(); let learned = DE.learnRoom(E, st, learnMemo);
   function refresh() { ctx = E.derive(st); render(); }
   function render() {
+    learned = DE.learnRoom(E, st, learnMemo);
     const me = ctx.teams[ctx.me];
     const sold = st.picks.filter((e) => e.type === 'pick').length;
     $('who').textContent = '· ' + (TEAM_NAME[ctx.me] || ctx.me);
@@ -325,6 +327,7 @@ textarea.copy { width: 100%; min-height: 80px; font: 11px var(--f-mono); backgro
       <dl class="kv">
         <dt>Fit</dt><dd>${fit}${pr.capped ? '; capped by your $1-per-slot reserve' : ''}</dd>
         <dt>You</dt><dd>$${ctx.teams[ctx.me].budget} left, ${ctx.teams[ctx.me].open} open, max bid $${ctx.teams[ctx.me].max_bid}</dd>
+        <dt>Likely price</dt><dd>~$${DE.expectedPrice(ctx, p, learned.w)} (${learned.ready ? `learned from ${learned.n} sales` : 'midway between room and market until 4 sales'})</dd>
         <dt>Top rival</dt><dd>can bid up to $${ceil}${who ? ' (' + esc(who) + ')' : ''}</dd>
       </dl>`;
   }
@@ -396,8 +399,11 @@ textarea.copy { width: 100%; min-height: 80px; font: 11px var(--f-mono); backgro
     }).join('');
     const lo = DE.CATS.filter((c) => w[c] < thr && d[c] < 0).map((c) => DE.SHORT[c]);
     $('punts').textContent = lo.length ? 'punting ' + lo.join(', ') : 'no punts yet';
-    const plan = DE.spendPlan(E, ctx);
-    const planHtml = !plan ? (me.open > 0 ? '<div class="tag">No spend plan fits your cash and open positions. Fill your missing positions first.</div>' : '') : `<div class="plan"><div class="tag">Spend plan: the best set of durable players (${DATA.min_gp}+ projected games) you can afford at expected prices (midway between room and market). A guide, not a promise; value-minded rivals bid too.</div>
+    const plan = DE.spendPlan(E, ctx, 50, learned.w);
+    const how = learned.ready
+      ? `learned from ${learned.n} sales: this room pays like ${fx(learned.w * 100, 0)}% Yahoo price, ${fx(100 - learned.w * 100, 0)}% value (off by ~$${fx(learned.err_fit, 0)} a sale, vs $${fx(learned.err_mid, 0)} for a 50/50 guess)`
+      : `midway between room and market until ${DE.LEARN.minN} informative sales show how this room bids (${learned.n} so far)`;
+    const planHtml = !plan ? (me.open > 0 ? '<div class="tag">No spend plan fits your cash and open positions. Fill your missing positions first.</div>' : '') : `<div class="plan"><div class="tag">Spend plan: the best set of durable players (${DATA.min_gp}+ projected games) you can afford at expected prices, ${how}. A guide, not a promise.</div>
       ${plan.picks.map((c) => `<div class="logrow"><span>${esc(c.p.name)}</span><span>~$${c.cost} · worth ${money(c.val)}</span></div>`).join('')}
       ${plan.fillers ? `<div class="logrow"><span>${plan.fillers} × $1 filler</span><span>$${plan.fillers}</span></div>` : ''}
       <div class="logrow sum"><span>Total</span><span>$${plan.spend + plan.fillers} of $${me.budget}</span></div></div>`;

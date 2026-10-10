@@ -37,6 +37,12 @@ rule and the strategy (SKILL.md "Miles's strategy"). Board rebuilt: 4 PASS, infl
 budgets, so an existing page state needs no reset. As of the version 3 publish, the db still had no
 `draft/state` doc, so the page's cloud save had not been exercised yet.
 
+**Update ~8:30pm CDT: version 4 is live.** It adds the learned room (`engine.js learnRoom`, page +
+`web/learn_room.js` for chat; not in the parity test). Fit: price ≈ w·room + (1−w)·market on
+informative sales (|room−market| ≥ $3), shrunk toward w=0.5 with a prior worth ~4 sales; used once
+there are 4+ informative sales. Simulated rooms recover w = 0.96 (Yahoo-priced), 0.03
+(value-priced), 0.50 (midpoint). Smoke test 38/38.
+
 **Next steps, in order:**
 1. **Browser smoke test** of `web/dist/draft-room.html`. This has NOT been run since the
    position-aware plan and the no-plan fallback went in. See "Smoke test" in §4b. Check: no

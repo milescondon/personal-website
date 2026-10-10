@@ -226,7 +226,38 @@
     if (ps.includes('C')) return 'c';
     return 'x';
   }
-  function spendPlan(E, ctx, nCand = 50) {
+  // Learned room (page + chat helper, not in the parity test): how does THIS room price players,
+  // off Yahoo's anchors (room price) or off value (market)? Each sale is compared with the room and
+  // market prices just before it. Fit price ~ w*room + (1-w)*market by least squares on the gap,
+  // shrunk toward the 50/50 prior with PRIOR worth about 4 sales of a $10 gap. Sales where room and
+  // market agree within $3 carry no information and are skipped.
+  const LEARN = { w0: 0.5, prior: 400, minGap: 3, minN: 4 };
+  function learnRoom(E, st, memo) {
+    let sdy = 0, sdd = 0, n = 0, errFit = [], obs = [];
+    const picks = st.picks;
+    for (let i = 0; i < picks.length; i++) {
+      const e = picks[i];
+      if (e.type !== 'pick' || !e.key) continue;
+      const mk = i + '|' + e.t + '|' + e.key + '|' + e.price + '|' + e.team;
+      let o = memo && memo.get(mk);
+      if (!o) {
+        const c = E.derive(Object.assign({}, st, { picks: picks.slice(0, i) })), p = E.byKey.get(e.key);
+        o = p ? { room: roomPrice(c, p), mkt: c.market.adj(p) } : { room: 0, mkt: 0 };
+        if (memo) memo.set(mk, o);
+      }
+      const d = o.room - o.mkt;
+      if (Math.abs(d) < LEARN.minGap) continue;
+      sdy += d * (e.price - o.mkt); sdd += d * d; n++;
+      obs.push([e.price, o.room, o.mkt, e.player]);
+    }
+    const w = Math.min(1, Math.max(0, (sdy + LEARN.w0 * LEARN.prior) / (sdd + LEARN.prior)));
+    const rmse = (f) => (obs.length ? Math.sqrt(fsum(obs.map(([y, r, m]) => Math.pow(y - f(r, m), 2))) / obs.length) : 0);
+    return { w: n >= LEARN.minN ? w : LEARN.w0, w_raw: w, n, ready: n >= LEARN.minN,
+             err_fit: rmse((r, m) => w * r + (1 - w) * m), err_mid: rmse((r, m) => (r + m) / 2), obs };
+  }
+  const expectedPrice = (ctx, p, w) => Math.max(1, pyRound(w * roomPrice(ctx, p) + (1 - w) * ctx.market.adj(p)));
+
+  function spendPlan(E, ctx, nCand = 50, wRoom = 0.5) {
     const me = ctx.teams[ctx.me], slots = me.open, B = me.budget;
     if (slots <= 0 || B < slots) return null;
     const pm = ctx.pricers[ctx.me];
@@ -234,7 +265,7 @@
     for (const p of me.roster) { const g = posGroup(p.pos); if (g in have) have[g]++; }
     const cand = sortBy(ctx.avail, (p) => -pm.adj(p)).slice(0, nCand).map((p) => ({
       p, grp: posGroup(p.pos), val: pm.adj(p),
-      cost: Math.max(1, pyRound((roomPrice(ctx, p) + ctx.market.adj(p)) / 2)) }))
+      cost: expectedPrice(ctx, p, wRoom) }))
       .filter((c) => c.val > 1 && c.p.games >= (E.DATA.min_gp || 0));   // durable players only (Miles's rule)
     return planKnapsack(cand, slots, B, have);
   }
@@ -644,7 +675,7 @@
     }
   }
 
-  return { create, exec, alerts, nominations, roomPrice, roomNominations, spendPlan, planKnapsack, threats, foldRisk, rivalCeiling, roomPerSpot, unfilled,
+  return { create, exec, alerts, nominations, roomPrice, roomNominations, spendPlan, planKnapsack, learnRoom, expectedPrice, LEARN, threats, foldRisk, rivalCeiling, roomPerSpot, unfilled,
            weights, tierOf, catSplit, canon, nameParts, pyRound, pyFixed, sgn, money,
            CATS, SHORT, K_MAX, sortBy };
 });

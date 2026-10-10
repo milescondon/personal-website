@@ -55,6 +55,11 @@ The plan is a guide only.
 - **Don't declare a punt.** The build lands strong in FT%, 3PM, AST, STL and TO, and weak in REB
   and BLK. Low-turnover wings cover Jalen Johnson's TO, so punting TO tested worse.
 - **Nominate early** the players the room overpays (Giannis, Flagg, Edwards, Luka, Booker).
+- **Learned room.** After 4 sales where Yahoo's price and our value differ by $3 or more, the page
+  fits how this room prices (`w` = share of Yahoo price vs value). That fit drives the spend plan
+  and the card's "Likely price". In chat: `node fantasy-draft/web/learn_room.js <saved state.json>
+  [player ...]` prints the fit and likely prices. A high `w` means the room follows Yahoo, so
+  bargains hold; a low `w` means the room prices value, so the bargains won't come.
 - **Pivot signal.** If 2+ bargain targets sell to rivals at full value, the page shows **PIVOT**:
   the cheap mid-tier isn't coming, so move money to the best player left.
 
