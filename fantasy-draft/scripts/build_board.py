@@ -21,7 +21,8 @@ def main(root):
     model = tun.get('availability_model', 'blend')
     margin = tun['target_margin']
 
-    players = V.load_players(f'{root}/data/projections.csv')
+    season = (tun['season_start'], tun['season_end']) if tun.get('season_start') else None
+    players = V.load_players(f'{root}/data/projections.csv', season)
     wline = None
     if model == 'waiver_fill':
         wline = V.waiver_line(players, rostered, tun.get('waiver_depth', 24))

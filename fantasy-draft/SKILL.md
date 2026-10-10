@@ -42,6 +42,22 @@ expect little competition, not a free player. The page also shows a **spend plan
 players Miles can afford at expected prices (midway between room and market), with position rules.
 The plan is a guide only.
 
+## Miles's strategy (decided 2026-10-09; answer judgment questions with it)
+
+- **Durable players only.** Projected games are capped at injury return dates. Anyone under
+  `durability_min_gp` (65) shows **AVOID (durability)** in price checks. Don't recommend bidding on
+  them; they are left out of the spend plan and the LATE list. MAX itself is unchanged.
+- **No big stars at room prices.** In testing, SGA + Maxey + $1 fillers was the worst plan (4.4
+  expected categories won vs 5.6). Maxey at ~$75 is a wash; buy him only below that.
+- **Core: durable wings and guards the room underprices.** Bridges, Bane, White and Murphy, then
+  Sheppard, Queta (the one C), McDaniels, Wiggins, DeRozan and Gillespie. Bid to MAX on them: the
+  edge is price, and money left after the draft is worth nothing.
+- **Don't declare a punt.** The build lands strong in FT%, 3PM, AST, STL and TO, and weak in REB
+  and BLK. Low-turnover wings cover Jalen Johnson's TO, so punting TO tested worse.
+- **Nominate early** the players the room overpays (Giannis, Flagg, Edwards, Luka, Booker).
+- **Pivot signal.** If 2+ bargain targets sell to rivals at full value, the page shows **PIVOT**:
+  the cheap mid-tier isn't coming, so move money to the best player left.
+
 ## Shorthand
 
 | Miles types | Meaning | Runs |

@@ -137,7 +137,7 @@ def room_price(p, rk, market):
     if a is None: return market.adj(p)
     return 1.0 + max(a - 1.0, 0.0) * rk
 
-def room_nominations(avail, teams, me, my_pricer, room, n=5):
+def room_nominations(avail, teams, me, my_pricer, room, n=5, min_gp=0):
     """Overpay: the room will pay well past your value -- nominate early so a rival burns
     the cash.  Late: the room undervalues him -- nominate when budgets are thin."""
     overpay, late = [], []
@@ -146,7 +146,7 @@ def room_nominations(avail, teams, me, my_pricer, room, n=5):
         able = [t for t in rival_rows(teams, me) if t['max_bid'] >= r]
         if r >= 10 and r - mine >= 5 and len(able) >= 2:
             overpay.append((r - mine, p, r, mine))
-        if mine >= 8 and mine - r >= 5:
+        if mine >= 8 and mine - r >= 5 and p['games'] >= min_gp:   # never wait on a player you won't buy
             late.append((mine - r, p, r, mine))
     overpay.sort(key=lambda x: -x[0]); late.sort(key=lambda x: -x[0])
     return overpay[:n], late[:n]

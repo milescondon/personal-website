@@ -19,7 +19,7 @@ function snapshot(ctx) {
     teams, k: ctx.k, k_raw: ctx.k_raw, n_open: ctx.n_open,
     top: top.map((p) => { const r = E.myPrice(ctx, p); return [p.name, r.max, r.target, r.mine, r.market, DE.roomPrice(ctx, p)]; }),
     room_k: ctx.room_k,
-    room_nom: (() => { const r = DE.roomNominations(ctx); return [r.overpay.map((x) => x[1].name), r.late.map((x) => x[1].name)]; })(),
+    room_nom: (() => { const r = DE.roomNominations(ctx, 5, DATA.min_gp || 0); return [r.overpay.map((x) => x[1].name), r.late.map((x) => x[1].name)]; })(),
     alerts: DE.alerts(E, ctx), emitted: [...ctx.st.emitted].sort(), last_k: ctx.st.last_k,
     w: DE.CATS.map((c) => ctx.wts[me].w[c]),
     ceiling: DE.rivalCeiling(ctx, me),

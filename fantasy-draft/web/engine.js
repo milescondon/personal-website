@@ -199,14 +199,14 @@
     if (a === null || a === undefined) return ctx.market.adj(p);
     return 1.0 + Math.max(a - 1.0, 0.0) * ctx.room_k;
   }
-  function roomNominations(ctx, n = 5) {
+  function roomNominations(ctx, n = 5, minGp = 0) {
     const me = ctx.me, pm = ctx.pricers[me], overpay = [], late = [];
     const avail = sortBy(ctx.avail, (p) => -ctx.market.adj(p));
     for (const p of avail.slice(0, 90)) {
       const r = roomPrice(ctx, p), mine = pm.adj(p);
       const able = rivalRows(ctx, me).filter((t) => t.max_bid >= r);
       if (r >= 10 && r - mine >= 5 && able.length >= 2) overpay.push([r - mine, p, r, mine]);
-      if (mine >= 8 && mine - r >= 5) late.push([mine - r, p, r, mine]);
+      if (mine >= 8 && mine - r >= 5 && p.games >= minGp) late.push([mine - r, p, r, mine]);   // never wait on a player you won't buy
     }
     return { overpay: sortBy(overpay, (x) => -x[0]).slice(0, n), late: sortBy(late, (x) => -x[0]).slice(0, n) };
   }
@@ -235,7 +235,7 @@
     const cand = sortBy(ctx.avail, (p) => -pm.adj(p)).slice(0, nCand).map((p) => ({
       p, grp: posGroup(p.pos), val: pm.adj(p),
       cost: Math.max(1, pyRound((roomPrice(ctx, p) + ctx.market.adj(p)) / 2)) }))
-      .filter((c) => c.val > 1);
+      .filter((c) => c.val > 1 && c.p.games >= (E.DATA.min_gp || 0));   // durable players only (Miles's rule)
     return planKnapsack(cand, slots, B, have);
   }
   // Pick at most S of `cand` ({val, cost, grp}) maximizing total val + $1 per unfilled slot,

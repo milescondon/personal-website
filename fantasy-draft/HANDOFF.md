@@ -31,6 +31,12 @@ in a separate `probe` collection, deleted afterwards. The file holds the doc fie
   plan under Your team, with a fallback message when no plan fits.
 - `web/dist/draft-room.html` is rebuilt and matches the current sources exactly.
 
+**Update ~8:20pm CDT: Draft Room version 3 is live.** It adds the injury games cap, the durability
+rule and the strategy (SKILL.md "Miles's strategy"). Board rebuilt: 4 PASS, inflation 1.087. Parity
+3/3, plan 600/600, smoke test 34/34 (`web/smoke_test.js`). The board change moved no keepers or
+budgets, so an existing page state needs no reset. As of the version 3 publish, the db still had no
+`draft/state` doc, so the page's cloud save had not been exercised yet.
+
 **Next steps, in order:**
 1. **Browser smoke test** of `web/dist/draft-room.html`. This has NOT been run since the
    position-aware plan and the no-plan fallback went in. See "Smoke test" in §4b. Check: no
@@ -102,6 +108,8 @@ Decisions Miles made during design (all still binding):
 | Miles's team | **`dynasty`** (dy-nasty warrior), $185, 10 open, Jalen Johnson kept $15 |
 | Room prices | Use Yahoo avg cost + Yahoo projected $ from chaqing's public tool (Miles, 2026-10-09) |
 | Spend plan | Build it (Miles, 2026-10-09), position-aware |
+| Durability | **Avoid injury-prone players** (Miles, 2026-10-09): games capped at injury return dates, `durability_min_gp` 65 → AVOID flag, out of the spend plan and the LATE list. MAX unchanged |
+| Strategy | Durable wings/guards the room underprices; no big stars at room prices; no declared punt; PIVOT signal (SKILL.md) |
 
 ---
 

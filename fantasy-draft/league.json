@@ -70,6 +70,10 @@
     "availability_blend": 0.5,
     "target_margin": 0.175,
     "punt_weight_threshold": 0.3,
+    "season_start": "2026-10-20",
+    "season_end": "2027-04-11",
+    "durability_min_gp": 65,
+    "_durability_note": "Miles, 2026-10-09: avoid injury-prone players. Projected games are capped at what is left after an injury return date (BBM's GP ignored some, e.g. DiVincenzo 82 GP with an Achilles out to April). Players under durability_min_gp projected games are flagged AVOID, left out of the spend plan and the nominate-late list. MAX is unchanged.",
     "_availability_note": "waiver_fill (chosen 2026-10-09): season = GP*per_game + (82-GP)*waiver_line, the per-game line of per-game ranks 133-156. 2 IL slots + 88 adds means missed games are streamed. availability_blend only applies when availability_model='blend' (0.5 there reproduces the 4f2613f board exactly).",
     "_depth_note": "132 rostered of 234 projected players. Shallow pool: replacement level is high, stars are relatively more valuable, punting is less forced than in a 14-team league.",
     "_playoff_note": "8 of 12 teams make playoffs (67%), so prefer ceiling over floor."

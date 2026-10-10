@@ -30,7 +30,20 @@ def canon(s):
     s = re.sub(r'\b(jr|sr|ii|iii|iv)\b', '', s)
     return re.sub(r'[^a-z0-9]+', '', s)
 
-def load_players(path):
+INJ_RETURN = re.compile(r'\(0g\)\s*-\s*(\d{1,2})/(\d{1,2})/(\d{4})')
+
+def injury_cap(games, inj, season):
+    """Cap projected games at what is left of the season after an injury return date.
+    BBM's GP ignored some return dates (DiVincenzo: 82 GP with an Achilles out to April)."""
+    import datetime as dt
+    m = INJ_RETURN.search(inj or '')
+    if not m or not season: return games
+    start, end = (dt.date.fromisoformat(d) for d in season)
+    ret = dt.date(int(m.group(3)), int(m.group(1)), int(m.group(2)))
+    left = 82.0 * min(1.0, max(0.0, (end - ret).days / (end - start).days))
+    return min(games, float(round(left)))
+
+def load_players(path, season=None):
     out = []
     for r in csv.DictReader(open(path, encoding='utf-8')):
         def f(k):
@@ -42,6 +55,8 @@ def load_players(path):
              'bbm_value': f('bbm_value'), 'bbm_rank': f('bbm_rank')}
         for c in COUNTING: p[c] = f(c)
         for pc, att in PCT.items(): p[pc], p[att] = f(pc), f(att)
+        p['games_bbm'] = p['games']
+        p['games'] = injury_cap(p['games'], p['inj'], season)
         out.append(p)
     return out
 

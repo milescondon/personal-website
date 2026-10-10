@@ -306,10 +306,15 @@ def cmd_price(ctx, raw):
            f" -- your cats need him less, -${mkt - mine:.0f}" if mkt - mine >= 2 else '')
     print(f"MAX {money(mx)}  TARGET {money(tgt)}{note}   market {money(mkt)}{diff}")
     rm = ctx.room_price(p)
+    fragile = p['games'] < ctx.cfg['tuning'].get('durability_min_gp', 0)
     rnote = (" -- room likely pays past your MAX; let him go" if rm >= mx + 3 else
-             " -- room may let him go cheap; bid toward TARGET" if rm <= tgt else '')
+             " -- room may let him go cheap; bid toward TARGET" if rm <= tgt and not fragile else '')
     src = '' if p.get('room_anchor') is not None else ' (no Yahoo price; market)'
     print(f"room ~{money(rm)}{src}{rnote}")
+    min_gp = ctx.cfg['tuning'].get('durability_min_gp', 0)
+    if p['games'] < min_gp:
+        print(f"AVOID (durability): projected {p['games']:.0f} games" + (f" -- {p['inj']}" if p.get('inj') else '')
+              + f"; your rule is {min_gp}+")
     print(cat_line(p))
     ceil, who = O.rival_ceiling(ctx.teams, ctx.me)
     th = O.threats(p, mx, ctx.teams, ctx.me, ctx.pricers)
@@ -430,7 +435,8 @@ def cmd_nom(ctx):
         sorted(ctx.avail, key=lambda p: -ctx.market.adj(p)), ctx.teams, ctx.me,
         ctx.pricers[ctx.me], ctx.market.adj, ctx.pricers)
     by_mkt = sorted(ctx.avail, key=lambda p: -ctx.market.adj(p))
-    overpay, late = O.room_nominations(by_mkt, ctx.teams, ctx.me, ctx.pricers[ctx.me], ctx.room_price)
+    overpay, late = O.room_nominations(by_mkt, ctx.teams, ctx.me, ctx.pricers[ctx.me], ctx.room_price,
+                                       min_gp=ctx.cfg['tuning'].get('durability_min_gp', 0))
     if overpay:
         print("EARLY (room overpays vs your value -- a rival burns the cash):")
         for _, p, r, mine in overpay[:3]: print(f"  {p['name']}  room ~{money(r)} vs you {money(mine)}")

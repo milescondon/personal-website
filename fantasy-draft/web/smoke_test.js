@@ -37,7 +37,10 @@ const ok = (cond, msg) => { console.log((cond ? 'PASS ' : 'FAIL ') + msg); if (!
   ok(nom0.toLowerCase().includes('nominate late: room undervalues'), 'nominate-late list present');
   console.log('  #nom:\n' + nom0.split('\n').map((l) => '    ' + l).join('\n'));
   const me0 = await text('#me');
-  ok(me0.includes('Spend plan') && me0.includes('Tyrese Maxey'), 'pre-draft spend plan present and includes Maxey');
+  ok(me0.includes('Spend plan') && me0.includes('Mikal Bridges'), 'pre-draft spend plan present and includes Mikal Bridges');
+  ok(!me0.includes('Jimmy Butler') && !me0.includes('Kevin Porter Jr.'), 'spend plan leaves out low-GP players (Butler, Porter Jr.)');
+  ok(!/Nominate late[\s\S]*Jimmy Butler/i.test(nom0) && !/late: room undervalues[\s\S]*Kevin Porter/i.test(nom0), 'nominate-late list leaves out Butler and Porter Jr.');
+  ok(await page.$$eval('td.lowgp', (x) => x.length) > 0, 'board flags low-GP players');
   const total0 = (me0.match(/Total\s+\$(\d+) of \$(\d+)/) || []);
   ok(total0[2] === '185', 'plan total line reads of $185: ' + total0[0]);
   console.log('  plan:\n' + me0.split('\n').slice(0, 16).map((l) => '    ' + l).join('\n'));
@@ -55,7 +58,16 @@ const ok = (cond, msg) => { console.log((cond ? 'PASS ' : 'FAIL ') + msg); if (!
 
   r = await run('kevin porter?');
   nm = await text('#p-nominee');
-  ok(nm.includes('ROOM UNDERVALUES'), 'Kevin Porter Jr. -> ROOM UNDERVALUES line: ' + nm.replace(/\s+/g, ' ').slice(0, 200));
+  ok(nm.includes('AVOID (durability)') && !nm.includes('ROOM UNDERVALUES'), 'Kevin Porter Jr. -> AVOID line, no undervalues line: ' + nm.replace(/\s+/g, ' ').slice(0, 200));
+  await run('butler?'); nm = await text('#p-nominee');
+  ok(nm.includes('AVOID (durability)') && nm.includes('torn acl'), 'Butler -> AVOID with the ACL note');
+  await run('mikal bridges?'); nm = await text('#p-nominee');
+  ok(!nm.includes('AVOID') && nm.includes('ROOM UNDERVALUES'), 'Bridges -> no AVOID, ROOM UNDERVALUES');
+  await run('mikal bridges 33 theo'); await run('bane 34 hr');
+  const al = await text('#alerts');
+  ok(al.includes('PIVOT'), 'pivot signal fires after two bargain targets sell at full value: ' + al.split('\n')[0].slice(0, 160));
+  await run('undo'); await run('undo');
+  ok(!(await text('#alerts')).includes('PIVOT'), 'pivot signal clears after undo');
 
   r = await run('maxey 76 me');
   console.log('  maxey 76 me -> result: ' + r.result.replace(/\s+/g, ' ').slice(0, 300) + `  [${r.wall} ms incl. 150ms wait]`);
