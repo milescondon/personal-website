@@ -9,9 +9,15 @@ This file is the durable record; the plan file under `/root/.claude/plans/` is s
 ## 0. START HERE (state at handoff, ~6:45pm CDT)
 
 **Miles drafts in the Draft Room web page** (private claude.ai artifact, `db` capability):
-https://claude.ai/artifact/5uQ4uJacVXoj694L1XTVru. It is **published at version 1**, which does
-NOT yet have room prices or the spend plan. Chat is the backup and the place for judgment
-questions. Miles's team is `dynasty`.
+https://claude.ai/artifact/5uQ4uJacVXoj694L1XTVru. **Version 2 is live (~7:20pm CDT)**, with room
+prices and the spend plan; it is byte-identical to `web/dist/draft-room.html` at this commit. Chat
+is the backup and the place for judgment questions. Miles's team is `dynasty`.
+
+**Update ~7:20pm CDT:** steps 1–3 below are DONE. Smoke test passed (28 checks, listed under
+"Smoke test" in §4b). The db had no `draft/state` doc before the draft, so there are no stale test
+sales in the cloud. The chat import path was checked against a real ArtifactData file: a probe doc
+in a separate `probe` collection, deleted afterwards. The file holds the doc fields directly
+(`{rev, saved_at, state}`) and lands at `<out_dir>/draft/state.json`. **Next is step 4.**
 
 **Done and committed since version 1 (all tests below pass on the committed code):**
 - **Room prices** (what the room will likely pay, vs what a player is worth to Miles). Source:
@@ -296,7 +302,13 @@ https://claude.ai/artifact/5uQ4uJacVXoj694L1XTVru, a private claude.ai page with
   content="width=device-width,initial-scale=1"></head><body>…</body></html>`, open it with
   `require('/opt/node22/lib/node_modules/playwright').chromium`, type into `#cmd`, read `#result`,
   `#p-nominee`, `#nom`, `#me`, and check `document.documentElement.scrollWidth - innerWidth` at
-  400/720/1400px plus console errors. Version 1 passed all of this; the current build hasn't been run.
+  400/720/1400px plus console errors. Version 2 (room prices + plan) passed on 2026-10-09: no
+  console errors/warnings; no overflow at 400/720/1400 with the price card open or late in a draft;
+  the Room column and Room box are present; Giannis shows ROOM OVERPAYS and Kevin Porter Jr. ROOM
+  UNDERVALUES; after `maxey 76 me` the header reads $109 / 9 and the plan drops Maxey (total of
+  $109); the state survives a reload; undo restores $185 / 10; the no-plan fallback shows after 8
+  non-guard buys; Reset works; command + re-render takes ~13 ms. Note: headers are CSS-uppercased,
+  so `innerText` reads `ROOM`, not `Room`.
 - Rebuild + republish: `python3 -I fantasy-draft/web/build_web.py data && python3 -I
   fantasy-draft/web/build_web.py page`, then publish `web/dist/draft-room.html` to the same URL.
   The board data is baked into the page, so a board rebuild (e.g. a keeper change at 9pm)

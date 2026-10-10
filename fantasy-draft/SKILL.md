@@ -31,6 +31,17 @@ that needs the live state, pull the page's log into the Python engine first:
 
 Never write to `draft/state` from chat during the draft. The page owns that document.
 
+The saved file is `<out_dir>/draft/state.json` and holds `{rev, saved_at, state}`; `import` accepts it as is.
+
+**Room prices and the spend plan.** Price checks print `room ~$X`: what Yahoo-anchored bidders
+will likely pay (the mean of Yahoo's average auction cost and Yahoo's projected $, scaled by live
+room inflation). It is separate from MAX, which is what the player is worth to Miles. If room is far
+above MAX, let him go or nominate him early; if it is far below TARGET, he may come cheap. `nom`
+lists both cases as EARLY and LATE. A room of $1 means Yahoo's mock drafts barely took him, so
+expect little competition, not a free player. The page also shows a **spend plan**: the best set of
+players Miles can afford at expected prices (midway between room and market), with position rules.
+The plan is a guide only.
+
 ## Shorthand
 
 | Miles types | Meaning | Runs |
@@ -56,7 +67,7 @@ Never write to `draft/state` from chat during the draft. The page owns that docu
 `jam`(esthrones), `oc`(aptains), `2b`(ert), `bb`(spartan), `dyn`(asty — that's Miles).
 
 **Names.** Last names work when unique. When a name is ambiguous the script lists the candidates.
-Relay that list in one line ("Jamal or Keegan?") and do not guess. A sale logged to the wrong
+Relay that list in one line ("Jamal or Keegan?") and do not guess. A first initial is not always enough: `m bridges` matches both Mikal and Miles, so use `mikal bridges`. A sale logged to the wrong
 player corrupts the board for the rest of the night.
 
 ## Output
